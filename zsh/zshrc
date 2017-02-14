@@ -1,6 +1,7 @@
 # oh-my-zsh {{{
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
+export TERM="screen-256color"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -120,7 +121,6 @@ export GREP_OPTIONS='--color=auto'
 # export GREP_COLOR='1;32'
 export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
 export EDITOR="vim"
-export TERM="screen-256color"
 # export CLICOLOR=1
 #export LSCOLORS=Gxfxcxdxbxegedabagacad
 #export LS_COLORS=Gxfxcxdxbxegedabagacad
