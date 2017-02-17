@@ -157,14 +157,14 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 "   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
 " set t_ut=
 
-"set background=light
-set background=dark
+set background=light
+"set background=dark
 let g:one_allow_italics = 1 " I love italic for comments
 " -- solarized color scheme
 " let g:solarized_termcolors=256
 let g:solarized_termcolors = 16
 colorscheme solarized
-let g:airline_theme='base16_solarized'
+"let g:airline_theme='base16_solarized'
 "colorscheme xcode
 "colorscheme ghostbuster
 "colorscheme one
