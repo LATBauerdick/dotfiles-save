@@ -170,8 +170,8 @@ colorscheme solarized
 "colorscheme one
 "let g:airline_theme='one'
 
-" for haskellConcealPlus
-let hscoptions="𝐌𝐄𝐓𝐒"
+" for haskellConcealPlus disable double-stroke capitals (does not work on iPad)
+let hscoptions="𝐌𝐄𝐓𝐒iBQZDC"
 
 set showcmd       " display incomplete command
 set autowrite     " Automatically :write before running commands
