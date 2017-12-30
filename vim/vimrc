@@ -1,80 +1,134 @@
 " Type :so % to refresh .vimrc after making changes
 
-" -- pathogen plugin manager
-" set nocompatible
-" execute pathogen#infect()
-" execute pathogen#helptags()
+" Set standard file encoding
+set encoding=utf8
+" No special per file vim override configs
+set nomodeline
+" Stop word wrapping
+set nowrap
+  " Except... on Markdown. That's good stuff.
+  autocmd FileType markdown setlocal wrap
+" Adjust system undo levels
+set undolevels=100
+" Use system clipboard
+set clipboard=unnamed
+" Set tab width and convert tabs to spaces
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+" Don't let Vim hide characters or make loud dings
+set conceallevel=1
+set noerrorbells
+" Number gutter
+set number
+set numberwidth=5
+" Use search highlighting
+set hlsearch
+"
+" Setting Arrow Keys to Resize Panes
+nnoremap <Left> :vertical resize -1<CR>
+nnoremap <Right> :vertical resize +1<CR>
+nnoremap <Up> :resize -1<CR>
+nnoremap <Down> :resize +1<CR>
+" Disable arrow keys completely in Insert Mode
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+" Return to the last file opened
+nmap <Leader><Leader> <c-^>
 
-" vim-plug {{{
+" plugns {{{
+" if empty(glob('~/.nvim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
 set nocompatible
+filetype plugin indent on
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+packadd minpac
+call minpac#init()
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
 
-if has('nvim')
-  call plug#begin('~/.config/nvim/bundle')
-else
-  call plug#begin('~/.vim/bundle')
-endif
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+call minpac#add('k-takata/minpac', {'type': 'opt'})
 
 " Support bundles
-Plug 'jgdavey/tslime.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'ervandew/supertab'
-Plug 'benekastah/neomake'
-Plug 'moll/vim-bbye'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'vim-scripts/gitignore'
+call minpac#add('Shougo/unite.vim')
+call minpac#add('jgdavey/tslime.vim')
+call minpac#add('Shougo/vimproc.vim')
+call minpac#add('ervandew/supertab')
+call minpac#add('neomake/neomake')
+call minpac#add('moll/vim-bbye')
+call minpac#add('nathanaelkane/vim-indent-guides')
+call minpac#add('vim-scripts/gitignore')
+call minpac#add('junegunn/fzf')
+call minpac#add('tpope/vim-dispatch')
+call minpac#add('radenling/vim-dispatch-neovim')
 
 " Git
-Plug 'tpope/vim-fugitive'
-Plug 'int3/vim-extradite'
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('int3/vim-extradite')
 
 " Bars, panels, and files
-Plug 'scrooloose/nerdtree'
-Plug 'bling/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'majutsushi/tagbar'
+" call minpac#add('scrooloose/nerdtree')
+call minpac#add('bling/vim-airline')
+call minpac#add('ctrlpvim/ctrlp.vim')
+call minpac#add('majutsushi/tagbar')
 
 " Text manipulation
-Plug 'vim-scripts/Align'
-Plug 'simnalamburt/vim-mundo'
-Plug 'tpope/vim-commentary'
-Plug 'godlygeek/tabular'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'easymotion/vim-easymotion'
+call minpac#add('vim-scripts/Align')
+call minpac#add('simnalamburt/vim-mundo')
+call minpac#add('tpope/vim-commentary')
+call minpac#add('godlygeek/tabular')
+call minpac#add('michaeljsmith/vim-indent-object')
+call minpac#add('easymotion/vim-easymotion')
 
 " Allow pane movement to jump out of vim into tmux
-Plug 'christoomey/vim-tmux-navigator'
+" call minpac#add( 'christoomey/vim-tmux-navigator')
 
 " Haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
-Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
-"Plug 'parsonsmatt/intero-neovim', { 'for': 'haskell' }
+call minpac#add('neovimhaskell/haskell-vim', {'for': 'haskell'})
+call minpac#add('enomsg/vim-haskellConcealPlus', {'for': 'haskell'})
+" call minpac#add('eagletmt/ghcmod-vim', {'for': 'haskell'})
+" call minpac#add('eagletmt/neco-ghc', {'for': 'haskell'})
+" call minpac#add('Twinside/vim-hoogle', {'for': 'haskell'})
+" call minpac#add('mpickering/hlint-refactor-vim', {'for': 'haskell'})
+call minpac#add('parsonsmatt/intero-neovim', {'for': 'haskell'})
 
-" Colorscheme
-Plug 'vim-scripts/wombat256.vim'
+" call minpac#add('scrooloose/syntastic')
+call minpac#add('scrooloose/nerdcommenter')
+call minpac#add('shougo/neocomplete.vim')
+
+
+" PureScript
+call minpac#add('raichoo/purescript-vim')
+call minpac#add('frigoeu/psc-ide-vim')
+
+" Clojure
+call minpac#add('tpope/vim-fireplace')
 
 " Custom bundles
-Plug 'altercation/vim-colors-solarized'
-Plug 'rakr/vim-one'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'guns/vim-sexp'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'flazz/vim-colorschemes'
-Plug 'addisonbean/vim-xcode-theme'
-Plug 'mvandiemen/ghostbuster'
-
-call plug#end()
+" call minpac#add('Yggdroot/indentLine')
+call minpac#add('dracula/vim')
+call minpac#add('altercation/vim-colors-solarized')
+"call minpac#add('frankier/neovim-colors-solarized-truecolor-only')
+call minpac#add('rakr/vim-one')
+call minpac#add('tpope/vim-vinegar')
+call minpac#add('tpope/vim-unimpaired')
+call minpac#add('tpope/vim-sexp-mappings-for-regular-people')
+call minpac#add('guns/vim-sexp')
+call minpac#add('tpope/vim-repeat')
+call minpac#add('tpope/vim-surround')
+call minpac#add('vim-airline/vim-airline-themes')
+call minpac#add('mvandiemen/ghostbuster')
+call minpac#add('airblade/vim-gitgutter')
 
 " }}}
 
@@ -100,17 +154,36 @@ endif
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
+" indentline settings
+" let g:indentLine_enabled = 1
+" let g:indentLine_char = "⟩"
+
 " syntastic beginners settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" dont do this for airline
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_enable_elixir_checker = 1
-let g:syntastic_elixir_checkers = "elixir"
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+map <silent> tw :GhcModTypeInsert<CR>
+map <silent> ts :GhcModSplitFunCase<CR>
+map <silent> tq :GhcModType<CR>
+map <silent> te :GhcModTypeClear<CR>
+
+" call neomake#configure#automake('rw', 1000)
+let g:neomake_place_signs=1
+" let g:neomake_error_sign = {
+"         \ 'text': 'E>',
+"         \ 'texthl': 'ErrorMsg',
+"         \ }
+let g:neomake_warning_sign = {
+        \ 'text': 'W>',
+        \ 'texthl': 'WarningMsg',
+        \ }
 
 " VSplit window
 nnoremap <leader>s <C-w>v<C-w>l
@@ -148,30 +221,22 @@ let g:airline#extensions#tabline#enabled = 2
 " easy expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-" set t_8b=[48;2;%lu;%lu;%lum
-" set t_8f=[38;2;%lu;%lu;%lum<Paste>
-" set t_Co=256
-" set t_AB=^[[48;5;%dm
-" set t_AF=^[[38;5;%dm
-"   " render properly when inside 256-color tmux and GNU screen.
-"   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-" set t_ut=
-
-set background=light
-"set background=dark
-let g:one_allow_italics = 1 " I love italic for comments
 " -- solarized color scheme
-" let g:solarized_termcolors=256
-let g:solarized_termcolors = 16
+"let g:solarized_termcolors=256
+"let g:solarized_termcolors = 16
+"let g:solarized_termtrans = 1
+"let g:solarized_visibility = "high"
+"let g:solarized_contrast = "high"
+"set termguicolors
+"set background=dark
+set background=light
 colorscheme solarized
+let g:one_allow_italics = 1 " italic for comments
 "let g:airline_theme='base16_solarized'
-"colorscheme xcode
-"colorscheme ghostbuster
-"colorscheme one
 "let g:airline_theme='one'
 
 " for haskellConcealPlus disable double-stroke capitals (does not work on iPad)
-let hscoptions="𝐌𝐄𝐓𝐒iBQZDC"
+let hscoptions="𝐌𝐄𝐓𝐒EsiBQZDC"
 
 set showcmd       " display incomplete command
 set autowrite     " Automatically :write before running commands
@@ -179,6 +244,8 @@ set autoread      " Reload files changed outside vim
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 au FocusGained,BufEnter * :silent! !
 
+" close buffer without closing window
+map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
 "Set default font in mac vim and gvim
 " set guifont=Hack:h14
@@ -193,7 +260,6 @@ set mouse=a
 set gdefault      " Never have to type /g at the end of search / replace again
 set ignorecase    " case insensitive searching (unless specified)
 set smartcase
-set hlsearch
 set incsearch
 set showmatch
 " Disable highlight when <leader><cr> is pressed
@@ -202,12 +268,6 @@ nmap <silent> <leader><cr> :noh\|hi Cursor guibg=red<cr>
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
-
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
@@ -223,9 +283,21 @@ set linebreak
 " define Wrap command to set text soft wrapping
 command! -nargs=* Wrap set wrap linebreak nolist
 
-" Numbers
-set number
-set numberwidth=5
+"Toggle relative numbering, and set to absolute on loss of focus or insert mode
+set rnu
+function! ToggleNumbersOn()
+    set nu!
+    set rnu
+endfunction
+function! ToggleRelativeOn()
+    set rnu!
+    set nu
+endfunction
+autocmd FocusLost * call ToggleRelativeOn()
+autocmd FocusGained * call ToggleRelativeOn()
+autocmd InsertEnter * call ToggleRelativeOn()
+autocmd InsertLeave * call ToggleRelativeOn()
+
 
 " Open new split panes to right and bottom, which feels more natural
 " set splitbelow
@@ -243,21 +315,6 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-"Toggle relative numbering, and set to absolute on loss of focus or insert mode
-set rnu
-function! ToggleNumbersOn()
-    set nu!
-    set rnu
-endfunction
-function! ToggleRelativeOn()
-    set rnu!
-    set nu
-endfunction
-autocmd FocusLost * call ToggleRelativeOn()
-autocmd FocusGained * call ToggleRelativeOn()
-autocmd InsertEnter * call ToggleRelativeOn()
-autocmd InsertLeave * call ToggleRelativeOn()
-
 " Use tab to jump between blocks, because it's easier
 nnoremap <tab> %
 vnoremap <tab> %
@@ -269,11 +326,16 @@ set spellfile=$HOME/.vim-spell-en.utf-8.add
 " Always use vertical diffs
 set diffopt+=vertical
 
+" NERDtree
+map <C-n> :NERDTreeToggle<CR>
+
 " Fuzzy find files
 nnoremap <silent> <Leader><space> :CtrlP<CR>
 let g:ctrlp_max_files=0
 let g:ctrlp_show_hidden=1
 let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
+
+nnoremap <C-p> :<C-u>FZF<CR>
 
 " delete buffer without closing pane
 noremap <leader>bd :Bd<cr>
@@ -305,6 +367,14 @@ nnoremap <leader>= :wincmd =<cr>
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
+" use cursor keys to move display lines
+nmap <up> gk
+nmap <down> gj
+inoremap <Up> <C-o>gk
+inoremap <Down> <C-o>gj
+nnoremap <Up> gk
+nnoremap <Down> gj
+
 " AUTOCOMMANDS - Do stuff
 
 " Save whenever switching windows or leaving vim. This is useful when running
@@ -329,4 +399,65 @@ augroup vimrcEx
     \ endif
 augroup END
 
+"augroup END
+
+set foldmethod=marker
+
+let g:purescript_indent_if = 3
+let g:purescript_indent_case = 5
+let g:purescript_indent_let = 4
+let g:purescript_indent_where = 6
+let g:purescript_indent_do = 3
+
+let g:psc_ide_syntastic_mode = 1
+au FileType purescript nmap <leader>t :PSCIDEtype<CR>
+au FileType purescript nmap <leader>s :PSCIDEapplySuggestion<CR>
+au FileType purescript nmap <leader>a :PSCIDEaddTypeAnnotation<CR>
+au FileType purescript nmap <leader>i :PSCIDEimportIdentifier<CR>
+au FileType purescript nmap <leader>r :PSCIDEload<CR>
+au FileType purescript nmap <leader>p :PSCIDEpursuit<CR>
+au FileType purescript nmap <leader>c :PSCIDEcaseSplit<CR>
+au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
+au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
+
+augroup interoMaps
+  au!
+  " Maps for intero. Restrict to Haskell buffers so the bindings don't collide.
+
+  " Background process and window management
+  au FileType haskell nnoremap <silent> <leader>is :InteroStart<CR>
+  au FileType haskell nnoremap <silent> <leader>ik :InteroKill<CR>
+
+  " Open intero/GHCi split horizontally
+  au FileType haskell nnoremap <silent> <leader>io :InteroOpen<CR>
+  " Open intero/GHCi split vertically
+  au FileType haskell nnoremap <silent> <leader>iov :InteroOpen<CR><C-W>H
+  au FileType haskell nnoremap <silent> <leader>ih :InteroHide<CR>
+
+  " Reloading (pick one)
+  " Automatically reload on save
+  au BufWritePost *.hs InteroReload
+  " Manually save and reload
+  " au FileType haskell nnoremap <silent> <leader>wr :w \| :InteroReload<CR>
+
+  " Load individual modules
+  au FileType haskell nnoremap <silent> <leader>il :InteroLoadCurrentModule<CR>
+  au FileType haskell nnoremap <silent> <leader>if :InteroLoadCurrentFile<CR>
+
+  " Type-related information
+  " Heads up! These next two differ from the rest.
+  au FileType haskell map <silent> <leader>t <Plug>InteroGenericType
+  au FileType haskell map <silent> <leader>T <Plug>InteroType
+  au FileType haskell nnoremap <silent> <leader>it :InteroTypeInsert<CR>
+
+  " Navigation
+  au FileType haskell nnoremap <silent> <leader>jd :InteroGoToDef<CR>
+
+  " Managing targets
+  " Prompts you to enter targets (no silent):
+  au FileType haskell nnoremap <leader>ist :InteroSetTargets<SPACE>
 augroup END
+
+" Intero starts automatically. Set this if you'd like to prevent that.
+let g:intero_start_immediately = 1
+

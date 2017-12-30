@@ -1,3 +1,8 @@
+
+# pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
+# Use Neovim as "preferred editor"
+export VISUAL=nvim
+
 # oh-my-zsh {{{
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -9,8 +14,8 @@ export TERM="screen-256color"
 ZSH_THEME="random"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_COLOR_SCHEME='dark'
-# POWERLEVEL9K_COLOR_SCHEME='light'
+#POWERLEVEL9K_COLOR_SCHEME='dark'
+POWERLEVEL9K_COLOR_SCHEME='light'
 # ZSH_THEME="avit"
 # ZSH_THEME="amuse"
 # ZSH_THEME="agnoster"
@@ -97,16 +102,16 @@ alias tmuxkillall="tmux ls | cut -d : -f 1 | xargs -I {} tmux kill-session -t {}
 alias ct="ctags -R --exclude=.git --exclude=node_modules"
 alias dotfiles="ls -a | grep '^\.' | grep --invert-match '\.DS_Store\|\.$'"
 
-### LATB Aliases
+### LATB mods
 alias of2=~/bin/ofexport2/bin/ofexport2
 
 alias pd="pandoc -r markdown+simple_tables+table_captions+yaml_metadata_block+raw_tex -w latex --chapters -s -S --latex-engine=xelatex --template=$HOME/Dropbox/Apps/pandoc/xelatex.template --filter pandoc-citeproc --csl=$HOME/Dropbox/Apps/pandoc/ajps.csl "
 alias px="pandoc -r markdown --latex-engine=xelatex "
 
 alias zl="zfs list -t all -r -o name,used,refer"
-alias ghci=~/.stack/programs/x86_64-osx/ghc-7.10.3/bin/ghci
 
 alias less="less -X -i"
+
 
 # setup root6
 #pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
@@ -115,7 +120,7 @@ alias less="less -X -i"
 
 # Exports {{{
 export GITHUB_USER="latbauerdick"
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
+###export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
 export PATH=~/bin:/Library/TeX/texbin:~/.local/bin:~/Library/Python/3.5/bin:$PATH
 export GREP_OPTIONS='--color=auto'
 # export GREP_COLOR='1;32'
@@ -130,3 +135,6 @@ export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 #
 # }}}
 #
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
