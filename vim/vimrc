@@ -54,13 +54,15 @@ Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
 Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
-"Plug 'parsonsmatt/intero-neovim', { 'for': 'haskell' }
+Plug 'parsonsmatt/intero-neovim', { 'for': 'haskell' }
 
-" Colorscheme
-Plug 'vim-scripts/wombat256.vim'
+" PureScript
+Plug 'raichoo/purescript-vim'
+"""""""Plug 'frigoeu/psc-ide-vim'
 
 " Custom bundles
 Plug 'altercation/vim-colors-solarized'
+"Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'rakr/vim-one'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
@@ -70,8 +72,6 @@ Plug 'guns/vim-sexp'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'flazz/vim-colorschemes'
-Plug 'addisonbean/vim-xcode-theme'
 Plug 'mvandiemen/ghostbuster'
 
 call plug#end()
@@ -112,6 +112,8 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_enable_elixir_checker = 1
 let g:syntastic_elixir_checkers = "elixir"
 
+" set system clipboard to be default
+set clipboard=unnamed
 " VSplit window
 nnoremap <leader>s <C-w>v<C-w>l
 nnoremap <leader>2 :vsplit<CR>
@@ -121,6 +123,11 @@ nnoremap <leader>w <C-w><C-w>
 nnoremap <leader>o <C-w><C-w>
 
 noremap ; :
+" remap Esc key
+" Can be typed even faster than jj, and if you are already in
+"    normal mode, you (usually) don't accidentally move:
+:imap jk <Esc>
+:imap kj <Esc>
 
 " strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -148,22 +155,17 @@ let g:airline#extensions#tabline#enabled = 2
 " easy expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-" set t_8b=[48;2;%lu;%lu;%lum
-" set t_8f=[38;2;%lu;%lu;%lum<Paste>
-" set t_Co=256
-" set t_AB=^[[48;5;%dm
-" set t_AF=^[[38;5;%dm
-"   " render properly when inside 256-color tmux and GNU screen.
-"   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-" set t_ut=
-
+" -- solarized color scheme
+colorscheme solarized
+"let g:solarized_termcolors=256
+"let g:solarized_termcolors = 16
+"let g:solarized_termtrans = 1
+"let g:solarized_visibility = "high"
+"let g:solarized_contrast = "high"
+"set termguicolors
 set background=light
 "set background=dark
 let g:one_allow_italics = 1 " I love italic for comments
-" -- solarized color scheme
-" let g:solarized_termcolors=256
-let g:solarized_termcolors = 16
-colorscheme solarized
 "let g:airline_theme='base16_solarized'
 "colorscheme xcode
 "colorscheme ghostbuster
@@ -179,6 +181,8 @@ set autoread      " Reload files changed outside vim
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 au FocusGained,BufEnter * :silent! !
 
+" close buffer without closing window
+map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
 "Set default font in mac vim and gvim
 " set guifont=Hack:h14
@@ -269,6 +273,9 @@ set spellfile=$HOME/.vim-spell-en.utf-8.add
 " Always use vertical diffs
 set diffopt+=vertical
 
+" NERDtree
+map <C-n> :NERDTreeToggle<CR>
+
 " Fuzzy find files
 nnoremap <silent> <Leader><space> :CtrlP<CR>
 let g:ctrlp_max_files=0
@@ -305,6 +312,14 @@ nnoremap <leader>= :wincmd =<cr>
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
 
+" use cursor keys to move display lines
+nmap <up> gk
+nmap <down> gj
+inoremap <Up> <C-o>gk
+inoremap <Down> <C-o>gj
+nnoremap <Up> gk
+nnoremap <Down> gj
+
 " AUTOCOMMANDS - Do stuff
 
 " Save whenever switching windows or leaving vim. This is useful when running
@@ -329,4 +344,23 @@ augroup vimrcEx
     \ endif
 augroup END
 
-augroup END
+"augroup END
+
+set foldmethod=marker
+
+let g:purescript_indent_if = 3
+let g:purescript_indent_case = 5
+let g:purescript_indent_let = 4
+let g:purescript_indent_where = 6
+let g:purescript_indent_do = 3
+
+let g:psc_ide_syntastic_mode = 1
+au FileType purescript nmap <leader>t :PSCIDEtype<CR>
+au FileType purescript nmap <leader>s :PSCIDEapplySuggestion<CR>
+au FileType purescript nmap <leader>a :PSCIDEaddTypeAnnotation<CR>
+au FileType purescript nmap <leader>i :PSCIDEimportIdentifier<CR>
+au FileType purescript nmap <leader>r :PSCIDEload<CR>
+au FileType purescript nmap <leader>p :PSCIDEpursuit<CR>
+au FileType purescript nmap <leader>c :PSCIDEcaseSplit<CR>
+au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
+au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
