@@ -25,7 +25,14 @@ Plug 'benekastah/neomake'
 Plug 'moll/vim-bbye'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/gitignore'
-
+"
+" fzf fuzzy file search
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+"
+" grepper
+Plug 'mhinz/vim-grepper'
+"
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'int3/vim-extradite'
@@ -33,7 +40,7 @@ Plug 'int3/vim-extradite'
 " Bars, panels, and files
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 
 " Text manipulation
@@ -50,8 +57,8 @@ Plug 'christoomey/vim-tmux-navigator'
 " Haskell
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+"""Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
+"""Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
 Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
 Plug 'parsonsmatt/intero-neovim', { 'for': 'haskell' }
@@ -59,6 +66,9 @@ Plug 'parsonsmatt/intero-neovim', { 'for': 'haskell' }
 " PureScript
 Plug 'raichoo/purescript-vim'
 """""""Plug 'frigoeu/psc-ide-vim'
+
+" rust
+Plug 'rust-lang/rust.vim'
 
 " Custom bundles
 Plug 'altercation/vim-colors-solarized'
@@ -135,6 +145,10 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Ack command
 nnoremap <leader>a :Ack
 let g:ackprg = 'ag --vimgrep'
+nnoremap <leader>g :Grepper<cr>
+let g:grepper = { 'next_tool': '<leader>g' }
+nmap gs  <plug>(GrepperOperator)
+xmap gs  <plug>(GrepperOperator)
 
 " quickly edit .vimrc file
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
@@ -277,10 +291,15 @@ set diffopt+=vertical
 map <C-n> :NERDTreeToggle<CR>
 
 " Fuzzy find files
-nnoremap <silent> <Leader><space> :CtrlP<CR>
-let g:ctrlp_max_files=0
-let g:ctrlp_show_hidden=1
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
+nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <silent> <Leader><space> :<C-u>FZF<CR>
+
+" nnoremap <silent> <Leader><space> :CtrlP<CR>
+" let g:ctrlp_max_files=0
+" let g:ctrlp_show_hidden=1
+" let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
+
+
 
 " delete buffer without closing pane
 noremap <leader>bd :Bd<cr>
