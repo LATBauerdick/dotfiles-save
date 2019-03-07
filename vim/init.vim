@@ -1,23 +1,21 @@
 " Type :so % to refresh .vimrc after making changes
 
+set nocompatible
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 " -- pathogen plugin manager
-" set nocompatible
 " execute pathogen#infect()
 " execute pathogen#helptags()
 
 " vim-plug {{{
 
-set nocompatible
-
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-if has('nvim')
-  call plug#begin('~/.config/nvim/bundle')
-else
-  call plug#begin('~/.vim/bundle')
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+call plug#begin('~/.vim/bundle')
 
-" Support bundles
 Plug 'jgdavey/tslime.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'ervandew/supertab'
@@ -40,13 +38,14 @@ Plug 'int3/vim-extradite'
 " Bars, panels, and files
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
-" Plug 'ctrlpvim/ctrlp.vim'
+""" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 
 " Text manipulation
 Plug 'vim-scripts/Align'
 Plug 'simnalamburt/vim-mundo'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
@@ -54,28 +53,33 @@ Plug 'easymotion/vim-easymotion'
 " Allow pane movement to jump out of vim into tmux
 Plug 'christoomey/vim-tmux-navigator'
 
+Plug 'sbdchd/neoformat'
+
 " Haskell
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
-"""Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
-"""Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-Plug 'Twinside/vim-hoogle', { 'for': 'haskell' }
-Plug 'mpickering/hlint-refactor-vim', { 'for': 'haskell' }
-Plug 'parsonsmatt/intero-neovim', { 'for': 'haskell' }
+Plug 'ujihisa/unite-haskellimport'
+Plug 'Shougo/unite.vim'
+Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+Plug 'neovimhaskell/haskell-vim'
+Plug 'enomsg/vim-haskellConcealPlus'
+"""Plug 'eagletmt/ghcmod-vim'
+"""Plug 'eagletmt/neco-ghc'
+Plug 'Twinside/vim-hoogle'
+""" Plug 'mpickering/hlint-refactor-vim'
+""" Plug 'parsonsmatt/intero-neovim'
 
 " PureScript
 Plug 'raichoo/purescript-vim'
-"""""""Plug 'frigoeu/psc-ide-vim'
+"""Plug 'frigoeu/psc-ide-vim'
 
 " rust
 Plug 'rust-lang/rust.vim'
 
 " Custom bundles
 Plug 'altercation/vim-colors-solarized'
-"Plug 'frankier/neovim-colors-solarized-truecolor-only'
+"""Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'rakr/vim-one'
 Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'guns/vim-sexp'
@@ -105,6 +109,7 @@ if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
 " set listchars=tab:▸\ ,eol:¬
+
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -153,6 +158,8 @@ xmap gs  <plug>(GrepperOperator)
 " quickly edit .vimrc file
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
+let g:ghcid_command= "/usr/local/bin/ghcid"
+
 " -- vim-airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 2
@@ -165,6 +172,11 @@ let g:airline#extensions#tabline#enabled = 2
 " let g:airline_left_alt_sep = '|'
 " let g:airline_right_sep = ' '
 " let g:airline_right_alt_sep = '|'
+" testing rounded separators (extra-powerline-symbols):
+" let g:airline_left_sep = "\uE0B4"
+" let g:airline_right_sep = "\uE0B6"
+" set the CN (column number) symbol:
+let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
 
 " easy expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -338,6 +350,11 @@ inoremap <Up> <C-o>gk
 inoremap <Down> <C-o>gj
 nnoremap <Up> gk
 nnoremap <Down> gj
+
+" define move keys for Colemak
+" noremap h k
+" noremap j h
+" noremap k j
 
 " AUTOCOMMANDS - Do stuff
 

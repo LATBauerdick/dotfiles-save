@@ -1,0 +1,4 @@
+.DS_Store
+*CONFLICT*
+karabiner/automatic_backups/
+vim/bundle/

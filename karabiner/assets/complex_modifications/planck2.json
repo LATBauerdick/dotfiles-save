@@ -11,13 +11,13 @@
       ]
     },
     {
-      "description": "Planck Mode 2 [right shift to <return>, left and right gui to [ and ] if pressed alone]",
+      "description": "Planck Mode 2 [left and right gui to [ and ] if pressed alone]",
       "manipulators": [
         {
           "type": "basic",
-          "from": { "key_code": "right_shift", "modifiers": { "optional": [ "any" ] } },
-          "to": [ { "key_code": "right_shift" } ],
-          "to_if_alone": [ { "key_code": "return_or_enter" } ]
+          "from": { "key_code": "left_gui", "modifiers": { "optional": [ "any" ] } },
+          "to": [ { "key_code": "left_gui" } ],
+          "to_if_alone": [ { "key_code": "open_bracket" } ]
         },
         {
           "type": "basic",
@@ -163,8 +163,8 @@
           "type": "basic"
         },
         {
-          "from": { "key_code": "quote", "modifiers": { "mandatory": [ "fn" ], "optional": [ "any" ] } },
-          "to": [ { "key_code": "hyphen" } ],
+          "from": { "key_code": "return_or_enter", "modifiers": { "mandatory": [ "fn" ], "optional": [ "any" ] } },
+          "to": [ { "key_code": "quote" } ],
           "type": "basic"
         },
 
@@ -230,16 +230,6 @@
           "type": "basic"
         },
 
-        {
-          "from": { "key_code": "open_bracket", "modifiers": { "mandatory": [ "fn" ], "optional": [ "any" ] } },
-          "to": [ { "key_code": "delete_or_backspace" } ],
-          "type": "basic"
-        },
-        {
-          "from": { "key_code": "open_bracket", "modifiers": { "mandatory": [ ], "optional": [ "any" ] } },
-          "to": [ { "key_code": "delete_or_backspace" } ],
-          "type": "basic"
-        },
           { "from": { "key_code": "spacebar", "modifiers": { "mandatory": [ "fn" ], "optional": [ "any" ] } },
           "to": [ { "key_code": "spacebar", "modifiers": [ ] } ],
           "type": "basic" }
@@ -299,9 +289,6 @@
           "type": "basic" }
         , { "from": { "key_code": "equal_sign", "modifiers": { "mandatory": [ ], "optional": [ "any" ] } },
           "to": [ { "key_code": "left_shift", "modifiers": [ ] } ],
-          "type": "basic" }
-        , { "from": { "key_code": "delete_or_backspace", "modifiers": { "mandatory": [ "fn", "left_shift" ], "optional": [ "any" ] } },
-          "to": [ { "key_code": "delete_or_backspace", "modifiers": [ ] } ],
           "type": "basic" }
         , { "from": { "key_code": "close_bracket", "modifiers": { "mandatory": [ ], "optional": [ "any" ] } },
           "to": [ { "key_code": "left_shift", "modifiers": [ ] } ],

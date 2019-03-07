@@ -15,6 +15,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_COLOR_SCHEME='dark'
 POWERLEVEL9K_COLOR_SCHEME='light'
+POWERLEVEL9K_MODE='nerdfont-complete'
 # ZSH_THEME="avit"
 # ZSH_THEME="amuse"
 # ZSH_THEME="agnoster"
@@ -141,6 +142,8 @@ lsgrep ()
     NEEDLE="$(echo $@|sed -E 's/\.([a-z0-9]+)$/\\.\1/'|sed -E 's/\?/./'| sed -E 's/[ *]/.*?/g')";
     ag --depth 3 -S -g "$NEEDLE" 2> /dev/null
   }
+
+alias stss="(sleep 4; open vnc://127.0.0.1:5901) & ssh -C -4 -L 5901:127.0.0.1:5900"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
