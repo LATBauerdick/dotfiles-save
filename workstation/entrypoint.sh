@@ -13,14 +13,14 @@ fi
 cd ~/code/dotfiles
 git remote set-url origin git@github.com:latbauerdick/dotfiles
 
-ln -s $(pwd)/vimrc ~/.vimrc
-ln -s $(pwd)/zshrc ~/.zshrc
-ln -s $(pwd)/tmuxconf ~/.tmux.conf
-ln -s $(pwd)/tigrc ~/.tigrc
-ln -s $(pwd)/git-prompt.sh ~/.git-prompt.sh
-ln -s $(pwd)/gitconfig ~/.gitconfig
-ln -s $(pwd)/agignore ~/.agignore
-ln -s $(pwd)/sshconfig ~/.ssh/config
+ln -s $(pwd)/vim/init.vim ~/.vimrc
+ln -s $(pwd)/zsh/zshrc ~/.zshrc
+ln -s $(pwd)/tmux/tmux.conf ~/.tmux.conf
+##ln -s $(pwd)/tigrc ~/.tigrc
+##ln -s $(pwd)/git-prompt.sh ~/.git-prompt.sh
+ln -s $(pwd)/git/gitconfig ~/.gitconfig
+##ln -s $(pwd)/agignore ~/.agignore
+ln -s $(pwd)/ssh/sshconfig ~/.ssh/config
 
 
 /usr/sbin/sshd -D

@@ -1,0 +1,51 @@
+# BEGIN ALGO MANAGED BLOCK 162.243.79.69
+# UseKeychain yes
+AddKeysToAgent yes
+
+Host algo
+HostName 142.93.186.57
+        User root
+        IdentityFile    ~/.ssh/algo.pem
+
+Host algo-auto
+HostName 142.93.186.57
+  KeepAlive yes
+  User root
+  IdentityFile    ~/.ssh/algo.pem
+  RemoteForward   *:2232 127.0.0.1:22
+
+Host latbtop, ltop
+HostName 142.93.186.57
+  User bauerdic
+  Port 2232
+  IdentityFile   ~/.ssh/id_rsa
+
+Host imac
+HostName 142.93.186.57
+  User bauerdic
+  Port 2233
+  IdentityFile   ~/.ssh/id_rsa
+
+Host borg
+HostName 142.93.186.57
+  User bauerdic
+  Port 2222
+  IdentityFile   ~/.ssh/id_rsa
+
+Host lpro
+  HostName lpro.local
+  User bauerdic
+
+Host 192.168.1.1 10.8.0.1 homer borgtom
+
+Host latbtop mac-123210
+  Hostname latbtop.local
+  User bauerdic
+
+Host 131.225.* *.fnal.gov
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials yes
+    StrictHostKeyChecking no
+    ForwardX11Trusted yes
+    ForwardX11 yes
+
