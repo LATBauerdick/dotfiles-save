@@ -4,4 +4,5 @@ terraform.tfstate.backup
 karabiner/automatic_backups/
 vim/bundle/
 workstation/.terraform
+.terraform.tfstate.lock.info
 
