@@ -1,8 +1,8 @@
 .DS_Store
 *CONFLICT*
-terraform.tfstate.backup
 karabiner/automatic_backups/
 vim/bundle/
 workstation/.terraform
 .terraform.tfstate.lock.info
-
+terraform.tfstate
+terraform.tfstate.backup
