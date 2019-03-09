@@ -14,8 +14,8 @@ cd ~/code/dotfiles
 git remote set-url origin git@github.com:latbauerdick/dotfiles
 
 ln -s $(pwd)/vim/init.vim ~/.vimrc
-ln -s $(pwd)/zsh/zshrc ~/.zshrc
-ln -s $(pwd)/tmux/tmux.conf ~/.tmux.conf
+ln -sf $(pwd)/zsh/zshrc ~/.zshrc
+ln -s $(pwd)/tmux/tmux.conf.ubuntu ~/.tmux.conf
 ##ln -s $(pwd)/tigrc ~/.tigrc
 ##ln -s $(pwd)/git-prompt.sh ~/.git-prompt.sh
 ln -s $(pwd)/git/gitconfig ~/.gitconfig
