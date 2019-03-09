@@ -92,7 +92,9 @@ RUN apt-get update -qq && apt-get upgrade -y && apt-get install -qq -y \
 RUN apt-get install -y software-properties-common && \
     add-apt-repository ppa:neovim-ppa/unstable && \
     apt-get update -y && \
-    apt-get install -y neovim
+    apt-get install -y neovim && \
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 ### Haskell
 
