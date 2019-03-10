@@ -145,6 +145,12 @@ lsgrep ()
 
 alias stss="(sleep 4; open vnc://127.0.0.1:5901) & ssh -C -4 -L 5901:127.0.0.1:5900"
 
+alias dls="docker images"
+alias dps="docker ps -a"
+alias drm="docker rm"
+alias drmi="docker rmi"
+alias dri="docker run -it --privileged -v /Volumes/Data:/Volumes/Data"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 

@@ -2,10 +2,11 @@
 
 set -e
 
+ln -sf $(pwd)/id_rsa ~/.ssh/
+chmod 0600 ~/.ssh/id_rsa
+
 if [ ! -d ~/.dotfiles ]; then
   echo "Cloning dotfiles"
-  # the reason we dont't copy the files individually is, to easily push changes
-  # if needed
   cd ~/
   git clone --recursive https://github.com/latbauerdick/dotfiles .dotfiles
 fi
@@ -30,3 +31,4 @@ ln -sf $(pwd)/ssh/sshconfig ~/.ssh/config
 ####export LANG=en_US.UTF-8
 ####export LC_ALL=en_US.UTF-8
 
+echo source $(python -c 'import powerline; print (powerline.__file__)')/bindings/tmux/powerline.conf
