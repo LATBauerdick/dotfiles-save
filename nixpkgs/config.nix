@@ -36,11 +36,14 @@ export MANPATH=$HOME/.nix-profile/share/man:/nix/var/nix/profiles/default/share/
       paths = [
 ###        python36Packages.powerline
         wget
+        zsh
         bind      # for nslookup
         tree
-        zsh
+        less
+        man
         tmux
         neovim
+        coreutils
         git
         gnuplot
         stack
