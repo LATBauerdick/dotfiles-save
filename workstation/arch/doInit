@@ -1,0 +1,37 @@
+#!bash
+
+set -e
+
+ln -sf $(pwd)/id_rsa ~/.ssh/
+chmod 0600 ~/.ssh/id_rsa
+
+if [ ! -d ~/.dotfiles ]; then
+  echo "Cloning dotfiles"
+  cd ~/
+  git clone --recursive https://github.com/latbauerdick/dotfiles .dotfiles
+fi
+
+cd ~/.dotfiles
+git remote set-url origin git@github.com:latbauerdick/dotfiles
+
+ln -sf $(pwd)/vim/init.vim ~/.vimrc
+mkdir -p ~/.config
+ln -sf $(pwd)/vim ~/.config/nvim
+# ln -sf $(pwd)/vim ~/.vim
+ln -sf $(pwd)/zsh/zshrc ~/.zshrc
+ln -sf $(pwd)/tmux/tmux.conf.ubuntu ~/.tmux.conf
+##ln -s $(pwd)/tigrc ~/.tigrc
+##ln -s $(pwd)/git-prompt.sh ~/.git-prompt.sh
+ln -sf $(pwd)/git/gitconfig ~/.gitconfig
+##ln -s $(pwd)/agignore ~/.agignore
+ln -sf $(pwd)/ssh/sshconfig ~/.ssh/config
+
+####. $HOME/.nix-profile/etc/profile.d/nix.sh
+####export LOCALE_ARCHIVE=`nix-env --installed --no-name --out-path --query glibc-locales`/lib/locale/locale-archive
+####export LANG=en_US.UTF-8
+####export LC_ALL=en_US.UTF-8
+
+####echo source $(python -c 'import powerline; print (powerline.__file__)')/bindings/tmux/powerline.conf
+
+sudo usermod --password $(openssl passwd -1 arch) root
+
