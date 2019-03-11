@@ -35,7 +35,7 @@ ENV \
     PATH=/home/bauerdic/.nix-profile/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
     NIX_PATH=/home/bauerdic/.nix-defexpr/channels
 
-RUN nix-env -iE "_: with import <nixpkgs/nixos> { configuration = {}; }; with config.system.build; [ nixos-generate-config nixos-install nixos-enter manual.manpages ]"
+# RUN nix-env -iE "_: with import <nixpkgs/nixos> { configuration = {}; }; with config.system.build; [ nixos-generate-config nixos-install nixos-enter manual.manpages ]"
 # RUN sudo `which nixos-generate-config` --root /
 
 ####users.users.root.initialHashedPassword = "";
@@ -43,18 +43,6 @@ RUN nix-env -iE "_: with import <nixpkgs/nixos> { configuration = {}; }; with co
 # RUN nix-env -p /nix/var/nix/profiles/system -f '<nixpkgs/nixos>' -I nixos-config=/etc/nixos/configuration.nix -iA system
 
 RUN nix-shell -p nix-info --run "nix-info -m"
-
-RUN nix-env -i            \
-                zsh       \
-                less      \
-                man       \
-                coreutils \
-                git       \
-                neovim    \
-                nox       \
-                tmux      \
-                tree      \
-                stack
 
 ENV TERM screen-256color
 RUN nix-env -i glibc-locales
@@ -65,14 +53,29 @@ RUN sudo mv zshrc /etc/zshrc
 
 RUN mkdir ~/.ssh && curl -fsL https://github.com/latbauerdick.keys > ~/.ssh/authorized_keys && chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 
+RUN nix-env -i git
+
+RUN git clone --recursive https://github.com/latbauerdick/dotfiles .dotfiles \
+    && ln -sf ~/.dotfiles/vim/init.vim ~/.vimrc         \
+    && mkdir -p ~/.config                               \
+    && ln -sf ~/.dotfiles/vim ~/.config/nvim            \
+    && ln -sf $(pwd)/.dotfiles/zsh/zshrc ~/.zshrc                 \
+    && ln -sf $(pwd)/.dotfiles/tmux/tmux.conf.ubuntu ~/.tmux.conf \
+    && ln -sf $(pwd)/.dotfiles/git/gitconfig ~/.gitconfig         \
+    && ln -sf $(pwd)/.dotfiles/ssh/sshconfig ~/.ssh/config        \
+    && ln -sf $(pwd)/.dotfiles/nixpkgs ~/.config/
+####    && nix-env -iA myPackages -f '<nixpkgs>'
+
+##ln -s $(pwd)/agignore ~/.agignore
+##ln -s $(pwd)/tigrc ~/.tigrc
+##ln -s $(pwd)/git-prompt.sh ~/.git-prompt.sh
+
 RUN git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 RUN git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
 
 RUN echo -e "with import <nixpkgs> {};\npython.withPackages (ps: with ps; [ powerline ])" > build.nix
 RUN nix-env -f build.nix -i && python -c 'import powerline; print (powerline.__file__)'
-
-
 
 EXPOSE 3222 60000-60010/udp
 CMD zsh

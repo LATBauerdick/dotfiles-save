@@ -15,7 +15,7 @@ push:
 	@echo "==> Your image is now available at latb/${NAME}:$(GITCOMMIT)"
 
 run: kill
-	docker run -u bauerdic -it -h ${NAME} --net=host --rm --privileged --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --privileged -v /var/run/docker.sock:/var/run/docker.sock -v ${PWD}/secrets:/home/secrets -v /Volumes/Data:/Volumes/Data --name ${NAME} latb/${NAME}:${GITCOMMIT} zsh
+	docker run -u bauerdic --restart=always -it -h ${NAME} --net=host --privileged --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --privileged -v /var/run/docker.sock:/var/run/docker.sock -v ${PWD}/secrets:/home/secrets -v /Volumes/Data:/Volumes/Data --name ${NAME} latb/${NAME}:${GITCOMMIT} zsh
 
 ssh:
 		mosh --no-init --ssh="ssh -o StrictHostKeyChecking=no -i ~/.ssh/ipad_rsa -p 3222" latb@localhost -- tmux new-session -AD -s main
