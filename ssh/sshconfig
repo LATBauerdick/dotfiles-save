@@ -7,12 +7,11 @@ HostName 142.93.186.57
         User root
         IdentityFile    ~/.ssh/algo.pem
 
-Host algo-auto
+Host lmini
 HostName 142.93.186.57
-  KeepAlive yes
-  User root
-  IdentityFile    ~/.ssh/algo.pem
-  RemoteForward   *:2232 127.0.0.1:22
+  User bauerdic
+  Port 2242
+  IdentityFile   ~/.ssh/id_rsa
 
 Host latbtop, ltop
 HostName 142.93.186.57
@@ -25,6 +24,12 @@ HostName 142.93.186.57
   User bauerdic
   Port 2233
   IdentityFile   ~/.ssh/id_rsa
+
+Host nix
+HostName 116.203.126.183
+  User bauerdic
+  Port 22
+  IdentityFile   ~/.ssh/ipad_rsa
 
 Host borg
 HostName 142.93.186.57
