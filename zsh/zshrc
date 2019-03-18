@@ -122,8 +122,7 @@ alias less="less -X -i"
 export GITHUB_USER="latbauerdick"
 ###export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
 export PATH=~/bin:/Library/TeX/texbin:~/.local/bin:~/Library/Python/3.5/bin:$PATH
-export GREP_OPTIONS='--color=auto'
-# export GREP_COLOR='1;32'
+# export GREP_OPTIONS='--color=auto'
 export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
 export EDITOR="vim"
 # export CLICOLOR=1
@@ -150,6 +149,8 @@ alias dps="docker ps -a"
 alias drm="docker rm"
 alias drmi="docker rmi"
 alias dri="docker run -it --privileged -v /Volumes/Data:/Volumes/Data"
+
+alias l='ls -alh'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
