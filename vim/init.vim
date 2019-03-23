@@ -189,8 +189,8 @@ colorscheme solarized
 "let g:solarized_visibility = "high"
 "let g:solarized_contrast = "high"
 "set termguicolors
-set background=light
-"set background=dark
+" set background=light
+set background=dark
 let g:one_allow_italics = 1 " I love italic for comments
 "let g:airline_theme='base16_solarized'
 "colorscheme xcode
