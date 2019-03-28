@@ -141,8 +141,8 @@ noremap ; :
 " remap Esc key
 " Can be typed even faster than jj, and if you are already in
 "    normal mode, you (usually) don't accidentally move:
-:imap jk <Esc>
-:imap kj <Esc>
+" :imap jk <Esc>
+" :imap kj <Esc>
 
 " strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -189,8 +189,8 @@ colorscheme solarized
 "let g:solarized_visibility = "high"
 "let g:solarized_contrast = "high"
 "set termguicolors
-set background=light
-"set background=dark
+" set background=light
+set background=dark
 let g:one_allow_italics = 1 " I love italic for comments
 "let g:airline_theme='base16_solarized'
 "colorscheme xcode
