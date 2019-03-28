@@ -8,21 +8,39 @@ HostName 142.93.186.57
         IdentityFile    ~/.ssh/algo.pem
 
 Host lmini
+HostName 116.203.126.183
+  User bauerdic
+  Port 8389
+  IdentityFile   ~/.ssh/id_rsa
+
+Host lmini-us
 HostName 142.93.186.57
   User bauerdic
   Port 2242
   IdentityFile   ~/.ssh/id_rsa
 
 Host latbtop, ltop
+HostName 116.203.126.183
+  User bauerdic
+  Port 8388
+  IdentityFile   ~/.ssh/id_rsa
+
+Host latbtop-us, ltop-us
 HostName 142.93.186.57
   User bauerdic
   Port 2232
   IdentityFile   ~/.ssh/id_rsa
 
-Host imac
+Host imac-us
 HostName 142.93.186.57
   User bauerdic
   Port 2233
+  IdentityFile   ~/.ssh/id_rsa
+
+Host imac
+HostName 116.203.126.183
+  User bauerdic
+  Port 8386
   IdentityFile   ~/.ssh/id_rsa
 
 Host nix
@@ -32,6 +50,12 @@ HostName 116.203.126.183
   IdentityFile   ~/.ssh/ipad_rsa
 
 Host borg
+HostName 116.203.126.183
+  User bauerdic
+  Port 8387
+  IdentityFile   ~/.ssh/id_rsa
+
+Host borg-us
 HostName 142.93.186.57
   User bauerdic
   Port 2222
