@@ -141,8 +141,8 @@ noremap ; :
 " remap Esc key
 " Can be typed even faster than jj, and if you are already in
 "    normal mode, you (usually) don't accidentally move:
-:imap jk <Esc>
-:imap kj <Esc>
+" :imap jk <Esc>
+" :imap kj <Esc>
 
 " strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
