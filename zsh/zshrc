@@ -18,6 +18,7 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator context background_jobs time)
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_CONTEXT_TEMPLATE='@%m'
+POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
 # ZSH_THEME="avit"
 # ZSH_THEME="amuse"
 # ZSH_THEME="agnoster"
