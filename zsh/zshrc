@@ -17,11 +17,12 @@ POWERLEVEL9K_COLOR_SCHEME='light'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator context background_jobs time)
 POWERLEVEL9K_MODE='nerdfont-complete'
+POWERLEVEL9K_CONTEXT_TEMPLATE='@%m'
 # ZSH_THEME="avit"
 # ZSH_THEME="amuse"
 # ZSH_THEME="agnoster"
 # ZSH_THEME="random"
-# DEFAULT_USER="bauerdic"
+DEFAULT_USER="bauerdic"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
