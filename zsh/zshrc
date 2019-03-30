@@ -10,15 +10,17 @@ export TERM="xterm-256color"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="random"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_COLOR_SCHEME='dark'
 POWERLEVEL9K_COLOR_SCHEME='light'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator context background_jobs time)
 POWERLEVEL9K_MODE='nerdfont-complete'
 # ZSH_THEME="avit"
 # ZSH_THEME="amuse"
 # ZSH_THEME="agnoster"
+# ZSH_THEME="random"
 # DEFAULT_USER="bauerdic"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
