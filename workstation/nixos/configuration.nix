@@ -31,13 +31,15 @@
 
 
   services.openssh.enable = true;
+  services.openssh.gatewayPorts = "yes";
   # open firewall ports for mosh
   networking.firewall.allowedUDPPortRanges = [
     { from = 60001; to = 60009; }
   ];
 
-  networking.firewall.allowedTCPPorts = [ 8385 ];
-  
+  # 8385 for syncthing WebGUI port forward, 2233 for my reverse tunnel
+  networking.firewall.allowedTCPPorts = [ 8385 8386 8387 8388 8389 32401 ];
+
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
