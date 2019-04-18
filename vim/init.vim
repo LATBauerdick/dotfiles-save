@@ -74,6 +74,8 @@ Plug 'raichoo/purescript-vim'
 " rust
 Plug 'rust-lang/rust.vim'
 
+Plug 'ledger/vim-ledger'
+
 " Custom bundles
 Plug 'altercation/vim-colors-solarized'
 """Plug 'frankier/neovim-colors-solarized-truecolor-only'
