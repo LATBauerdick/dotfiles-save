@@ -305,6 +305,7 @@ map <C-n> :NERDTreeToggle<CR>
 " Fuzzy find files
 nnoremap <C-p> :<C-u>FZF<CR>
 nnoremap <silent> <Leader><space> :<C-u>FZF<CR>
+set rtp+=/usr/local/opt/fzf
 
 " nnoremap <silent> <Leader><space> :CtrlP<CR>
 " let g:ctrlp_max_files=0
