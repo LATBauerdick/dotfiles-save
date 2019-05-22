@@ -121,6 +121,7 @@ alias less="less -X -i"
 #pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
 
 # }}}
+# i
 
 # Exports {{{
 export GITHUB_USER="latbauerdick"
