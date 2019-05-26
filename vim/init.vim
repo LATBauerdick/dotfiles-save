@@ -18,6 +18,8 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'jgdavey/tslime.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
 Plug 'ervandew/supertab'
 Plug 'benekastah/neomake'
 Plug 'moll/vim-bbye'
@@ -56,9 +58,18 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'sbdchd/neoformat'
 
 " Haskell
+Plug 'vim-syntastic/syntastic'
 Plug 'ujihisa/unite-haskellimport'
 Plug 'Shougo/unite.vim'
-Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+"""Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'neovimhaskell/haskell-vim'
 Plug 'enomsg/vim-haskellConcealPlus'
 """Plug 'eagletmt/ghcmod-vim'
@@ -314,6 +325,26 @@ set rtp+=/usr/local/opt/fzf
 " let g:ctrlp_show_hidden=1
 " let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
 
+" HIE / LanguageClient-neovim setup
+" Required for operations modifying multiple buffers like rename.
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
+"""set rtp+=~/.vim/bundle/LanguageClient-neovim
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
+map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
+map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
+map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+map <Leader>lb :call LanguageClient#textDocument_references()<CR>
+map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
+map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 
 
 " delete buffer without closing pane
