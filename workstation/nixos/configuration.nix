@@ -9,7 +9,9 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./devenv.nix
+      ./cachix.nix
     ];
+
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -37,8 +39,8 @@
     { from = 60001; to = 60009; }
   ];
 
-  # 8385 for syncthing WebGUI port forward, 2233 for my reverse tunnel
-  networking.firewall.allowedTCPPorts = [ 8385 8386 8387 8388 8389 32401 ];
+  # 8385 for syncthing WebGUI port forward, 838x for my reverse tunnel
+  networking.firewall.allowedTCPPorts = [ 8385 8386 8387 8388 8389 8888 8080 32401 ];
 
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

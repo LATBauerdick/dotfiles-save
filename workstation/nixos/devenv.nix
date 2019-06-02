@@ -10,6 +10,7 @@
     with pkgs;
     [
       wget
+      networkmanager
       cryptsetup
       vim
       zsh
@@ -24,6 +25,8 @@
       less
       man
       neovim
+      ag
+      fzf
       coreutils
       gnuplot
       stack
