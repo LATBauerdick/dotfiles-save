@@ -160,6 +160,7 @@ alias dps="docker ps -a"
 alias drm="docker rm"
 alias drmi="docker rmi"
 alias dri="docker run -it --privileged -v /Volumes/Data:/Volumes/Data"
+alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder'
 
 alias gs='git status '
 alias ga='git add '

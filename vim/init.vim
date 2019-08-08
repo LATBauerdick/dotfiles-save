@@ -108,7 +108,8 @@ call plug#end()
 
 let mapleader = ","
 " Allow the normal use of "," by pressing it twice
-" noremap ,, ,
+noremap ,, ,
+noremap \ ,
 let maplocalleader = "\\"
 
 " Use par for prettier line formatting
@@ -150,7 +151,7 @@ nnoremap <leader>1 :only<CR>
 nnoremap <leader>w <C-w><C-w>
 nnoremap <leader>o <C-w><C-w>
 
-noremap ; :
+" noremap ; :
 " remap Esc key
 " Can be typed even faster than jj, and if you are already in
 "    normal mode, you (usually) don't accidentally move:
@@ -202,8 +203,8 @@ colorscheme solarized
 "let g:solarized_visibility = "high"
 "let g:solarized_contrast = "high"
 "set termguicolors
-" set background=light
-set background=dark
+set background=light
+" set background=dark
 let g:one_allow_italics = 1 " I love italic for comments
 "let g:airline_theme='base16_solarized'
 "colorscheme xcode
