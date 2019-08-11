@@ -198,7 +198,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, S(KC_MINS),//KC_BSPC,
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    S(KC_QUOT),
   _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_QUOT, _______, _______, _______, S(KC_BSLS),
-  BACKLIT, _______, _______, _______, KC_LSFT, _______, _______, _______, _______, KC_VOLD, KC_VOLU, S(KC_GRV)
+  BACKLIT, _______, _______, _______, KC_BSPC, _______, _______, _______, _______, KC_VOLD, KC_VOLU, S(KC_GRV)
 ),
 
 /* Directional navigation layer
