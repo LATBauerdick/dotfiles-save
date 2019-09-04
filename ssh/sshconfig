@@ -2,6 +2,11 @@
 # UseKeychain yes
 AddKeysToAgent yes
 
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+
 Host algo
 HostName 116.203.139.203
         User root
@@ -46,6 +51,10 @@ Host 192.168.1.1 10.8.0.1 homer borgtom
 Host latbtop mac-123210
   Hostname latbtop.local
   User bauerdic
+
+Host gitlab.cern.ch
+  Preferredauthentications publickey
+  IdentityFile ~/.ssh/ipad_rsa
 
 Host 131.225.* *.fnal.gov
     GSSAPIAuthentication yes

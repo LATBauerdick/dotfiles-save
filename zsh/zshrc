@@ -126,7 +126,8 @@ alias less="less -X -i"
 # Exports {{{
 export GITHUB_USER="latbauerdick"
 ###export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
-export PATH=~/bin:/Library/TeX/texbin:~/.local/bin:~/Library/Python/3.5/bin:$PATH
+# export PATH=~/bin:/Library/TeX/texbin:~/.local/bin:~/Library/Python/3.5/bin:$PATH
+export PATH=~/bin:~/.local/bin:~/.npm-global/bin:$PATH
 # export GREP_OPTIONS='--color=auto'
 export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
 export EDITOR="vim"
