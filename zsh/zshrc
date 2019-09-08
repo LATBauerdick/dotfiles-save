@@ -114,8 +114,9 @@ alias px="pandoc -r markdown --latex-engine=xelatex "
 
 alias zl="zfs list -t all -r -o name,used,refer"
 
-alias less="less -X -i"
-
+LESSPIPE=`which src-hilite-lesspipe.sh`
+export LESSOPEN="| ${LESSPIPE} %s"
+export LESS=' -R -X -F '
 
 # setup root6
 #pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null

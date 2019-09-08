@@ -52,6 +52,10 @@ Host latbtop mac-123210
   Hostname latbtop.local
   User bauerdic
 
+Host gitlab.com
+  Preferredauthentications publickey
+  IdentityFile ~/.ssh/ipad_rsa
+
 Host gitlab.cern.ch
   Preferredauthentications publickey
   IdentityFile ~/.ssh/ipad_rsa
