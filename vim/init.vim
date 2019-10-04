@@ -88,8 +88,10 @@ Plug 'rust-lang/rust.vim'
 Plug 'ledger/vim-ledger'
 
 " Custom bundles
+Plug 'sdothum/vim-colors-duochrome'
 Plug 'altercation/vim-colors-solarized'
-"""Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'lifepillar/vim-solarized8'
 Plug 'rakr/vim-one'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fireplace'
@@ -175,8 +177,10 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 let g:ghcid_command= "/usr/local/bin/ghcid"
 
 " -- vim-airline
+let g:airline_theme='solarized'
+" let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 2
+" let g:airline#extensions#tabline#enabled = 2
 " let g:airline#extensions#tabline#fnamemod = ':t'
 " let g:airline#extensions#tabline#left_sep = ' '
 " let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -190,27 +194,29 @@ let g:airline#extensions#tabline#enabled = 2
 " let g:airline_left_sep = "\uE0B4"
 " let g:airline_right_sep = "\uE0B6"
 " set the CN (column number) symbol:
-let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
+" let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
 
 " easy expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-" -- solarized color scheme
-colorscheme solarized
-"let g:solarized_termcolors=256
-"let g:solarized_termcolors = 16
-"let g:solarized_termtrans = 1
-"let g:solarized_visibility = "high"
-"let g:solarized_contrast = "high"
-"set termguicolors
+" This is only necessary if you use "set termguicolors".
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" fixes glitch? in colors when using vim with tmux
+set t_Co=256
+
+set termguicolors
 set background=light
-" set background=dark
-let g:one_allow_italics = 1 " I love italic for comments
-"let g:airline_theme='base16_solarized'
+colorscheme duochrome
+" -- solarized color scheme
+" colorscheme solarized
+" colorscheme solarized8
+" colorscheme solarized8_high
+" let g:one_allow_italics = 1
 "colorscheme xcode
 "colorscheme ghostbuster
 "colorscheme one
-"let g:airline_theme='one'
 
 " for haskellConcealPlus disable double-stroke capitals (does not work on iPad)
 let hscoptions="𝐌𝐄𝐓𝐒iBQZDC"
