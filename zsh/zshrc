@@ -114,8 +114,9 @@ alias px="pandoc -r markdown --latex-engine=xelatex "
 
 alias zl="zfs list -t all -r -o name,used,refer"
 
-alias less="less -X -i"
-
+LESSPIPE=`which src-hilite-lesspipe.sh`
+export LESSOPEN="| ${LESSPIPE} %s"
+export LESS=' -R -X -F '
 
 # setup root6
 #pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
@@ -126,7 +127,8 @@ alias less="less -X -i"
 # Exports {{{
 export GITHUB_USER="latbauerdick"
 ###export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
-export PATH=~/bin:/Library/TeX/texbin:~/.local/bin:~/Library/Python/3.5/bin:$PATH
+# export PATH=~/bin:/Library/TeX/texbin:~/.local/bin:~/Library/Python/3.5/bin:$PATH
+export PATH=~/bin:~/.local/bin:~/.npm-global/bin:$PATH
 # export GREP_OPTIONS='--color=auto'
 export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
 export EDITOR="vim"
