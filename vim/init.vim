@@ -88,6 +88,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'ledger/vim-ledger'
 
 " Custom bundles
+Plug 'terryma/vim-smooth-scroll'
 Plug 'sdothum/vim-colors-duochrome'
 Plug 'altercation/vim-colors-solarized'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
@@ -391,6 +392,12 @@ inoremap <Up> <C-o>gk
 inoremap <Down> <C-o>gj
 nnoremap <Up> gk
 nnoremap <Down> gj
+
+" remap for smooth scroll
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " define move keys for Colemak
 " noremap h k
