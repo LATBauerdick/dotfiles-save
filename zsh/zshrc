@@ -10,6 +10,7 @@ export TERM="xterm-256color"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME=powerlevel10k/powerlevel10k
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_COLOR_SCHEME='dark'
@@ -19,7 +20,6 @@ export TERM="xterm-256color"
 # POWERLEVEL9K_MODE='nerdfont-complete'
 # POWERLEVEL9K_CONTEXT_TEMPLATE='@%m'
 # POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 # ZSH_THEME="avit"
 # ZSH_THEME="amuse"
 # ZSH_THEME="agnoster"
