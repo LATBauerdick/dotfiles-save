@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . $HOME/.nix-profile/etc/profile.d/nix.sh
 # pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
@@ -10,6 +17,7 @@ export TERM="xterm-256color"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME=powerlevel10k/powerlevel10k
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 # POWERLEVEL9K_COLOR_SCHEME='dark'
@@ -19,7 +27,6 @@ export TERM="xterm-256color"
 # POWERLEVEL9K_MODE='nerdfont-complete'
 # POWERLEVEL9K_CONTEXT_TEMPLATE='@%m'
 # POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 # ZSH_THEME="avit"
 # ZSH_THEME="amuse"
 # ZSH_THEME="agnoster"
@@ -129,7 +136,7 @@ export LESS=' -R -X -F '
 export GITHUB_USER="latbauerdick"
 ###export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
 # export PATH=~/bin:/Library/TeX/texbin:~/.local/bin:~/Library/Python/3.5/bin:$PATH
-export PATH=~/bin:~/.local/bin:~/.npm-global/bin:$PATH
+export PATH=~/bin:~/.local/bin:~/.npm-global/bin:$PATH:~/Library/Python/3.7/bin
 # export GREP_OPTIONS='--color=auto'
 export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
 export EDITOR="vim"
@@ -181,3 +188,29 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# vi mode
+bindkey -v
+# Change cursor shape for different vi modes.
+# function zle-keymap-select {
+# if [[ ${KEYMAP} == vicmd ]] ||
+#      [[ $1 = 'block' ]]; then
+# echo -ne '\e[1 q'
+# elif [[ ${KEYMAP} == main ]] ||
+#        [[ ${KEYMAP} == viins ]] ||
+#        [[ ${KEYMAP} = '' ]] ||
+#        [[ $1 = 'beam' ]]; then
+# echo -ne '\e[5 q'
+# fi
+# }
+# zle -N zle-keymap-select
+# zle-line-init() {
+#     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+# echo -ne "\e[5 q"
+# }
+# zle -N zle-line-init
+# echo -ne '\e[5 q' # Use beam shape cursor on startup.
+# preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
