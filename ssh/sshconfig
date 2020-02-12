@@ -7,10 +7,13 @@ Host *
   UseKeychain yes
   IdentityFile ~/.ssh/id_rsa
 
+Host rem
+  HostName 116.203.139.203
+
 Host algo
-HostName 116.203.139.203
-        User root
-        IdentityFile    ~/.ssh/ipad_rsa
+  HostName  116.203.139.203
+  User root
+  IdentityFile    ~/.ssh/ipad_rsa
 
 Host lmini
 HostName 116.203.139.203
