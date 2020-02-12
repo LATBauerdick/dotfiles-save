@@ -187,6 +187,7 @@ lsgrep ()
   }
 
 alias stss="(sleep 4; open vnc://127.0.0.1:5901) & ssh -C -4 -L 5901:127.0.0.1:5900"
+alias imac='sshpass -e ssh imac'  # put passwd into env SSHPASS
 
 alias dls="docker images"
 alias dps="docker ps -a"
