@@ -19,13 +19,13 @@ Host lmini
   HostName 116.203.139.203
   User bauerdic
   Port 8389
-  IdentityFile   ~/.ssh/id_rsa
+  IdentityFile   ~/.ssh/id_ed25519
 
 Host latbtop, ltop
 HostName 116.203.139.203
   User bauerdic
   Port 8388
-  IdentityFile   ~/.ssh/id_rsa
+  IdentityFile   ~/.ssh/id_ed25519
 
 Host imac
 HostName 116.203.139.203
