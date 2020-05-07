@@ -63,7 +63,7 @@ Host lml
 
 Host 192.168.1.1 10.8.0.1 homer borgtom
 
-Host latbtop mac-123210
+Host latbtop mac-123210 ltl
   Hostname latbtop.local
   User bauerdic
 
