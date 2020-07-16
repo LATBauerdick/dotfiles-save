@@ -2,10 +2,10 @@
 # UseKeychain yes
 AddKeysToAgent yes
 
-Host *
-  AddKeysToAgent yes
-  UseKeychain yes
-  IdentityFile ~/.ssh/id_rsa
+# Host *
+#   AddKeysToAgent yes
+#   UseKeychain yes
+#   IdentityFile ~/.ssh/id_rsa
 
 Host rem
   HostName 116.203.139.203
