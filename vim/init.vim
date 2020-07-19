@@ -27,8 +27,10 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/gitignore'
 "
 " fzf fuzzy file search
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+"Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'alok/notational-fzf-vim'
+let g:nv_search_paths = ['~/Notes', '~/writing']
 "
 " grepper
 Plug 'mhinz/vim-grepper'
