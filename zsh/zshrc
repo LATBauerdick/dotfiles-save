@@ -145,6 +145,9 @@ alias px="pandoc -r markdown --latex-engine=xelatex "
 
 alias zl="zfs list -t all -r -o name,used,refer"
 
+alias exifHel=exiftool -FocalLength=58 -MinFocalLength=58 -MaxFocalLength=58 -FocalLengthIn35mmFormat=87 -LensInfo="58 58 2.0 2.0" -LensMake="Helios" -LensModel="Helios 44M-4 58mm f/2" -LensSerialNumber=87006073
+alias exif135=exiftool -FocalLength=135 -MinFocalLength=135 -MaxFocalLength=135 -FocalLengthIn35mmFormat=203 -LensInfo="135 135 2.8 2.8" -LensMake="Minolta" -LensModel="MD Tele Rokkor-X 135mm f/2.8" -LensSerialNumber=1232686
+
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R -X -F '
@@ -162,7 +165,7 @@ export GITHUB_USER="latbauerdick"
 export PATH=~/bin:~/.local/bin:~/.npm-global/bin:/usr/local/bin:$PATH:~/Library/Python/3.8/bin
 # export GREP_OPTIONS='--color=auto'
 export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
-export EDITOR="vim"
+export EDITOR="nvim"
 # export CLICOLOR=1
 #export LSCOLORS=Gxfxcxdxbxegedabagacad
 #export LS_COLORS=Gxfxcxdxbxegedabagacad
@@ -221,3 +224,4 @@ PERL5LIB="/home/bauerdic/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5
 PERL_LOCAL_LIB_ROOT="/home/bauerdic/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/bauerdic/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/bauerdic/perl5"; export PERL_MM_OPT;
+[ -f "/home/bauerdic/.ghcup/env" ] && source "/home/bauerdic/.ghcup/env" # ghcup-env
