@@ -54,7 +54,10 @@ Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 
+" support for neuron
 Plug 'fiatjaf/neuron.vim'
+"Plug 'ihsanturk/neuron.vim'
+"Plug 'BurntSushi/ripgrep
 
 " Allow pane movement to jump out of vim into tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -211,11 +214,11 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " fixes glitch? in colors when using vim with tmux
 set t_Co=256
 
-set termguicolors
-set background=light
-colorscheme duochrome
+" set termguicolors
+" set background=light
+" colorscheme duochrome
 " -- solarized color scheme
-" colorscheme solarized
+colorscheme solarized
 " colorscheme solarized8
 " colorscheme solarized8_high
 " let g:one_allow_italics = 1
