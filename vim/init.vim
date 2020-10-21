@@ -215,7 +215,7 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set t_Co=256
 
 " set termguicolors
-" set background=light
+set background=light
 " colorscheme duochrome
 " -- solarized color scheme
 colorscheme solarized
