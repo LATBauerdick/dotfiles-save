@@ -45,7 +45,7 @@ enum {
   CT_ED,
   CT_CLN,
   CT_DE,
-  CT_TE,
+  CT_GE,
   CT_JESC,
   X_TAP_DANCE
 };
@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
-  TD(CT_TE),KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     TD(CT_DE),
+  TD(CT_GE),KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     TD(CT_DE),
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
   CTL_ESC,  NAV_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NAV_SCLN, KC_QUOT,
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  RSF_RET,
@@ -288,7 +288,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   , [CT_ED]    = ACTION_TAP_DANCE_DOUBLE (KC_D, KC_EQL)
   , [CT_CLN]   = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_cln_finished, dance_cln_reset)
   , [CT_DE]    = ACTION_TAP_DANCE_DOUBLE (KC_BSPC, KC_ESC)
-  , [CT_TE]    = ACTION_TAP_DANCE_DOUBLE (KC_TAB, KC_ESC)
+  , [CT_GE]    = ACTION_TAP_DANCE_DOUBLE (KC_GRV, KC_ESC)
   , [CT_JESC]  = ACTION_TAP_DANCE_DOUBLE (KC_J, KC_ESC)
 // Other declarations would go here, separated by commas, if you have them
 };
