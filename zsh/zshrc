@@ -210,6 +210,13 @@ alias gcm='git commit -m '
 alias go='git checkout '
 alias l='ls -alh'
 
+alias n="~/Dev/neuron/result/bin/neuron -d ~/Zettelkasten"
+alias nn="~/Dev/neuron/result/bin/neuron -d ~/Zettelkasten new -e"
+alias ns="~/Dev/neuron/result/bin/neuron -d ~/Zettelkasten search"
+alias na="~/Dev/neuron/result/bin/neuron -d ~/Zettelkasten search -a"
+alias xo='xargs -I % open %'
+alias xe='xargs -I % $EDITOR %'
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 

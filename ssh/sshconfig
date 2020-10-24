@@ -67,6 +67,10 @@ Host latbtop mac-123210 ltl
   Hostname latbtop.local
   User bauerdic
 
+Host mac-126620 lim
+  Hostname mac-126620.local
+  User bauerdic
+
 Host gitlab.com
   Preferredauthentications publickey
   IdentityFile ~/.ssh/ipad_rsa
