@@ -455,3 +455,9 @@ au FileType purescript nmap <leader>p :PSCIDEpursuit<CR>
 au FileType purescript nmap <leader>c :PSCIDEcaseSplit<CR>
 au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
 au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
+
+
+func! g:CustomNeuronIDGenerator(title)
+    return substitute(a:title, " ", "-", "g")
+endf
+
