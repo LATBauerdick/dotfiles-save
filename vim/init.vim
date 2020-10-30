@@ -325,7 +325,7 @@ vnoremap <tab> %
 set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 " Always use vertical diffs
-set diffopt+=vertical
+" set diffopt+=vertical
 
 " NERDtree
 map <C-n> :NERDTreeToggle<CR>
@@ -457,7 +457,7 @@ au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
 au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
 
 
-func! g:CustomNeuronIDGenerator(title)
-    return substitute(a:title, " ", "-", "g")
-endf
+" func! g:CustomNeuronIDGenerator(title)
+"     return substitute(a:title, " ", "-", "g")
+" endf
 
