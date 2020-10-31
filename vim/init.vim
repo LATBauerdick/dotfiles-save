@@ -54,6 +54,9 @@ Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 
+" vim sugar for shell commands
+Plug 'tpope/vim-eunuch'
+
 " support for neuron
 Plug 'fiatjaf/neuron.vim'
 "Plug 'ihsanturk/neuron.vim'
@@ -457,7 +460,8 @@ au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
 au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
 
 
-" func! g:CustomNeuronIDGenerator(title)
-"     return substitute(a:title, " ", "-", "g")
-" endf
+func! g:CustomNeuronIDGenerator(title)
+     return a:title
+" substitute(a:title, " ", "-", "g")
+endf
 
