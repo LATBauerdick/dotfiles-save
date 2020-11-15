@@ -56,6 +56,11 @@ Host lpro
   User bauerdic
   IdentityFile   ~/.ssh/id_ed25519
 
+Host lil
+  HostName mac-126620.local
+  User bauerdic
+  IdentityFile   ~/.ssh/id_ed25519
+
 Host lml
   HostName lmini.local
   User bauerdic
