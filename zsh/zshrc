@@ -145,9 +145,14 @@ alias px="pandoc -r markdown --latex-engine=xelatex "
 
 alias zl="zfs list -t all -r -o name,used,refer"
 
+alias exifHel=exiftool -FocalLength=58 -MinFocalLength=58 -MaxFocalLength=58 -FocalLengthIn35mmFormat=87 -LensInfo="58 58 2.0 2.0" -LensMake="Helios" -LensModel="Helios 44M-4 58mm f/2" -LensSerialNumber=87006073
+alias exif135=exiftool -FocalLength=135 -MinFocalLength=135 -MaxFocalLength=135 -FocalLengthIn35mmFormat=203 -LensInfo="135 135 2.8 2.8" -LensMake="Minolta" -LensModel="MD Tele Rokkor-X 135mm f/2.8" -LensSerialNumber=1232686
+
 LESSPIPE=`which src-hilite-lesspipe.sh`
 export LESSOPEN="| ${LESSPIPE} %s"
 export LESS=' -R -X -F '
+
+export BAT_THEME="Solarized (light)"
 
 # setup root6
 #pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
@@ -159,10 +164,10 @@ export LESS=' -R -X -F '
 export GITHUB_USER="latbauerdick"
 ###export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
 # export PATH=~/bin:/Library/TeX/texbin:~/.local/bin:~/Library/Python/3.5/bin:$PATH
-export PATH=~/bin:~/.local/bin:~/.npm-global/bin:/usr/local/bin:$PATH:~/Library/Python/3.7/bin
+export PATH=~/bin:~/.local/bin:~/.npm-global/bin:/usr/local/bin:$PATH:~/Library/Python/3.8/bin
 # export GREP_OPTIONS='--color=auto'
 export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
-export EDITOR="vim"
+export EDITOR="nvim"
 # export CLICOLOR=1
 #export LSCOLORS=Gxfxcxdxbxegedabagacad
 #export LS_COLORS=Gxfxcxdxbxegedabagacad
@@ -205,6 +210,13 @@ alias gcm='git commit -m '
 alias go='git checkout '
 alias l='ls -alh'
 
+alias n="neuron -d ~/Zettelkasten"
+alias nn="neuron -d ~/Zettelkasten new -e"
+alias ns="neuron -d ~/Zettelkasten search"
+alias na="neuron -d ~/Zettelkasten search -a"
+alias xo='xargs -I % open %'
+alias xe='xargs -I % $EDITOR %'
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
@@ -221,3 +233,6 @@ PERL5LIB="/home/bauerdic/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5
 PERL_LOCAL_LIB_ROOT="/home/bauerdic/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/bauerdic/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/bauerdic/perl5"; export PERL_MM_OPT;
+[ -f "/home/bauerdic/.ghcup/env" ] && source "/home/bauerdic/.ghcup/env" # ghcup-env
+
+export BAT_THEME="Solarized (light)"

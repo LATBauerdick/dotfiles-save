@@ -45,6 +45,7 @@ enum {
   CT_ED,
   CT_CLN,
   CT_DE,
+  CT_GE,
   CT_JESC,
   X_TAP_DANCE
 };
@@ -93,18 +94,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |   ⇧  |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Ret/⇧ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Raise| Spc/^|Esc/⌥ |Tab/⌘ |Ret/⇧ |Spc/Lo|Spc/Lo|Spc/Rs|Left/⌘| Down |  Up  | ->/Lo|
+ * | Raise| Spc/^|Esc/⌥ |Tab/⌘ |Ret/⇧ |Spc/Lo|Spc/Lo|Ret/Rs|Left/⌘| Down |  Up  | ->/Lo|
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
-  KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     TD(CT_DE),
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
-  CTL_ESC, NAV_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NAV_SCLN, KC_QUOT,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  RSF_RET,
-  RAISE,   CTL_SPC, ALT_ESC, GUI_TAB, LSF_RET, LOW_SPC, LOW_SPC, RSE_SPC, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
+  TD(CT_GE),KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     TD(CT_DE),
+  KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
+  CTL_ESC,  NAV_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NAV_SCLN, KC_QUOT,
+  KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  RSF_RET,
+  RAISE,    CTL_SPC, ALT_ESC, GUI_TAB, LSF_RET, LOW_SPC, LOW_SPC, RSE_RET, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
 ),
 
-/* Colemak
+/* Colemak: derived from Colemak Mod-DH, switching KM and rotating BGV
+ * (just switch DV and HM w/r to Colemak proper)
+ * ,-----------------------------------------------------------------------------------.
+ * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | B/Esc|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |   ⇥  |   Q  |   W  |   F  |   P  |   B  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * | Esc/^| A/NAV|   R  |   S  |   T  |   G  |   M  |   N  |   E  |   I  | O/NAV| Ret/^|
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |  (/⇧ |   X  |   C  |   V  |   D  |   V  |   K  |   H  |   ,  |   .  |   /  | Ret/⇧|
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * | Lower| Spc/^|  ⌥   |   ⌘  | Lower| Space|Space |Raise |Left/⌘| Down |  Up  |->/Rse|
+ * `-----------------------------------------------------------------------------------'
+ */
+[_COLEMAK] = LAYOUT_preonic_grid( \
+  _______, KC_1,    KC_2,    KC_3,     KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
+  _______, KC_Q,    KC_W,    KC_F,     KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, _______,
+  _______, NAV_A,   KC_R,    KC_S,     KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    NAV_O,   _______,
+  _______, KC_Z,    KC_X,    KC_C,     KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, _______,
+  _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______, _______
+),
+
+/*
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -117,39 +140,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Lower| Spc/^|  ⌥   |   ⌘  | Lower| Space|Space |Raise |Left/⌘| Down |  Up  |->/Rse|
  * `-----------------------------------------------------------------------------------'
  */
-[_COLEMAK] = LAYOUT_preonic_grid( \
-  _______, KC_1,    KC_2,    KC_3,     KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-  _______, KC_Q,    KC_W,    KC_F,     KC_P,    KC_B,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, _______,
-  _______, NAV_A,   KC_R,    KC_S,     KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    NAV_O,   _______,
-  _______, KC_Z,    KC_X,    KC_C,     KC_D,    KC_V,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, _______,
-  _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______, _______
-  /* _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, */
-  /* _______, KC_Q,    KC_H,    KC_O,    KC_U,    KC_X,    KC_G,    KC_C,    KC_R,    KC_F,    KC_Z,    _______, */
-  /* _______, KC_Y,    KC_I,    KC_E,    KC_A,    KC_DOT,  KC_D,    KC_S,    KC_T,    KC_N,    KC_B,    _______, */
-  /* _______, KC_J,    KC_SLSH, KC_COMM, KC_K,    KC_QUOT, KC_W,    KC_M,    KC_L,    KC_P,    KC_V,    _______, */
-  /* _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ */
-),
-
-/* Colemak1: derived from Colemak Mod-DH, switching KM and rotating BGV
- * (just switch DV and HM w/r to Colemak proper)
- * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | B/Esc|
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   ⇥  |   Q  |   W  |   F  |   P  |   Z  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Esc/^| A/NAV|   R  |   S  |   T  |   G  |   M  |   N  |   E  |   I  | O/NAV| Ret/^|
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |  (/⇧ |   X  |   C  |   V  |   D  |   B  |   K  |   H  |   ,  |   .  |   /  | Ret/⇧|
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Lower| Spc/^|  ⌥   |   ⌘  | Lower| Space|Space |Raise |Left/⌘| Down |  Up  |->/Rse|
- * `-----------------------------------------------------------------------------------'
- */
 [_COLEMAK1] = LAYOUT_preonic_grid( \
   _______, KC_1,    KC_2,    KC_3,     KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
   _______, KC_Q,    KC_W,    KC_F,     KC_P,    KC_Z,    TD_JESC, KC_L,    KC_U,    KC_Y,    KC_SCLN, _______,
   _______, NAV_A,   KC_R,    KC_S,     KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    NAV_O,   _______,
   _______, KC_X,    KC_C,    TD(CT_MV),KC_D,    KC_B,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, _______,
   _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______, _______
+  /* _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, */
+  /* _______, KC_Q,    KC_H,    KC_O,    KC_U,    KC_X,    KC_G,    KC_C,    KC_R,    KC_F,    KC_Z,    _______, */
+  /* _______, KC_Y,    KC_I,    KC_E,    KC_A,    KC_DOT,  KC_D,    KC_S,    KC_T,    KC_N,    KC_B,    _______, */
+  /* _______, KC_J,    KC_SLSH, KC_COMM, KC_K,    KC_QUOT, KC_W,    KC_M,    KC_L,    KC_P,    KC_V,    _______, */
+  /* _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ */
 ),
 /* Colemak2: derived from Colemak Mod-DH, switching KM and rotating BGV
  * (just switch DV and HM w/r to Colemak proper)
@@ -178,39 +179,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |   ~  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |   ~  |   !  |   @  |   #  |   $  |  ,   |   .  |   7  |   8  |   9  |   *  |  -   |
+ * |   ~  |   !  |   @  |   #  |   $  |  ,   |   .  |   7  |   8  |   9  |   *  |  /   |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |   %  |   ^  |   &  |   *  |  (   |   )  |   4  |   5  |   6  |   +  |  '   |
+ * |      |   %  |   ^  |   &  |   *  |  (   |   )  |   4  |   5  |   6  |   +  |  -   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |   (  |   )  |   -  |   =  |  [   |   ]  |   1  |   2  |   3  | Enter|  \   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      | Bksp |      |      |Shift | Bksp |Space | 0/Rse|   0  |   .  | Enter|  `   |
+ * |      | Bksp |      |      |Shift | Bksp |Space | 0/Rse|   0  |   .  |   ,  |  `   |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid( \
-  KC_TILD, KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,   KC_PERC, KC_CIRC, KC_AMPR,KC_ASTR,KC_LPRN,KC_RPRN,  KC_BSPC,
-  KC_TILD, KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,   KC_COMM, KC_DOT,  KC_7,   KC_8,   KC_9,   S(KC_8),  S(KC_MINS),
-  RAISE,   KC_PERC,   KC_CIRC,   KC_AMPR,   KC_ASTR,  KC_LBRC, KC_RBRC, KC_4,   KC_5,   KC_6,   S(KC_EQL),S(KC_QUOT),
-  _______, S(KC_LBRC),S(KC_RBRC),S(KC_MINS),S(KC_EQL),KC_LPRN, KC_RPRN, KC_1,   KC_2,   KC_3,   KC_ENT,   S(KC_BSLS),
-  RAISE,   KC_BSPC,   _______,   _______,   KC_LSFT,  KC_BSPC, KC_SPC,  RSE_0,  KC_0,   KC_DOT, KC_COMM,  S(KC_GRV)
+  KC_TILD, KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,   KC_PERC, KC_CIRC, KC_AMPR,KC_ASTR,KC_LPRN,KC_RPRN, KC_BSPC,
+  KC_TILD, KC_EXLM,   KC_AT,     KC_HASH,   KC_DLR,   KC_COMM, KC_DOT,  KC_7,   KC_8,   KC_9,   KC_ASTR, KC_SLSH,
+  RAISE,   KC_PERC,   KC_CIRC,   KC_AMPR,   KC_ASTR,  KC_LBRC, KC_RBRC, KC_4,   KC_5,   KC_6,   KC_PLUS, KC_MINS,
+  _______, S(KC_LBRC),S(KC_RBRC),S(KC_MINS),S(KC_EQL),KC_LPRN, KC_RPRN, KC_1,   KC_2,   KC_3,   KC_ENT,  KC_BSLS,
+  RAISE,   KC_BSPC,   _______,   _______,   KC_LSFT,  KC_BSPC, KC_SPC,  RSE_0,  KC_0,   KC_DOT, KC_COMM, KC_GRV
 ),
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   `  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   (  |   )  | Bksp |
+ * |   `  |   !  |   @  |   #  |   $  |   %  |   ^  |   &  |   *  |   +  |   :  | Bksp |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Tab/^|   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |  '   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |   [  |   ]  |   -  |   =  |   `  |   \  |   '  |   ,  |   .  |   /  |  \   |
+ * |      |   [  |   ]  |   -  |   =  |   (  |   )  |   '  |   ,  |   .  |   /  |  \   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Brite|      |      |      |      |             |      |      | Vol- | Vol+ |  `   |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid( \
   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-  KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
+  KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_COLN, _______,
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_QUOT,
   _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_QUOT, _______, _______, _______, KC_BSLS,
   BACKLIT, _______, _______, _______, LSF_BSP, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_GRV
@@ -287,6 +288,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   , [CT_ED]    = ACTION_TAP_DANCE_DOUBLE (KC_D, KC_EQL)
   , [CT_CLN]   = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_cln_finished, dance_cln_reset)
   , [CT_DE]    = ACTION_TAP_DANCE_DOUBLE (KC_BSPC, KC_ESC)
+  , [CT_GE]    = ACTION_TAP_DANCE_DOUBLE (KC_GRV, KC_ESC)
   , [CT_JESC]  = ACTION_TAP_DANCE_DOUBLE (KC_J, KC_ESC)
 // Other declarations would go here, separated by commas, if you have them
 };

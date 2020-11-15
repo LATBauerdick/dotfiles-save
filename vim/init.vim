@@ -54,6 +54,14 @@ Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 
+" vim sugar for shell commands
+Plug 'tpope/vim-eunuch'
+
+" support for neuron
+Plug 'fiatjaf/neuron.vim'
+"Plug 'ihsanturk/neuron.vim'
+"Plug 'BurntSushi/ripgrep
+
 " Allow pane movement to jump out of vim into tmux
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -209,11 +217,11 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " fixes glitch? in colors when using vim with tmux
 set t_Co=256
 
-set termguicolors
+" set termguicolors
 set background=light
-colorscheme duochrome
+" colorscheme duochrome
 " -- solarized color scheme
-" colorscheme solarized
+colorscheme solarized
 " colorscheme solarized8
 " colorscheme solarized8_high
 " let g:one_allow_italics = 1
@@ -320,7 +328,7 @@ vnoremap <tab> %
 set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 " Always use vertical diffs
-set diffopt+=vertical
+" set diffopt+=vertical
 
 " NERDtree
 map <C-n> :NERDTreeToggle<CR>
@@ -450,3 +458,10 @@ au FileType purescript nmap <leader>p :PSCIDEpursuit<CR>
 au FileType purescript nmap <leader>c :PSCIDEcaseSplit<CR>
 au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
 au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
+
+
+func! g:CustomNeuronIDGenerator(title)
+     return a:title
+" substitute(a:title, " ", "-", "g")
+endf
+
