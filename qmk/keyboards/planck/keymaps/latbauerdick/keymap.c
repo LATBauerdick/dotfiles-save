@@ -91,14 +91,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |   ⇧  |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Ret/⇧ |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Raise| Spc/^|Esc/⌥ |Tab/⌘ |Ret/⇧ |Spc/Lo|Spc/Lo|Ret/Rs|Left/⌘| Down |  Up  | ->/Lo|
+ * | Raise| Spc/^|Esc/⌥ |Tab/⌘ |Ret/⇧ |Spc/Lo|Spc/Lo|Spc/Rs|Left/⌘| Down |  Up  | ->/Lo|
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
-  CTL_ESC, NAV_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NAV_SCLN, KC_QUOT,
+  CTL_ESC, NAV_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NAV_SCLN, RSF_RET,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  RSF_RET,
-  RAISE,   CTL_SPC, ALT_ESC, GUI_TAB, LSF_RET, LOW_SPC, LOW_SPC, RSE_RET, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
+  RAISE,   CTL_SPC, ALT_ESC, GUI_TAB, LSF_RET, LOW_SPC, LOW_SPC, RSE_SPC, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
 ),
 
 /* Colemak1: derived from Colemak Mod-DH, switching KM and rotating BGV
@@ -223,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_NAV] = LAYOUT_planck_grid(
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     _______, XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, _______,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, KC_LEFT, XXXXXXX, KC_VOLD, KC_VOLU, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_BRMD, KC_BRMU, _______
 ),
 
