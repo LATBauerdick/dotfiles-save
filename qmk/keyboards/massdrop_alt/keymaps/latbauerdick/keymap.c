@@ -1,11 +1,15 @@
 #include QMK_KEYBOARD_H
 
 enum alt_layers {
+  _CLMK_WD,
   _QWERTY,
   _COLEMAK,
   _LOWER,
   _RAISE,
   _NAV,
+  _LOW_WD,
+  _RSE_WD,
+  _NAV_WD,
   _ADJ
 };
 
@@ -29,24 +33,51 @@ enum alt_keycodes {
     DBG_MOU,            //DEBUG Toggle Mouse Prints                                 //
     QWERTY,             // switch to QWERTY layer
     COLEMAK,            // switch to Colemak layer
+    CLMK_WD,            // switch to Colemak wide layer
     MD_BOOT             //Restart into bootloader after hold timeout                //Working
+};
+
+//Tap Dance Declarations
+enum {
+  CT_QE = 0,
+  CT_MV,
+  CT_ED,
+  CT_CLN,
+  CT_DE,
+  CT_GE,
+  CT_JESC,
+  X_TAP_DANCE
 };
 
 #define LOWER    MO(_LOWER)
 #define RAISE    MO(_RAISE)
+#define RSE_WD   MO(_RSE_WD)
+#define LOW_WD   MO(_LOW_WD)
 #define NAV_A    LT(_NAV, KC_A)
+#define NAVWD_A  LT(_NAV_WD, KC_A)
 #define NAV_O    LT(_NAV, KC_O)
+#define NAVWD_O    LT(_NAV_WD, KC_O)
 #define NAV_SCLN LT(_NAV, KC_SCLN)
 #define LOW_SPC  LT(_LOWER, KC_SPC)
 #define RSE_SPC  LT(_RAISE, KC_SPC)
+#define RWD_SPC  LT(_RSE_WD, KC_SPC)
+#define CTL_ESC  MT(MOD_LCTL, KC_ESC)
 #define GUI_DEL  MT(MOD_LGUI, KC_BSPC)
 #define GUI_RET  MT(MOD_RGUI, KC_ENT)
+#define RSF_SLS  MT(MOD_RSFT, KC_SLSH)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [_CLMK_WD] = LAYOUT( /* Colemak wide layout */
+        KC_GESC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_EQL , KC_7   , KC_8   , KC_9   , KC_0   , KC_MINS, KC_BSPC, KC_BSPC, \
+        KC_TAB , KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_LBRC, KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, KC_QUOT, KC_BSLS, KC_HOME, \
+        CTL_ESC, NAVWD_A, KC_R   , KC_S   , KC_T   , KC_G   , KC_RBRC, KC_M   , KC_N   , KC_E   , KC_I   , NAVWD_O,          KC_ENT,  KC_PGUP, \
+        KC_LSFT, KC_X   , KC_C   , KC_D   , KC_V   , KC_Z   , KC_SLSH, KC_K   , KC_H   , KC_COMM, KC_DOT , RSF_SLS,          KC_UP,   KC_ENT , \
+        LOW_WD , KC_LALT, GUI_DEL,                            RWD_SPC,                            GUI_RET, MO(_ADJ),KC_LEFT, KC_DOWN, KC_RGHT  \
+    ),
     [_QWERTY] = LAYOUT( /* QWERTY */
-        KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC, KC_BSPC, \
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS, KC_HOME, \
-        KC_CAPS, NAV_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NAV_SCLN,KC_QUOT,          KC_ENT,  KC_PGUP, \
+        KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC, KC_BSPC, \
+        KC_TAB , KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS, KC_HOME, \
+        CTL_ESC, NAV_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NAV_SCLN,KC_QUOT,          KC_ENT,  KC_PGUP, \
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,          KC_UP,   KC_ENT,  \
         LOWER,   KC_LALT, GUI_DEL,                            RSE_SPC,                            GUI_RET, MO(_ADJ),KC_LEFT, KC_DOWN, KC_RGHT  \
     ),
@@ -55,20 +86,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, _______, _______, _______, _______, \
         _______, _______, KC_R   , KC_S   , KC_T   , KC_G   , KC_M   , KC_N   , KC_E   , KC_I   , NAV_O  , _______,          _______, _______, \
         _______, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , KC_K   , KC_H   , _______, _______, _______, _______,          _______, _______, \
-        _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______  \
+        _______, _______, _______,                            _______,                            RSE_WD , _______, _______, _______, _______  \
     ),
     [_LOWER] = LAYOUT(
-        KC_GRV , _______, _______, _______, _______, _______, _______, KC_7   , KC_8   , KC_9   , KC_ASTR, _______, _______, _______, _______, \
-        KC_GRV , _______, _______, _______, _______, _______, _______, KC_4   , KC_5   , KC_6   , KC_PLUS, KC_LBRC, KC_RBRC, _______, _______, \
-        _______, _______, _______, _______, _______, _______, _______, KC_1   , KC_2   , KC_3   , KC_ENT , KC_MINS,          _______, _______, \
-        _______, _______, _______, _______, _______, _______, _______, KC_0   , KC_0   , KC_DOT , KC_SLSH, _______,          _______, _______, \
+        KC_TILD, KC_EXLM, KC_AT ,  KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_7   , KC_8   , KC_9   , KC_ASTR, _______, _______, _______, _______, \
+        _______, KC_EXLM, KC_HOME, KC_PGUP, KC_PGDN, KC_END , KC_PERC, KC_4   , KC_5   , KC_6   , KC_PLUS, KC_LPRN, KC_RPRN, _______, _______, \
+        _______, KC_BSPC, KC_LEFT, KC_UP  , KC_DOWN, KC_RGHT, KC_DLR , KC_1   , KC_2   , KC_3   , KC_ENT , _______,          _______, _______, \
+        _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), KC_COMM, KC_COLN, KC_0   , KC_0   , _______, _______, _______,          _______, _______, \
+        _______, _______, _______,                            _______,                            KC_0   , KC_DOT , _______, _______, _______  \
+    ),
+    [_LOW_WD] = LAYOUT(
+        KC_TILD, KC_EXLM, KC_AT ,  KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_EQL , KC_7   , KC_8   , KC_9   , KC_ASTR, KC_MINS, _______, _______, \
+        _______, KC_EXLM, KC_HOME, KC_PGUP, KC_PGDN, KC_END , XXXXXXX, KC_PERC, KC_4   , KC_5   , KC_6   , KC_PLUS, KC_LPRN, KC_RPRN, _______, \
+        _______, KC_BSPC, KC_LEFT, KC_UP  , KC_DOWN, KC_RGHT, KC_ESC , KC_DLR , KC_1   , KC_2   , KC_3   , KC_ENT ,          _______, _______, \
+        _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), KC_COMM, XXXXXXX, KC_COLN, KC_0   , KC_0   , _______, _______,          _______, _______, \
         _______, _______, _______,                            _______,                            KC_0   , KC_DOT , _______, _______, _______  \
     ),
     [_RAISE] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-        KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_COLN, _______, _______, _______, _______, \
-        _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,          _______, _______, \
-        _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL,  KC_LPRN, KC_RPRN, KC_QUOT, _______, _______, _______, _______,          _______, _______, \
+        KC_GRV , KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_COLN, _______, _______, _______, _______, \
+        _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______,          _______, _______, \
+        _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL , KC_LPRN, KC_RPRN, KC_QUOT, _______, _______, _______, _______,          _______, _______, \
+        _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______  \
+    ),
+    [_RSE_WD] = LAYOUT(
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+        KC_GRV , KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, XXXXXXX, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_COLN, _______, _______, _______, \
+        _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , XXXXXXX, KC_6   , KC_7   , KC_8   , KC_9   , KC_0   ,          _______, _______, \
+        _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL , KC_LPRN, XXXXXXX, KC_RPRN, KC_QUOT, _______, _______, _______,          _______, _______, \
         _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______  \
     ),
     [_NAV] = LAYOUT(
@@ -78,10 +123,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, KC_LEFT, XXXXXXX, XXXXXXX, XXXXXXX, _______,          KC_VOLU, KC_BRMD, \
         _______, _______, _______,                            _______,                            _______, _______, _______, KC_VOLD, _______  \
     ),
+    [_NAV_WD] = LAYOUT(
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, \
+        _______, XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END,  XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX,          _______, KC_BRMU, \
+        _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, KC_LEFT, XXXXXXX, XXXXXXX, _______,          KC_VOLU, KC_BRMD, \
+        _______, _______, _______,                            _______,                            _______, _______, _______, KC_VOLD, _______  \
+    ),
     [_ADJ] = LAYOUT( /* Adjust */
         KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_MUTE, \
         L_T_BR,  L_PSD,   L_BRI,   L_PSI,   _______, _______, _______, _______, U_T_AGCR,_______, KC_PSCR, KC_SLCK, KC_PAUS, _______, KC_END, \
-        L_T_PTD, L_PTP,   L_BRD,   L_PTN,   _______, _______, _______, QWERTY , COLEMAK, _______, _______, _______,          _______, KC_VOLU, \
+        L_T_PTD, L_PTP,   L_BRD,   L_PTN,   _______, _______, _______, QWERTY , COLEMAK, CLMK_WD, _______, _______,          _______, KC_VOLU, \
         _______, L_T_MD,  L_T_ONF, _______, _______, MD_BOOT, NK_TOGG, _______, _______, _______, _______, _______,          KC_PGUP, KC_VOLD, \
         _______, _______, _______,                            _______,                            _______, _______, KC_HOME, KC_PGDN, KC_END  \
     ),
@@ -113,6 +165,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case COLEMAK:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_COLEMAK);
+          }
+          return false;
+          break;
+        case CLMK_WD:
+          if (record->event.pressed) {
+            set_single_persistent_default_layer(_CLMK_WD);
           }
           return false;
           break;
