@@ -1,6 +1,26 @@
 {
-  "title": "Vi Mode (rev 5-wide-LATB)",
+  "title": "Colemak Wide Mods (LATB)",
   "rules": [
+    {
+      "description": "Change right_shift to slash if pressed alone.",
+      "manipulators": [
+        { "type": "basic",
+          "from": { "key_code": "right_shift", "modifiers": { "optional": [ "any" ] } },
+          "to": [ { "key_code": "right_shift" } ],
+          "to_if_alone": [ { "key_code": "n" } ]
+        }
+      ]
+    },
+    {
+      "description": "Change caps_lock to control, or escape if pressed alone.",
+      "manipulators": [
+        { "type": "basic",
+          "from": { "key_code": "caps_lock", "modifiers": { "optional": [ "any" ] } },
+          "to": [ { "key_code": "left_control" } ],
+          "to_if_alone": [ { "key_code": "escape" } ]
+        }
+      ]
+    },
     {
       "description": "Vi Mode [A as Trigger Key]",
       "manipulators": [
