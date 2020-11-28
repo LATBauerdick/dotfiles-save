@@ -12,6 +12,16 @@
       ]
     },
     {
+      "description": "Change left_shift to z if pressed alone.",
+      "manipulators": [
+        { "type": "basic",
+          "from": { "key_code": "left_shift", "modifiers": { "optional": [ "any" ] } },
+          "to": [ { "key_code": "left_shift" } ],
+          "to_if_alone": [ { "key_code": "b" } ]
+        }
+      ]
+    },
+    {
       "description": "Change caps_lock to control, or escape if pressed alone.",
       "manipulators": [
         { "type": "basic",
