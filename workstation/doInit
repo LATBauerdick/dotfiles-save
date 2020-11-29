@@ -16,6 +16,7 @@ git clone --recursive git@gitlab.com:latb/dotfiles .dotfiles \
     && ln -sf ../.dotfiles/karabiner .config/         \
     && ln -sf ../.dotfiles/nixpkgs .config/           \
     && ln -sf .dotfiles/zsh/zshrc .zshrc              \
+    && ln -sf .dotfiles/zsh/p10k.zsh .p10k.zs         \
     && ln -sf .dotfiles/tmux/tmux.conf .tmux.conf     \
     && ln -sf .dotfiles/git/gitconfig .gitconfig      \
     && ln -sf ../.dotfiles/ssh/sshconfig .ssh/config  \
