@@ -25,6 +25,7 @@ Plug 'benekastah/neomake'
 Plug 'moll/vim-bbye'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/gitignore'
+
 "
 " fzf fuzzy file search
 "Plug '/usr/local/opt/fzf'
@@ -67,8 +68,10 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'sbdchd/neoformat'
 
+" Plug 'vim-syntastic/syntastic'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Haskell
-Plug 'vim-syntastic/syntastic'
 Plug 'ujihisa/unite-haskellimport'
 Plug 'Shougo/unite.vim'
 

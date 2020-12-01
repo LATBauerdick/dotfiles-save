@@ -1,5 +1,5 @@
 [user]
-	email = github@latbauerdick.de
+	email = github@bauerdick.org
 	name = LATBauerdick
 [alias]
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
