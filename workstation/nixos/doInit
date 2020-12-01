@@ -6,18 +6,19 @@ mkdir ~/.ssh && curl -fsL https://github.com/latbauerdick.keys > ~/.ssh/authoriz
 mv $(pwd)/ipad_rsa ~/.ssh/id_rsa
 chmod 0600 ~/.ssh/id_rsa
 
-git clone --recursive git@github.com:latbauerdick/dotfiles ~/.dotfiles \
-    && ln -sf ~/.dotfiles/vim/init.vim ~/.vimrc         \
-    && mkdir -p ~/.config                               \
-    && ln -sf ~/.dotfiles/vim ~/.config/nvim            \
+git clone --recursive git@gitlab.com:latb/dotfiles ~/.dotfiles \
+    && ln -sf ~/.dotfiles/vim/init.vim ~/.vimrc                   \
+    && mkdir -p ~/.config                                         \
+    && ln -sf ~/.dotfiles/vim ~/.config/nvim                      \
     && ln -sf $(pwd)/.dotfiles/zsh/zshrc ~/.zshrc                 \
+    && ln -sf $(pwd)/.dotfiles/zsh/p10k.zsh ~/.p10k.zsh           \
     && ln -sf $(pwd)/.dotfiles/tmux/tmux.conf.ubuntu ~/.tmux.conf \
     && ln -sf $(pwd)/.dotfiles/git/gitconfig ~/.gitconfig         \
     && ln -sf $(pwd)/.dotfiles/ssh/sshconfig ~/.ssh/config        \
     && ln -sf $(pwd)/.dotfiles/nixpkgs ~/.config/
 
 git clone git@github.com:robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-git clone git@github.com:bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+git clone --depth=1 git@github.com:romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 
 nix-env -iA nixos.python36Packages.powerline
 echo -e "with import <nixpkgs> {};\npython.withPackages (ps: with ps; [ powerline ])" > build.nix

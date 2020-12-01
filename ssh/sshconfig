@@ -44,6 +44,7 @@ HostName 116.203.126.183
   User bauerdic
   Port 22
   IdentityFile   ~/.ssh/ipad_rsa
+  LocalForward   *:8389  127.0.0.1:8384
 
 Host borg
   HostName 116.203.126.183
@@ -53,6 +54,11 @@ Host borg
 
 Host lpro
   HostName lpro.local
+  User bauerdic
+  IdentityFile   ~/.ssh/id_ed25519
+
+Host lil
+  HostName mac-126620.local
   User bauerdic
   IdentityFile   ~/.ssh/id_ed25519
 

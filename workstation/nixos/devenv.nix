@@ -22,16 +22,18 @@
       gnumake
       subversion
       tree
+      bat
       less
       man
       neovim
       ag
+      ripgrep
       fzf
       coreutils
       gnuplot
       stack
       binutils gcc gnumake openssl pkgconfig
-      rustc cargo   
+    #  rustc cargo   
     ];
     programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
 
