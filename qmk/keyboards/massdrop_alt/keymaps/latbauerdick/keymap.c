@@ -33,7 +33,7 @@ enum alt_keycodes {
 #define NAV_A    LT(_NAV, KC_A)
 #define NAV_O    LT(_NAV, KC_O)
 #define NAVWD_A  LT(_NAV_WD, KC_A)
-#define NAV_SCLN LT(_NAV, KC_SCLN)
+#define NAVWD_O  LT(_NAV_WD, KC_O)
 #define NWD_QUOT LT(_NAV_WD, KC_QUOT)
 #define LOW_SPC  LT(_LOWER, KC_SPC)
 #define RSE_SPC  LT(_RAISE, KC_SPC)
