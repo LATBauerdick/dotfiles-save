@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./wireguard.nix
       ./devenv.nix
     ];
 
@@ -126,10 +127,6 @@
   };
 
   services.openssh.gatewayPorts = "yes";
-  # open firewall ports for mosh
-  networking.firewall.allowedUDPPortRanges = [
-    { from = 60001; to = 60009; }
-  ];
 
   # 8385 for syncthing WebGUI port forward, 838x for my reverse tunnel
   networking.firewall.allowedTCPPorts = [ 8385 8386 8387 8388 8389 8888 8080 32401 ];
@@ -177,5 +174,11 @@
     dataDir = "/home/bauerdic/.config/syncthing";
     user = "bauerdic";
   };
+
+  # open firewall ports for mosh, wireguard
+  networking.firewall.allowedUDPPortRanges = [
+    { from = 60001; to = 61000; }
+  ];
+  programs.mosh.enable = true;
 
 }

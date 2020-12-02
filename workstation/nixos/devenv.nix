@@ -10,6 +10,8 @@
     with pkgs;
     [
       wget
+      wireguard
+      mosh
       networkmanager
       cryptsetup
       vim
