@@ -42,14 +42,15 @@ enum alt_keycodes {
 #define GUI_DEL  MT(MOD_LGUI, KC_BSPC)
 #define GUI_RET  MT(MOD_RGUI, KC_ENT)
 #define RSF_SLS  MT(MOD_RSFT, KC_SLSH)
+#define RSF_N    MT(MOD_RSFT, KC_N)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_65_ansi_blocker(
         KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC, KC_BSPC, \
         KC_TAB , KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS, KC_HOME, \
         CTL_ESC, NAVWD_A, KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, NWD_QUOT,         KC_ENT,  KC_PGUP, \
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSF_SLS,          KC_UP,   KC_ENT,  \
-        LOW_WD , KC_LALT, GUI_DEL,                            RWD_SPC,                            GUI_RET, MO(_ADJ),KC_LEFT, KC_DOWN, KC_RGHT  \
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSF_N  ,          KC_UP,   KC_ENT,  \
+        LOW_WD , KC_LALT, GUI_DEL,                            RWD_SPC,                   GUI_RET, MO(_ADJ),         KC_LEFT, KC_DOWN, KC_RGHT  \
     ),
     [_CLMK_WD] = LAYOUT_65_ansi_blocker( /* Colemak wide layout */
         KC_GESC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_EQL , KC_7   , KC_8   , KC_9   , KC_0   , KC_MINS, KC_BSPC, KC_BSPC, \
@@ -62,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, KC_7   , KC_8   , KC_9   , KC_0   , KC_MINS, KC_EQL , _______, _______, \
         _______, KC_Q   , KC_W   , KC_F   , KC_P   , KC_B   , KC_J   , KC_L   , KC_U   , KC_Y   , KC_SCLN, KC_LBRC, KC_RBRC, _______, _______, \
         _______, NAV_A  , KC_R   , KC_S   , KC_T   , KC_G   , KC_M   , KC_N   , KC_E   , KC_I   , NAV_O  , KC_QUOT,          _______, _______, \
-        _______, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , KC_K   , KC_H   , _______, _______, _______, KC_RSFT,          _______, _______, \
+        _______, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , KC_K   , KC_H   , _______, _______, _______, RSF_SLS,          _______, _______, \
         LOWER  , _______, _______,                            RSE_SPC,                            GUI_RET, _______, _______, _______, _______  \
     ),
     [_LOWER] = LAYOUT_65_ansi_blocker(
@@ -101,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______,                            _______,                            _______, _______, _______, KC_VOLD, _______  \
     ),
     [_NAV_WD] = LAYOUT_65_ansi_blocker(
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+        KC_GESC, S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6), S(KC_7), S(KC_8), S(KC_9), S(KC_0),S(KC_MINS),S(KC_EQL),KC_BSPC,KC_BSPC, \
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, \
         _______, XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END,  XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX,          _______, KC_BRMU, \
         _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, KC_LEFT, XXXXXXX, XXXXXXX, _______,          KC_VOLU, KC_BRMD, \
