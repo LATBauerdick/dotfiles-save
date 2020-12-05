@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB , KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS, KC_HOME, \
         CTL_ESC, NAVWD_A, KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, NWD_QUOT,         KC_ENT,  KC_PGUP, \
         KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSF_N  ,          KC_UP,   KC_ENT,  \
-        LOW_WD , KC_LALT, GUI_DEL,                            RWD_SPC,                   GUI_RET, MO(_ADJ),         KC_LEFT, KC_DOWN, KC_RGHT  \
+        LOWER  , KC_LALT, GUI_DEL,                            RSE_SPC,                   GUI_RET, MO(_ADJ),         KC_LEFT, KC_DOWN, KC_RGHT  \
     ),
     /* [_CLMK_WD] = LAYOUT_65_ansi_blocker( /1* Colemak wide layout *1/ */
     /*     KC_GESC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_EQL , KC_7   , KC_8   , KC_9   , KC_0   , KC_MINS, KC_BSPC, KC_BSPC, \ */
@@ -73,27 +73,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_Z   , KC_X   , KC_C   , KC_D   , KC_V   , KC_K   , KC_H   , _______, _______, _______, RSF_SLS,          _______, _______, \
         LOWER  , _______, _______,                            RSE_SPC,                            GUI_RET, _______, _______, _______, _______  \
     ),
-    [_LOWER] = LAYOUT_65_ansi_blocker(
-        KC_TILD, KC_EXLM, KC_AT ,  KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_7   , KC_8   , KC_9   , KC_ASTR, _______, _______, _______, _______, \
-        _______, KC_EXLM, KC_HOME, KC_PGUP, KC_PGDN, KC_END , KC_PERC, KC_4   , KC_5   , KC_6   , KC_PLUS, KC_LPRN, KC_RPRN, _______, _______, \
-        _______, KC_BSPC, KC_LEFT, KC_UP  , KC_DOWN, KC_RGHT, KC_DLR , KC_1   , KC_2   , KC_3   , KC_ENT , _______,          _______, _______, \
-        _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), KC_COMM, KC_COLN, KC_0   , KC_0   , _______, _______, _______,          _______, _______, \
-        _______, _______, _______,                            _______,                            KC_0   , KC_DOT , _______, _______, _______  \
+    [_LOWER] = LAYOUT_65_ansi_blocker( /* inverse Colemak DH wide */
+        _______, _______, _______, _______, _______, _______, _______, KC_8   , KC_9   , KC_0   , KC_MINS, KC_EQL , KC_7   , _______, _______, \
+        _______, _______, _______, KC_L   , KC_S   , KC_F   , KC_P   , KC_O   , KC_SCLN, KC_QUOT, KC_R   , KC_H   , KC_Y   , _______, _______, \
+        _______, _______, KC_D   , KC_C   , KC_E   , _______, KC_COMM, KC_U   , KC_M   , KC_I   , KC_LBRC, KC_RBRC,          _______, _______, \
+        _______, KC_B   , KC_Z   , KC_X   , KC_V   , KC_T   , KC_K   , KC_J   , KC_DOT , KC_SLSH, KC_N   , _______,          _______, _______, \
+        _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______  \
     ),
+    /* [_LOWER] = LAYOUT_65_ansi_blocker( */
+    /*     KC_TILD, KC_EXLM, KC_AT ,  KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_7   , KC_8   , KC_9   , KC_ASTR, _______, _______, _______, _______, \ */
+    /*     _______, KC_EXLM, KC_HOME, KC_PGUP, KC_PGDN, KC_END , KC_PERC, KC_4   , KC_5   , KC_6   , KC_PLUS, KC_LPRN, KC_RPRN, _______, _______, \ */
+    /*     _______, KC_BSPC, KC_LEFT, KC_UP  , KC_DOWN, KC_RGHT, KC_DLR , KC_1   , KC_2   , KC_3   , KC_ENT , _______,          _______, _______, \ */
+    /*     _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), KC_COMM, KC_COLN, KC_0   , KC_0   , _______, _______, _______,          _______, _______, \ */
+    /*     _______, _______, _______,                            _______,                            KC_0   , KC_DOT , _______, _______, _______  \ */
+    /* ), */
     [_LOW_WD] = LAYOUT_65_ansi_blocker(
-        KC_TILD, KC_EXLM, KC_AT ,  KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_EQL , KC_7   , KC_8   , KC_9   , KC_ASTR, KC_MINS, _______, _______, \
+        KC_TILD, KC_EXLM, KC_AT ,  KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_EQL , KC_1   , KC_2   , KC_3   , KC_ASTR, KC_MINS, _______, _______, \
         _______, KC_EXLM, KC_HOME, KC_PGUP, KC_PGDN, KC_END , XXXXXXX, KC_PERC, KC_4   , KC_5   , KC_6   , KC_PLUS, KC_LPRN, KC_RPRN, _______, \
-        _______, KC_BSPC, KC_LEFT, KC_UP  , KC_DOWN, KC_RGHT, KC_ESC , KC_DLR , KC_1   , KC_2   , KC_3   , KC_ENT ,          _______, _______, \
+        _______, KC_BSPC, KC_LEFT, KC_UP  , KC_DOWN, KC_RGHT, KC_ESC , KC_DLR , KC_7   , KC_8   , KC_9   , KC_ENT ,          _______, _______, \
         _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), KC_COMM, XXXXXXX, KC_COLN, KC_0   , KC_0   , _______, _______,          _______, _______, \
         _______, _______, _______,                            _______,                            KC_0   , KC_DOT , _______, _______, _______  \
     ),
     [_RAISE] = LAYOUT_65_ansi_blocker(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
-        KC_GRV , KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_COLN, _______, _______, _______, _______, \
-        _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______,          _______, _______, \
-        _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL , KC_LPRN, KC_RPRN, KC_QUOT, _______, _______, _______, _______,          _______, _______, \
+        KC_GRV , S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_7), S(KC_6), S(KC_8), S(KC_9), S(KC_0), S(KC_MINS),S(KC_EQL), _______, _______, \
+        _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_7   , KC_6   , KC_8   , KC_9   , KC_0   , KC_MINS,          _______, _______, \
+        _______, KC_H   , KC_Y   , KC_EQL , KC_7   , S(KC_0), KC_N   ,S(KC_MINS),KC_RBRC, KC_DOT , KC_SLSH, _______,          _______, _______, \
         _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______  \
     ),
+    /* [_RAISE] = LAYOUT_65_ansi_blocker( */
+    /*     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \ */
+    /*     KC_GRV , KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_COLN, _______, _______, _______, _______, \ */
+    /*     _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , _______,          _______, _______, \ */
+    /*     _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL , KC_LPRN, KC_RPRN, KC_QUOT, _______, _______, _______, _______,          _______, _______, \ */
+    /*     _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______  \ */
+    /* ), */
     [_RSE_WD] = LAYOUT_65_ansi_blocker(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
         KC_GRV , KC_EXLM, KC_AT  , KC_HASH, KC_DLR , KC_PERC, XXXXXXX, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_COLN, _______, _______, _______, \
