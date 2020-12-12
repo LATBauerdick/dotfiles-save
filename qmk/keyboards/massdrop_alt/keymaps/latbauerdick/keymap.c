@@ -40,6 +40,7 @@ enum alt_keycodes {
 #define LOW_SPC  LT(_LOWER, KC_SPC)
 #define RSE_SPC  LT(_RAISE, KC_SPC)
 #define RWD_SPC  LT(_RSE_WD, KC_SPC)
+#define ADJ_SPC  LT(_ADJ, KC_SPC)
 #define CTL_ESC  MT(MOD_LCTL, KC_ESC)
 #define GUI_DEL  MT(MOD_LGUI, KC_BSPC)
 #define GUI_RET  MT(MOD_RGUI, KC_ENT)
@@ -51,8 +52,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC, KC_BSPC, \
         KC_TAB , KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS, KC_HOME, \
         CTL_ESC, NAVWD_A, KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, NWD_QUOT,         KC_ENT,  KC_PGUP, \
-        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSF_N  ,          KC_UP,   KC_ENT,  \
-        RAISE  , KC_LALT, GUI_DEL,                            RSE_SPC,                   GUI_RET, MO(_ADJ),         KC_LEFT, KC_DOWN, KC_RGHT  \
+        KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,          KC_UP,   KC_ENT,  \
+        RAISE  , KC_LALT, GUI_DEL,                            RSE_SPC,                   GUI_RET, ADJ_SPC,          KC_LEFT, KC_DOWN, KC_RGHT  \
     ),
     [_CLMK_WD] = LAYOUT_65_ansi_blocker( /* Colemak wide layout */
         KC_GESC, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_6   , KC_EQL , KC_7   , KC_8   , KC_9   , KC_0   , KC_MINS, KC_BSPC, KC_BSPC, \

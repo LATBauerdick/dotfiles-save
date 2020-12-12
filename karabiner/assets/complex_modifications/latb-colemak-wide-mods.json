@@ -1652,7 +1652,7 @@
           },
           "to": [
             {
-              "key_code": "close_bracket",
+              "key_code": "open_bracket",
               "modifiers": [
                 "left_shift"
               ]
@@ -2016,7 +2016,7 @@
           },
           "to": [
             {
-              "key_code": "open_bracket",
+              "key_code": "close_bracket",
               "modifiers": [
                 "left_shift"
               ]
@@ -2940,7 +2940,7 @@
           },
           "to": [
             {
-              "key_code": "close_bracket",
+              "key_code": "open_bracket",
               "modifiers": [
                 "right_shift"
               ]
@@ -3304,7 +3304,7 @@
           },
           "to": [
             {
-              "key_code": "open_bracket",
+              "key_code": "close_bracket",
               "modifiers": [
                 "right_shift"
               ]
