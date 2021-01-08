@@ -405,6 +405,8 @@ inoremap <Up> <C-o>gk
 inoremap <Down> <C-o>gj
 nnoremap <Up> gk
 nnoremap <Down> gj
+vnoremap <silent> <up> gk
+vnoremap <silent> <down> gj
 
 " remap for smooth scroll
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -461,6 +463,11 @@ au FileType purescript nmap <leader>p :PSCIDEpursuit<CR>
 au FileType purescript nmap <leader>c :PSCIDEcaseSplit<CR>
 au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
 au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
+
+nmap <silent> [W :CocFirst<CR>
+nmap <silent> [w :CocPrevious<CR>
+nmap <silent> ]w :CocNext<CR>
+nmap <silent> ]W :CocLast<CR>
 
 
 func! g:CustomNeuronIDGenerator(title)
