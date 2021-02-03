@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
         KC_GRV , S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_7), S(KC_6), S(KC_8), S(KC_9), S(KC_0), S(KC_MINS),S(KC_EQL), _______, _______, \
         _______, KC_1   , KC_2   , KC_3   , KC_4   , KC_5   , KC_7   , KC_6   , KC_8   , KC_9   , KC_0   , KC_MINS,          _______, _______, \
-        _______, KC_H   , KC_Y   , KC_EQL , KC_7   , S(KC_0), KC_N   ,S(KC_MINS),KC_RBRC, KC_DOT , KC_SLSH, _______,          _______, _______, \
+        _______, KC_Y   , KC_H   , KC_EQL , KC_7   , S(KC_0), KC_N   ,S(KC_MINS),KC_RBRC, KC_DOT, KC_SLSH, _______,          _______, _______, \
         _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______  \
     ),
     [_RSE_WD] = LAYOUT_65_ansi_blocker(
