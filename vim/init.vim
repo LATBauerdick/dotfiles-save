@@ -223,11 +223,11 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " fixes glitch? in colors when using vim with tmux
 set t_Co=256
 
-" set termguicolors
+set termguicolors
 set background=light
-" colorscheme duochrome
+colorscheme duochrome
 " -- solarized color scheme
-colorscheme solarized
+" colorscheme solarized
 " colorscheme solarized8
 " colorscheme solarized8_high
 " let g:one_allow_italics = 1
