@@ -164,7 +164,7 @@ export BAT_THEME="Solarized (light)"
 export GITHUB_USER="latbauerdick"
 ###export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
 # export PATH=~/bin:/Library/TeX/texbin:~/.local/bin:~/Library/Python/3.5/bin:$PATH
-export PATH=~/bin:~/.local/bin:~/.npm-global/bin:/usr/local/bin:$PATH:~/Library/Python/3.8/bin
+export PATH=~/bin:~/.local/bin:~/.npm-global/bin:/usr/local/bin:$PATH:~/Library/Python/3.9/bin
 # export GREP_OPTIONS='--color=auto'
 export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
 export EDITOR="nvim"
@@ -217,9 +217,6 @@ alias na="neuron -d ~/Zettelkasten search -a"
 alias xo='xargs -I % open %'
 alias xe='xargs -I % $EDITOR %'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
@@ -236,3 +233,7 @@ PERL_MM_OPT="INSTALL_BASE=/home/bauerdic/perl5"; export PERL_MM_OPT;
 [ -f "/home/bauerdic/.ghcup/env" ] && source "/home/bauerdic/.ghcup/env" # ghcup-env
 
 export BAT_THEME="Solarized (light)"
+
+export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
