@@ -117,6 +117,9 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mvandiemen/ghostbuster'
 
+Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
+
 call plug#end()
 
 " }}}
@@ -469,6 +472,11 @@ nmap <silent> [w :CocPrevious<CR>
 nmap <silent> ]w :CocNext<CR>
 nmap <silent> ]W :CocLast<CR>
 
+set undofile
+augroup vimrc
+  autocmd!
+  autocmd BufWritePre /tmp/* setlocal noundofile
+augroup END
 
 func! g:CustomNeuronIDGenerator(title)
      return a:title
