@@ -162,13 +162,8 @@ export BAT_THEME="Solarized (light)"
 
 # Exports {{{
 export GITHUB_USER="latbauerdick"
-<<<<<<< HEAD
-export PATH=~/bin:~/.local/bin:~/.npm-global/bin:/usr/local/bin:$PATH:~/Library/Python/3.8/bin
-=======
-###export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin # Reorder PATH so local bin is first
-# export PATH=~/bin:/Library/TeX/texbin:~/.local/bin:~/Library/Python/3.5/bin:$PATH
 export PATH=~/bin:~/.local/bin:~/.npm-global/bin:/usr/local/bin:$PATH:~/Library/Python/3.9/bin
->>>>>>> a81831834188126a8bd0051905557fcd6d139adf
+
 # export GREP_OPTIONS='--color=auto'
 export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
 export EDITOR="nvim"
