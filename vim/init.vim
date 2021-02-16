@@ -216,6 +216,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " easy expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+" redefine italics terminal codes so this works well in tmux
+set t_ZH=[3m
+set t_ZR=[23m
 
 " fixes glitch? in colors when using vim with tmux
 set t_Co=256
