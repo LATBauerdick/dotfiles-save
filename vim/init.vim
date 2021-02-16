@@ -216,7 +216,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " easy expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-" This is only necessary if you use "set termguicolors".
+" redefine italics terminal codes so this works well in tmux
+set t_ZH=[3m
+set t_ZR=[23m
+
+"This is only necessary if you use "set termguicolors".
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
