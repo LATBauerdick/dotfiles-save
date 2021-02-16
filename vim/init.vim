@@ -216,24 +216,24 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " easy expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-" This is only necessary if you use "set termguicolors".
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " fixes glitch? in colors when using vim with tmux
 set t_Co=256
 
-set termguicolors
+" This is only necessary if you use "set termguicolors".
+" set termguicolors
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=light
-colorscheme duochrome
+" colorscheme duochrome
 " -- solarized color scheme
-" colorscheme solarized
+colorscheme solarized
 " colorscheme solarized8
 " colorscheme solarized8_high
 " let g:one_allow_italics = 1
+" colorscheme one
 "colorscheme xcode
 "colorscheme ghostbuster
-"colorscheme one
 
 " for haskellConcealPlus disable double-stroke capitals (does not work on iPad)
 let hscoptions="𝐌𝐄𝐓𝐒iBQZDC"
