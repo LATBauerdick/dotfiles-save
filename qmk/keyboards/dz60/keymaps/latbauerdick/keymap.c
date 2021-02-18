@@ -38,13 +38,13 @@ _______, _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL , KC_LPRN, KC_BSPC, KC_RPRN,
           _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, S(KC_J), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET  ,
           _______, XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END , XXXXXXX, KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, XXXXXXX,          _______,
  _______, _______, G(KC_X), G(KC_C), G(KC_D), G(KC_V), G(KC_Z), KC_BSPC, KC_LEFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          _______,
-          _______, _______, _______,          _______,          KC_BSPC,          _______,          _______, _______, KC_VOLD, KC_VOLU, _______
+          _______, _______, _______,          _______,          KC_BSPC,          _______,          _______, KC_BRMD, KC_VOLD, KC_VOLU, KC_BRMU
     ),
     [_ADJ] = LAYOUT(
         KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_DEL,
         _______, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, _______, _______, _______, _______, RESET,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
         _______, _______, _______, _______, BL_DEC,  BL_TOGG, BL_INC,  BL_STEP, _______, _______, _______, _______, _______,          _______,
-        _______, _______, _______,          _______,          _______,          _______,          _______, _______, KC_VOLD, KC_VOLU, _______
+        _______, _______, _______,          _______,          _______,          _______,          _______, KC_BRMD, KC_VOLD, KC_VOLU, KC_BRMU
     ),
 };

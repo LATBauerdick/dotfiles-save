@@ -78,6 +78,7 @@ Host 192.168.1.1 10.8.0.1 homer borgtom
 Host latbtop mac-123210 ltl
   Hostname latbtop.local
   User bauerdic
+  IdentityFile   ~/.ssh/id_ed25519
 
 Host mac-126620 lim
   Hostname mac-126620.local
