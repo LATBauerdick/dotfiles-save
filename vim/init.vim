@@ -43,7 +43,8 @@ Plug 'int3/vim-extradite'
 " Bars, panels, and files
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
-""" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'itchyny/lightline.vim'
+"" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 
 " Text manipulation
@@ -150,7 +151,7 @@ set whichwrap+=<,>,h,l
 
 " syntastic beginners settings
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
@@ -193,6 +194,40 @@ nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
 let g:ghcid_command= "/usr/local/bin/ghcid"
 
+" redefine italics terminal codes so this works well in tmux
+set t_ZH=[3m
+set t_ZR=[23m
+
+" fixes glitch? in colors when using vim with tmux
+if !has('gui_running')
+  set t_Co=256
+endif
+"
+" This is only necessary if you use "set termguicolors".
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set background=light
+colorscheme duochrome
+" -- solarized color scheme
+" colorscheme solarized
+" colorscheme solarized8
+" colorscheme solarized8_high
+" let g:one_allow_italics = 1
+" colorscheme one
+"colorscheme xcode
+"colorscheme ghostbuster
+
+" vim lightline
+set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'solarized light',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'helloworld' ] ]
+      \ },
+      \}
+
 " -- vim-airline
 let g:airline_theme='solarized'
 " let g:airline_solarized_bg='dark'
@@ -215,28 +250,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " easy expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-" redefine italics terminal codes so this works well in tmux
-set t_ZH=[3m
-set t_ZR=[23m
-
-" fixes glitch? in colors when using vim with tmux
-set t_Co=256
-
-" This is only necessary if you use "set termguicolors".
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set background=light
-colorscheme duochrome
-" -- solarized color scheme
-" colorscheme solarized
-" colorscheme solarized8
-" colorscheme solarized8_high
-" let g:one_allow_italics = 1
-" colorscheme one
-"colorscheme xcode
-"colorscheme ghostbuster
 
 " for haskellConcealPlus disable double-stroke capitals (does not work on iPad)
 let hscoptions="𝐌𝐄𝐓𝐒iBQZDC"
