@@ -43,7 +43,7 @@ export TERM="xterm-256color-it"
 ZSH_THEME=powerlevel10k/powerlevel10k
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# POWERLEVEL9K_COLOR_SCHEME='dark'
+POWERLEVEL9K_COLOR_SCHEME='dark'
 # POWERLEVEL9K_COLOR_SCHEME='light'
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator context background_jobs time)
@@ -231,8 +231,8 @@ export BAT_THEME="Solarized (light)"
 export FZF_DEFAULT_COMMAND='rg --files'
 
 export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
 
