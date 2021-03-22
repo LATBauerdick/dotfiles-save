@@ -35,9 +35,14 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 "
 " fzf fuzzy file search
 "Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'alok/notational-fzf-vim'
-let g:nv_search_paths = ['~/Notes', '~/writing']
+Plug 'junegunn/fzf.vim'
+"    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'BurntSushi/ripgrep
+" support for neuron
+" Plug 'fiatjaf/neuron.vim'
+Plug 'chiefnoah/neuron-v2.vim'
+"  Plug 'alok/notational-fzf-vim'
+"  let g:nv_search_paths = ['~/Notes', '~/writing']
 "
 " grepper
 Plug 'mhinz/vim-grepper'
@@ -64,11 +69,6 @@ Plug 'easymotion/vim-easymotion'
 
 " vim sugar for shell commands
 Plug 'tpope/vim-eunuch'
-
-" support for neuron
-Plug 'fiatjaf/neuron.vim'
-"Plug 'ihsanturk/neuron.vim'
-"Plug 'BurntSushi/ripgrep
 
 " Allow pane movement to jump out of vim into tmux
 Plug 'christoomey/vim-tmux-navigator'
