@@ -8,6 +8,7 @@ enum alt_layers {
   _ADJ
 };
 
+#define RAISE    MO(_RAISE)
 #define CTL_ESC  MT(MOD_LCTL, KC_ESC)
 #define RSF_SLS  MT(MOD_RSFT, KC_SLSH)
 #define RSF_UP   MT(MOD_RSFT, KC_UP)
@@ -24,9 +25,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK] = LAYOUT(
           KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_GRV , KC_7,    KC_8,    KC_9,    KC_0   , KC_MINS, KC_EQL , KC_BSPC,
           KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_LBRC, KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_QUOT, KC_BSPC,
-          CTL_ESC, NAV_A,   KC_R,    KC_S,    KC_T,    KC_G,    KC_RBRC, KC_M,    KC_N,    KC_E,    KC_I,    NAV_O,            KC_ENT,
+          CTL_ESC, NAV_A,   KC_R,    KC_S,    KC_T,    KC_G,    KC_RBRC, KC_M,    KC_N,    KC_E,    KC_I,    KC_O   ,          KC_ENT,
  KC_LSFT, LSF_Z  , KC_X,    KC_C,    KC_D,    KC_V,    KC_Z,    KC_SLSH, KC_K,    KC_H,    KC_COMM, KC_DOT,           RSF_SLS,          ADJ_SPC,
-          KC_LCTL, KC_LALT, KC_LGUI,          GUI_SPC,          RSF_ENT,          RSE_SPC,          RGU_SPC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+          RAISE  , KC_LALT, GUI_SPC,          RSE_SPC,          RSE_SPC,          KC_SPC ,          RGU_SPC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
     ),
     [_RAISE] = LAYOUT(
          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
