@@ -43,8 +43,9 @@ export TERM="xterm-256color-it"
 ZSH_THEME=powerlevel10k/powerlevel10k
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_COLOR_SCHEME='dark'
-# POWERLEVEL9K_COLOR_SCHEME='light'
+# POWERLEVEL9K_COLOR_SCHEME='dark'
+POWERLEVEL10K_COLOR_SCHEME='dark'
+POWERLEVEL9K_COLOR_SCHEME='light'
 # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
 # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator context background_jobs time)
 # POWERLEVEL9K_MODE='nerdfont-complete'
@@ -220,6 +221,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -227,8 +229,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [ -f "/home/bauerdic/.ghcup/env" ] && source "/home/bauerdic/.ghcup/env" # ghcup-env
 
 export BAT_THEME="Solarized (light)"
-
-export FZF_DEFAULT_COMMAND='rg --files'
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm

@@ -219,9 +219,11 @@ if !has('gui_running')
   set background=light
   colorscheme solarized
 else
-  set termguicolors
+  " set t_Co=256
+  set notermguicolors
   set background=light
-  colorscheme duochrome
+  colorscheme solarized
+  " colorscheme duochrome
 endif
 "
 " This is only necessary if you use "set termguicolors".
