@@ -10,6 +10,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " disable all LSP features in ALE, so ALE doesn't try to provide LSP features already provided by coc.nvim, such as auto-completion
 let g:ale_disable_lsp = 1
 
+set hidden
 
 " vim-plug {{{
 
@@ -189,6 +190,8 @@ nnoremap <leader>1 :only<CR>
 " go to the other window
 nnoremap <leader>w <C-w><C-w>
 nnoremap <leader>o <C-w><C-w>
+
+noremap <leader>l :ls<CR>:b 
 
 " noremap ; :
 
@@ -436,6 +439,9 @@ nnoremap <leader>= :wincmd =<cr>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
+
+" use kk as Esc
+inoremap kk <esc>
 
 " use cursor keys to move display lines
 nmap <up> gk
