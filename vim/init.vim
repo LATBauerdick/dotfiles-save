@@ -1,3 +1,6 @@
+lua require 'init'
+
+
 " Type :so % to refresh .vimrc after making changes
 
 set nocompatible
@@ -41,7 +44,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'BurntSushi/ripgrep
 " support for neuron
 " Plug 'fiatjaf/neuron.vim'
-Plug 'chiefnoah/neuron-v2.vim'
+" Plug 'chiefnoah/neuron-v2.vim'
 "  Plug 'alok/notational-fzf-vim'
 "  let g:nv_search_paths = ['~/Notes', '~/writing']
 "
@@ -62,7 +65,7 @@ Plug 'majutsushi/tagbar'
 " Text manipulation
 Plug 'vim-scripts/Align'
 Plug 'simnalamburt/vim-mundo'
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'michaeljsmith/vim-indent-object'
@@ -128,6 +131,7 @@ Plug 'mvandiemen/ghostbuster'
 
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
+
 
 call plug#end()
 

@@ -1,3 +1,6 @@
 [submodule "tmux-config"]
 	path = tmux-config
 	url = ssh://github.com/samoshkin/tmux-config
+[submodule "vim/pack/packer/start/packer.nvim"]
+	path = vim/pack/packer/start/packer.nvim
+	url = https://github.com/wbthomason/packer.nvim

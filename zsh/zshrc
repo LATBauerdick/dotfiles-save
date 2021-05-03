@@ -219,6 +219,7 @@ alias xe='xargs -I % $EDITOR %'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+alias nv='VIMRUNTIME=$HOME/Dev/neovim/runtime $HOME/Dev/neovim/build/bin/nvim'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files'
