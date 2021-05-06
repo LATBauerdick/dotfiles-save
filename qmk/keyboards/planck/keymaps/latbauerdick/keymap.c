@@ -38,16 +38,18 @@ enum planck_keycodes {
   BACKLIT
 };
 
-//Tap Dance Declarations
+// Tap Dance declarations
 enum {
-  CT_QE = 0,
-  CT_MV,
-  CT_ED,
-  CT_CLN,
-  CT_DE,
-  CT_JESC,
-  X_TAP_DANCE
+    TD_O_ENT
 };
+
+// Tap Dance definitions
+qk_tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Escape, twice for Caps Lock
+    [TD_O_ENT] = ACTION_TAP_DANCE_DOUBLE(KC_O, KC_ENT),
+};
+
+#define TD_OENT  TD(TD_O_ENT)
 
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
@@ -58,6 +60,7 @@ enum {
 #define RSE_0    LT(_RAISE, KC_0)
 #define RSE_SPC  LT(_RAISE, KC_SPC)
 #define RSE_RET  LT(_RAISE, KC_ENT)
+#define LOW_RET  LT(_LOWER, KC_ENT)
 #define LOW_SPC  LT(_LOWER, KC_SPC)
 #define LOW_ESC  LT(_LOWER, KC_ESC)
 #define LOW_TAB  LT(_LOWER, KC_TAB)
@@ -72,14 +75,17 @@ enum {
 #define GUI_TAB  MT(MOD_LGUI, KC_TAB)
 #define GUI_ESC  MT(MOD_LGUI, KC_ESC)
 #define ALT_ESC  MT(MOD_LALT, KC_ESC)
+#define ALT_TAB  MT(MOD_LALT, KC_TAB)
 #define LSF_SPC  MT(MOD_LSFT, KC_SPC)
 #define LSF_TAB  MT(MOD_LSFT, KC_TAB)
 #define LSF_RET  MT(MOD_LSFT, KC_ENT)
 #define LSF_BSP  MT(MOD_LSFT, KC_BSPC)
+#define LSF_Z    MT(MOD_LSFT, KC_Z)
 #define RSF_SPC  MT(MOD_RSFT, KC_SPC)
 #define RSF_BSP  MT(MOD_RSFT, KC_BSPC)
 #define RSF_RET  MT(MOD_RSFT, KC_ENT)
 #define TD_JESC  TD(CT_JESC)
+#define RSF_SLS  MT(MOD_RSFT, KC_SLSH)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -98,9 +104,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
   CTL_ESC, NAV_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NAV_SCLN, RSF_RET,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  RSF_RET,
-  RAISE,   CTL_SPC, ALT_ESC, GUI_TAB, LSF_RET, LOW_SPC, LOW_SPC, RSE_SPC, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
+  RAISE,   CTL_SPC, ALT_TAB, GUI_ESC, LOW_RET, LOW_RET, RSE_SPC, RSE_SPC, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
 ),
-
 /* Colemak1: derived from Colemak Mod-DH, switching KM and rotating BGV
  * (just switch DV and HM w/r to Colemak proper)
  * ,-----------------------------------------------------------------------------------.
@@ -132,14 +137,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_COLEMAK1] = LAYOUT_planck_grid( \
-  _______, KC_Q,    KC_W,    KC_F,     KC_P,    KC_Z,    TD_JESC, KC_L,    KC_U,    KC_Y,    KC_SCLN, _______,
-  _______, NAV_A,   KC_R,    KC_S,     KC_T,    KC_G,    KC_M,    KC_N,    KC_E,    KC_I,    NAV_O,   _______,
-  _______, KC_X,    KC_C,    KC_V,    ,KC_D,    KC_B,    KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, _______,
+  _______, KC_Q,    KC_W,    KC_F,     KC_P,    KC_B,    KC_LBRC, KC_J,    KC_L,    KC_U,    KC_Y,    _______,
+  _______, NAV_A,   KC_R,    KC_S,     KC_T,    KC_G,    KC_SCLN, KC_M,    KC_N,    KC_E,    KC_I,    KC_O   ,
+  _______, LSF_Z  , KC_X,    KC_C,     KC_D,    KC_V,    KC_SLSH, KC_K,    KC_H,    KC_COMM, KC_DOT,  _______,
   _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______, _______
-  /* _______, KC_Q,    KC_H,    KC_O,    KC_U,    KC_X,    KC_G,    KC_C,    KC_R,    KC_F,    KC_Z,    _______, */
-  /* _______, KC_Y,    KC_I,    KC_E,    KC_A,    KC_DOT,  KC_D,    KC_S,    KC_T,    KC_N,    KC_B,    _______, */
-  /* _______, KC_J,    KC_SLSH, KC_COMM, KC_K,    KC_QUOT, KC_W,    KC_M,    KC_L,    KC_P,    KC_V,    _______, */
-  /* _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______ */
 ),
 /* Colemak2
  * ,-----------------------------------------------------------------------------------.
@@ -167,8 +168,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_COLEMAK2] = LAYOUT_planck_grid( \
   KC_Q,    KC_W,    KC_F,    KC_P,    KC_Z,    KC_BSLS, KC_GRV,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
   NAV_A,   KC_R,    KC_S,    KC_T,    KC_G,    KC_MINS, KC_QUOT, KC_M,    KC_N,    KC_E,    KC_I,    NAV_O,
-  KC_X,    KC_V,    KC_C,    KC_D,    KC_B,    KC_LPRN, KC_RPRN, KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH,
-  _______, _______, _______, GUI_ESC, LOW_SPC, LSF_TAB, RSF_BSP, RSE_RET, _______, _______, _______, _______
+  LSF_Z  , KC_X,    KC_C,    KC_D,    KC_V,    KC_LPRN, KC_RPRN, KC_K,    KC_H,    KC_COMM, KC_DOT,  RSF_SLS,
+  _______, _______, _______, _______, LSF_TAB, LSF_TAB, RSF_BSP, RSF_BSP, _______, _______, _______, _______
 ),
 
 /* Lower
@@ -245,35 +246,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______
 )
 
-};
-
-void dance_cln_finished (qk_tap_dance_state_t *state, void *user_data) {
-  if (state->count == 1) {
-    register_code (KC_RSFT);
-    register_code (KC_SCLN);
-  } else {
-    register_code (KC_SCLN);
-  }
-}
-
-void dance_cln_reset (qk_tap_dance_state_t *state, void *user_data) {
-  if (state->count == 1) {
-    unregister_code (KC_RSFT);
-    unregister_code (KC_SCLN);
-  } else {
-    unregister_code (KC_SCLN);
-  }
-}
-
-//All tap dance functions would go here. Only showing this one.
-qk_tap_dance_action_t tap_dance_actions[] = {
-    [CT_QE]    = ACTION_TAP_DANCE_DOUBLE (KC_ENT, KC_QUOT)
-  , [CT_MV]    = ACTION_TAP_DANCE_DOUBLE (KC_V, KC_MINS)
-  , [CT_ED]    = ACTION_TAP_DANCE_DOUBLE (KC_D, KC_EQL)
-  , [CT_CLN]   = ACTION_TAP_DANCE_FN_ADVANCED (NULL, dance_cln_finished, dance_cln_reset)
-  , [CT_DE]    = ACTION_TAP_DANCE_DOUBLE (KC_BSPC, KC_ESC)
-  , [CT_JESC]  = ACTION_TAP_DANCE_DOUBLE (KC_J, KC_ESC)
-// Other declarations would go here, separated by commas, if you have them
 };
 
 uint32_t layer_state_set_user(uint32_t state) {
