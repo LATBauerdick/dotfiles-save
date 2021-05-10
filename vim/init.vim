@@ -10,9 +10,24 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 set nocompatible
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" -- pathogen plugin manager
-" execute pathogen#infect()
-" execute pathogen#helptags()
+" set system clipboard to be default
+set clipboard=unnamedplus
+
+let mapleader = ","
+" Allow the normal use of "," by pressing it twice
+noremap ,, ,
+noremap \ ,
+let maplocalleader = "\\"
+
+autocmd FileType tex,latex,markdown setlocal spell spelllang=en_us
+
+" enable spell checking
+map <leader>s :setlocal spell! spelllang=en_us<cr>
+
+" Set spellfile to location that is guaranteed to exist
+set spellfile=$HOME/.vim-spell-en.utf-8.add
+
+set wildmode=longest,list,full
 
 " disable all LSP features in ALE, so ALE doesn't try to provide LSP features already provided by coc.nvim, such as auto-completion
 let g:ale_disable_lsp = 1
@@ -48,7 +63,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'BurntSushi/ripgrep
 " support for neuron
 " Plug 'fiatjaf/neuron.vim'
-" Plug 'chiefnoah/neuron-v2.vim'
+Plug 'chiefnoah/neuron-v2.vim'
 "  Plug 'alok/notational-fzf-vim'
 "  let g:nv_search_paths = ['~/Notes', '~/writing']
 "
@@ -84,8 +99,10 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'sbdchd/neoformat'
 
 " Plug 'vim-syntastic/syntastic'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'dense-analysis/ale'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 
 " Haskell
 Plug 'ujihisa/unite-haskellimport'
@@ -142,12 +159,6 @@ call plug#end()
 " }}}
 
 
-let mapleader = ","
-" Allow the normal use of "," by pressing it twice
-noremap ,, ,
-noremap \ ,
-let maplocalleader = "\\"
-
 " Use par for prettier line formatting
 set formatprg=par
 let $PARINIT = 'rTbgqR B=.,?_A_a Q=_s>|'
@@ -178,21 +189,7 @@ let g:syntastic_enable_elixir_checker = 1
 let g:syntastic_elixir_checkers = "elixir"
 
 
-" Set this for ALE. Airline will handle the rest.
-" let g:airline#extensions#ale#enabled = 1
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_open_list = 0
-" let g:ale_linters = {'haskell': ['hlint', 'ghc']}
-let g:ale_linters = {'haskell': ['cabal_ghc', 'ghc-mod', 'hdevtools', 'hie', 'hlint', 'stack_build', 'stack_ghc']}
-let g:ale_haskell_ghc_options = '-fno-code -v0 -isrc'
-
-" set system clipboard to be default
-set clipboard=unnamed
 " VSplit window
-nnoremap <leader>s <C-w>v<C-w>l
 nnoremap <leader>2 :vsplit<CR>
 nnoremap <leader>1 :only<CR>
 " go to the other window
@@ -225,13 +222,12 @@ set t_ZR=[23m
 
 " fixes glitch? in colors when using vim with tmux
 if !has('gui_running')
-  " set t_Co=256
+  set t_Co=256
   set notermguicolors
-  set background=light
+  " set background=light
   colorscheme solarized
 else
-  " set t_Co=256
-  set notermguicolors
+" set termguicolors
   set background=light
   colorscheme solarized
   " colorscheme duochrome
@@ -240,14 +236,6 @@ endif
 " This is only necessary if you use "set termguicolors".
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-" -- solarized color scheme
-" colorscheme solarized
-" colorscheme solarized8
-" colorscheme solarized8_high
-" let g:one_allow_italics = 1
-" colorscheme one
-"colorscheme xcode
-"colorscheme ghostbuster
 
 " vim lightline
 set noshowmode
@@ -265,19 +253,6 @@ let g:airline_theme='solarized'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-" let g:airline#extensions#tabline#right_sep = ' '
-" let g:airline#extensions#tabline#right_alt_sep = '|'
-" let g:airline_left_sep = ' '
-" let g:airline_left_alt_sep = '|'
-" let g:airline_right_sep = ' '
-" let g:airline_right_alt_sep = '|'
-" testing rounded separators (extra-powerline-symbols):
-" let g:airline_left_sep = "\uE0B4"
-" let g:airline_right_sep = "\uE0B6"
-" set the CN (column number) symbol:
-" let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
 
 " easy expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -298,6 +273,8 @@ map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 " set guifont=Hack:h14
 set linespace=4
 set cursorline    " highlight the current line
+set cursorcolumn  " highlight the current column
+" highlight CursorColumn ctermbg=Yellow cterm=bold guibg=#2b2b2b
 set visualbell    " stop that ANNOYING beeping
 
 " Allow usage of mouse in iTerm
@@ -343,8 +320,7 @@ set number
 set numberwidth=5
 
 " Open new split panes to right and bottom, which feels more natural
-" set splitbelow
-set splitright
+set splitbelow splitright
 
 " Auto resize Vim splits to active split
 " set winwidth=104
@@ -359,27 +335,23 @@ set sidescrolloff=15
 set sidescroll=1
 
 "Toggle relative numbering, and set to absolute on loss of focus or insert mode
-" set rnu
-" function! ToggleNumbersOn()
-"     set nu!
-"     set rnu
-" endfunction
-" function! ToggleRelativeOn()
-"     set rnu!
-"     set nu
-" endfunction
-" autocmd FocusLost * call ToggleRelativeOn()
-" autocmd FocusGained * call ToggleRelativeOn()
-" autocmd InsertEnter * call ToggleRelativeOn()
-" autocmd InsertLeave * call ToggleRelativeOn()
+set rnu
+function! ToggleNumbersOn()
+    set nu!
+    set rnu
+endfunction
+function! ToggleRelativeOn()
+    set rnu!
+    set nu
+endfunction
+autocmd FocusLost * call ToggleRelativeOn()
+autocmd FocusGained * call ToggleRelativeOn()
+autocmd InsertEnter * call ToggleRelativeOn()
+autocmd InsertLeave * call ToggleRelativeOn()
 
 " Use tab to jump between blocks, because it's easier
 nnoremap <tab> %
 vnoremap <tab> %
-
-" Set spellfile to location that is guaranteed to exist, can be symlinked to
-" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
-set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 " Always use vertical diffs
 " set diffopt+=vertical
@@ -518,7 +490,7 @@ au FileType purescript nmap <leader>c :PSCIDEcaseSplit<CR>
 au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
 au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
 
-
+" persistent undofiles
 set undofile
 augroup vimrc
   autocmd!
@@ -530,165 +502,14 @@ func! g:CustomNeuronIDGenerator(title)
 " substitute(a:title, " ", "-", "g")
 endf
 
-" Coc.vim configuration
-"
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
+" setup language server
+source $HOME/.config/nvim/lsp-config.vim
+luafile ~/.config/nvim/lua/compe-config.lua
 
-" Give more space for displaying messages.
-set cmdheight=2
+" lua require 'python-lsp'
+lua << EOF
+require'lspconfig'.pyright.setup{}
+EOF
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Map function and class text objects
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
-
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-nnoremap <leader> F :call CocAction('format')<CR>
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Mappings for CoCList
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+luafile ~/.config/nvim/lua/haskell-lsp.lua
 
