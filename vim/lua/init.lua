@@ -51,5 +51,13 @@ require('telescope').setup{
   }
 }
 
-vim.cmd('colo solarized')
+require'telescope'.load_extension('zoxide')
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>cd",
+	":lua require'telescope'.extensions.zoxide.list{}<CR>",
+	{noremap = true, silent = true}
+)
+
+-- vim.cmd('colo solarized')
 

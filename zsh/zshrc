@@ -167,7 +167,7 @@ export PATH=~/bin:~/.local/bin:~/.npm-global/bin:/usr/local/bin:$PATH:~/Library/
 
 # export GREP_OPTIONS='--color=auto'
 export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
-export EDITOR="nvim"
+export EDITOR="nv"
 # export CLICOLOR=1
 #export LSCOLORS=Gxfxcxdxbxegedabagacad
 #export LS_COLORS=Gxfxcxdxbxegedabagacad

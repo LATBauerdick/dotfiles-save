@@ -10,6 +10,7 @@ return require('packer').startup(
       'nvim-telescope/telescope.nvim',
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
+    use 'jvgrootveld/telescope-zoxide'
   end
 )
 

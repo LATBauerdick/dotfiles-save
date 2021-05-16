@@ -71,8 +71,11 @@ Plug 'chiefnoah/neuron-v2.vim'
 Plug 'mhinz/vim-grepper'
 "
 " Git
+" Plug 'int3/vim-extradite'
+Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
-Plug 'int3/vim-extradite'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
 
 " Bars, panels, and files
 Plug 'scrooloose/nerdtree'
@@ -136,9 +139,9 @@ Plug 'ledger/vim-ledger'
 " Custom bundles
 Plug 'terryma/vim-smooth-scroll'
 Plug 'sdothum/vim-colors-duochrome'
-Plug 'altercation/vim-colors-solarized'
-Plug 'frankier/neovim-colors-solarized-truecolor-only'
-Plug 'lifepillar/vim-solarized8'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'frankier/neovim-colors-solarized-truecolor-only'
+" Plug 'lifepillar/vim-solarized8'
 Plug 'rakr/vim-one'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fireplace'
@@ -223,9 +226,12 @@ set t_ZR=[23m
 " fixes glitch? in colors when using vim with tmux
 if !has('gui_running')
   set t_Co=256
-  set notermguicolors
+  " set notermguicolors
   " set background=light
   colorscheme solarized
+  let g:solarized_termcolors=16
+  " let g:solarized_termtrans=1
+  " let g:solarized_contrast="high"
 else
 " set termguicolors
   set background=light
@@ -249,7 +255,7 @@ let g:lightline = {
 
 " -- vim-airline
 let g:airline_theme='solarized'
-" let g:airline_solarized_bg='dark'
+let g:airline_solarized_bg='dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 2
 let g:airline#extensions#tabline#fnamemod = ':t'
