@@ -5,6 +5,7 @@ return require('packer').startup(
     use 'wbthomason/packer.nvim'
     use 'altercation/vim-colors-solarized'
     use 'tpope/vim-commentary'
+    use 'nanotee/zoxide.vim'
 -- telescope
     use {
       'nvim-telescope/telescope.nvim',
@@ -13,4 +14,5 @@ return require('packer').startup(
     use 'jvgrootveld/telescope-zoxide'
   end
 )
+
 
