@@ -4,6 +4,7 @@ return require('packer').startup(
   function()
     use 'wbthomason/packer.nvim'
     use 'altercation/vim-colors-solarized'
+    use 'shaunsingh/nord.nvim'
     use 'tpope/vim-commentary'
     use 'nanotee/zoxide.vim'
 -- telescope

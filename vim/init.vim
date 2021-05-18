@@ -1,3 +1,4 @@
+
 lua require 'init'
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -139,9 +140,6 @@ Plug 'ledger/vim-ledger'
 " Custom bundles
 Plug 'terryma/vim-smooth-scroll'
 Plug 'sdothum/vim-colors-duochrome'
-" Plug 'altercation/vim-colors-solarized'
-" Plug 'frankier/neovim-colors-solarized-truecolor-only'
-" Plug 'lifepillar/vim-solarized8'
 Plug 'rakr/vim-one'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fireplace'
@@ -225,13 +223,16 @@ set t_ZR=[23m
 
 " fixes glitch? in colors when using vim with tmux
 if !has('gui_running')
-  set t_Co=256
-  " set notermguicolors
+" set t_Co=256
+" set notermguicolors
   " set background=light
-  colorscheme solarized
-  let g:solarized_termcolors=16
-  " let g:solarized_termtrans=1
-  " let g:solarized_contrast="high"
+  " colorscheme solarized
+  " let g:solarized_termcolors=16
+" comments are italicized
+" let g:solarized_termtrans=1
+" let g:solarized_contrast="high"
+  " highlight Comment cterm=italic
+
 else
 " set termguicolors
   set background=light
@@ -242,9 +243,6 @@ endif
 " This is only necessary if you use "set termguicolors".
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-" comments are italicized
-highlight Comment cterm=italic
 
 " vim lightline
 set noshowmode
@@ -282,7 +280,7 @@ map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 " set guifont=Hack:h14
 set linespace=4
 set cursorline    " highlight the current line
-set cursorcolumn  " highlight the current column
+" set cursorcolumn  " highlight the current column
 " highlight CursorColumn ctermbg=Yellow cterm=bold guibg=#2b2b2b
 set visualbell    " stop that ANNOYING beeping
 
@@ -310,7 +308,7 @@ set shiftround
 set expandtab
 
 " Display extra whitespace
-set list listchars=tab:\|·,trail:·,nbsp:·,extends:>,precedes:<
+set list listchars=tab:»·,trail:·,nbsp:·,extends:>,precedes:<
 ",tab:»·,eol:¬,space:␣
 
 " Make it obvious where 80 characters is
@@ -521,4 +519,6 @@ require'lspconfig'.pyright.setup{}
 EOF
 
 luafile ~/.config/nvim/lua/haskell-lsp.lua
+
+highlight Comment cterm=italic
 
