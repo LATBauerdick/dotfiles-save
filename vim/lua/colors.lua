@@ -9,4 +9,7 @@ vim.cmd('colo solarized')
 -- Load the colorscheme
 -- require('nord').set()
 
+vim.cmd('let g:solarized_termcolors=16')
+vim.cmd('set background=light')
+
 vim.cmd('highlight Comment cterm=italic')

@@ -74,6 +74,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define GUI_LFT  MT(MOD_RGUI, KC_LEFT)
 #define GUI_TAB  MT(MOD_LGUI, KC_TAB)
 #define GUI_ESC  MT(MOD_LGUI, KC_ESC)
+#define GUI_RET  MT(MOD_LGUI, KC_ENT)
 #define ALT_ESC  MT(MOD_LALT, KC_ESC)
 #define ALT_TAB  MT(MOD_LALT, KC_TAB)
 #define LSF_SPC  MT(MOD_LSFT, KC_SPC)
@@ -106,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
   CTL_ESC, NAV_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NAV_SCLN, RSF_RET,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  RSF_RET,
-  RAISE,   CTL_SPC, ALT_TAB, GUI_ESC, LOW_RET, LOW_RET, RSE_SPC, RSE_SPC, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
+  RAISE,   CTL_SPC, ALT_ESC, GUI_RET, LSF_SPC, LOW_SPC, RSE_SPC, RSE_SPC, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
 ),
 /* Colemak1: derived from Colemak Mod-DH, switching KM and rotating BGV
  * (just switch DV and HM w/r to Colemak proper)
@@ -204,10 +205,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_planck_grid( \
-  KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_COLN, _______,
+  KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_RBRC, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, _______,
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_QUOT, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
   _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL,  KC_LPRN, KC_BSLS, KC_RPRN, KC_QUOT, KC_COMM, KC_DOT , KC_SLSH,
-  BACKLIT, _______, _______, _______, LSF_BSP, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_GRV
+  BACKLIT, _______, _______, _______, LSF_BSP, LSF_RET, _______, _______, _______, KC_VOLD, KC_VOLU, KC_GRV
 ),
 
 /* Directional navigation layer
