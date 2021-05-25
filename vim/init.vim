@@ -64,7 +64,7 @@ Plug 'junegunn/fzf.vim'
 "Plug 'BurntSushi/ripgrep
 " support for neuron
 " Plug 'fiatjaf/neuron.vim'
-Plug 'chiefnoah/neuron-v2.vim'
+" Plug 'chiefnoah/neuron-v2.vim'
 "  Plug 'alok/notational-fzf-vim'
 "  let g:nv_search_paths = ['~/Notes', '~/writing']
 "
