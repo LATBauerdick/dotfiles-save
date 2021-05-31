@@ -1,10 +1,16 @@
 
-lua require 'init'
+" remap leader key early
+let mapleader = ","
+" Allow the normal use of "," by pressing it twice
+noremap ,, ,
+noremap \ ,
+let maplocalleader = "\\"
 
+lua require 'init'
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fh <cmd>Telescope help_tas<cr>
 
 " Type :so % to refresh .vimrc after making changes
 
@@ -13,12 +19,6 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " set system clipboard to be default
 set clipboard=unnamedplus
-
-let mapleader = ","
-" Allow the normal use of "," by pressing it twice
-noremap ,, ,
-noremap \ ,
-let maplocalleader = "\\"
 
 autocmd FileType tex,latex,markdown setlocal spell spelllang=en_us
 
@@ -368,14 +368,8 @@ vnoremap <tab> %
 map <C-n> :NERDTreeToggle<CR>
 
 " Fuzzy find files
-nnoremap <C-p> :<C-u>FZF<CR>
 nnoremap <silent> <Leader><space> :<C-u>FZF<CR>
 set rtp+=/usr/local/opt/fzf
-
-" nnoremap <silent> <Leader><space> :CtrlP<CR>
-" let g:ctrlp_max_files=0
-" let g:ctrlp_show_hidden=1
-" let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|.cabal-sandbox|.stack-work)$' }
 
 " HIE / LanguageClient-neovim setup
 " Required for operations modifying multiple buffers like rename.
@@ -480,23 +474,6 @@ augroup END
 "augroup END
 
 set foldmethod=marker
-
-let g:purescript_indent_if = 3
-let g:purescript_indent_case = 5
-let g:purescript_indent_let = 4
-let g:purescript_indent_where = 6
-let g:purescript_indent_do = 3
-
-let g:psc_ide_syntastic_mode = 1
-au FileType purescript nmap <leader>t :PSCIDEtype<CR>
-au FileType purescript nmap <leader>s :PSCIDEapplySuggestion<CR>
-au FileType purescript nmap <leader>a :PSCIDEaddTypeAnnotation<CR>
-au FileType purescript nmap <leader>i :PSCIDEimportIdentifier<CR>
-au FileType purescript nmap <leader>r :PSCIDEload<CR>
-au FileType purescript nmap <leader>p :PSCIDEpursuit<CR>
-au FileType purescript nmap <leader>c :PSCIDEcaseSplit<CR>
-au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
-au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
 
 " persistent undofiles
 set undofile
