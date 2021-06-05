@@ -9,10 +9,14 @@ return require('packer').startup(
     use 'nanotee/zoxide.vim'
 -- telescope
     use {
-      'nvim-telescope/telescope.nvim',
+        'nvim-telescope/telescope.nvim',
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
     use 'jvgrootveld/telescope-zoxide'
+    use 'sudormrfbin/cheatsheet.nvim'
+    use { "oberblastmeister/neuron.nvim", branch = 'unstable' }
+
+    use 'nvim-treesitter/nvim-treesitter' --  We recommend updating the parsers on update
   end
 )
 

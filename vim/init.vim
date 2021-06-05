@@ -154,7 +154,6 @@ Plug 'mvandiemen/ghostbuster'
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 
-
 call plug#end()
 
 " }}}
@@ -482,10 +481,10 @@ augroup vimrc
   autocmd BufWritePre /tmp/* setlocal noundofile
 augroup END
 
-func! g:CustomNeuronIDGenerator(title)
-     return a:title
-" substitute(a:title, " ", "-", "g")
-endf
+" func! g:CustomNeuronIDGenerator(title)
+"      return a:title
+" " substitute(a:title, " ", "-", "g")
+" endf
 
 " setup language server
 source $HOME/.config/nvim/lsp-config.vim

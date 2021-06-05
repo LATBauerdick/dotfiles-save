@@ -1,5 +1,6 @@
 .DS_Store
 *CONFLICT*
+vim/plugin/packer_compiled.vim
 karabiner/automatic_backups/
 karabiner/karabiner.json
 vim/bundle/
