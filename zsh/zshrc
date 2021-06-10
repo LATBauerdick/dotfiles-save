@@ -155,6 +155,11 @@ export LESS=' -R -X -F '
 
 export BAT_THEME="Solarized (light)"
 
+# kitty terminal emulator extensions
+# most won't work with tmux
+alias icat="kitty +kitten icat"
+alias d="kitty +kitten diff"
+
 # setup root6
 #pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
 
