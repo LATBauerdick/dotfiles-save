@@ -209,10 +209,10 @@ alias gcm='git commit -m '
 alias go='git checkout '
 alias l='ls -alh'
 
-alias n="neuron -d ~/Zettelkasten"
-alias nn="neuron -d ~/Zettelkasten new -e"
-alias ns="neuron -d ~/Zettelkasten search"
-alias na="neuron -d ~/Zettelkasten search -a"
+alias n="neuron -d ~/zk"
+alias nn="neuron -d ~/zk new -e"
+alias ns="neuron -d ~/zk search"
+alias na="neuron -d ~/zk search -a"
 alias xo='xargs -I % open %'
 alias xe='xargs -I % $EDITOR %'
 

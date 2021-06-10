@@ -109,24 +109,14 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 
 " Haskell
-Plug 'ujihisa/unite-haskellimport'
-Plug 'Shougo/unite.vim'
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'neovimhaskell/haskell-vim'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-"""Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
-Plug 'neovimhaskell/haskell-vim'
 Plug 'enomsg/vim-haskellConcealPlus'
-"""Plug 'eagletmt/ghcmod-vim'
-"""Plug 'eagletmt/neco-ghc'
+" for haskellConcealPlus disable double-stroke capitals (does not work on iPad)
+let hscoptions="𝐌𝐄𝐓𝐒iBQZDC*"
+
 Plug 'Twinside/vim-hoogle'
-""" Plug 'mpickering/hlint-refactor-vim'
-""" Plug 'parsonsmatt/intero-neovim'
 
 " PureScript
 Plug 'raichoo/purescript-vim'
@@ -263,9 +253,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " easy expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-" for haskellConcealPlus disable double-stroke capitals (does not work on iPad)
-let hscoptions="𝐌𝐄𝐓𝐒iBQZDC"
 
 set showcmd       " display incomplete command
 set autowrite     " Automatically :write before running commands
