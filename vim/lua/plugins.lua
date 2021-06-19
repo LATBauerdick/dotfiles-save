@@ -2,6 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(
   function()
+    use 'hrsh7th/nvim-compe'
     use 'wbthomason/packer.nvim'
     use 'altercation/vim-colors-solarized'
     use 'shaunsingh/nord.nvim'

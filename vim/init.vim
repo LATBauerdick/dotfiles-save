@@ -106,7 +106,6 @@ Plug 'sbdchd/neoformat'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'dense-analysis/ale'
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
 
 " Haskell
 
@@ -475,7 +474,8 @@ augroup END
 
 " setup language server
 source $HOME/.config/nvim/lsp-config.vim
-luafile ~/.config/nvim/lua/compe-config.lua
+" set completeopt=menuone,noselect
+" luafile ~/.config/nvim/lua/compe-config.lua
 
 " lua require 'python-lsp'
 lua << EOF
