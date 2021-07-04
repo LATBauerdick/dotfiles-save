@@ -225,8 +225,10 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # export VIMRUNTIME=$HOME/Dev/neovim/runtime
 # alias nv=$HOME/Dev/neovim/build/bin/nvim
-alias nv='VIMRUNTIME=$HOME/Dev/neovim/runtime $HOME/Dev/neovim/build/bin/nvim'
-export EDITOR="$HOME/Dev/neovim/build/bin/nvim"
+# alias nv='VIMRUNTIME=$HOME/Dev/neovim/runtime $HOME/Dev/neovim/build/bin/nvim'
+alias nv='nvim'
+# export EDITOR="$HOME/Dev/neovim/build/bin/nvim"
+export EDITOR="nvim"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files'

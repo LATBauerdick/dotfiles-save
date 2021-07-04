@@ -71,6 +71,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define CTL_QUT  MT(MOD_LCTL, KC_QUOT)
 #define CTL_SPC  MT(MOD_LCTL, KC_SPC)
 #define CTL_RET  MT(MOD_RCTL, KC_ENT)
+#define CTL_CAPS MT(MOD_LCTL, KC_CAPS)
 #define GUI_LFT  MT(MOD_RGUI, KC_LEFT)
 #define GUI_TAB  MT(MOD_LGUI, KC_TAB)
 #define GUI_ESC  MT(MOD_LGUI, KC_ESC)
@@ -107,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
   CTL_ESC, NAV_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NAV_SCLN, RSF_RET,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  RSF_RET,
-  RAISE,   CTL_SPC, ALT_ESC, GUI_RET, LSF_SPC, LOW_SPC, RSE_SPC, RSE_SPC, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
+  RAISE,   KC_CAPS, ALT_ESC, GUI_RET, LSF_SPC, LOW_SPC, RSE_SPC, RSE_SPC, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
 ),
 /* Colemak1: derived from Colemak Mod-DH, switching KM and rotating BGV
  * (just switch DV and HM w/r to Colemak proper)

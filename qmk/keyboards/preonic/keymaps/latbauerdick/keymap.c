@@ -74,6 +74,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 #define GUI_LFT  MT(MOD_RGUI, KC_LEFT)
 #define GUI_TAB  MT(MOD_LGUI, KC_TAB)
 #define GUI_ESC  MT(MOD_LGUI, KC_ESC)
+#define GUI_RET  MT(MOD_LGUI, KC_ENT)
 #define ALT_ESC  MT(MOD_LALT, KC_ESC)
 #define ALT_TAB  MT(MOD_LALT, KC_TAB)
 #define LSF_SPC  MT(MOD_LSFT, KC_SPC)
@@ -108,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_BSPC,
   CTL_ESC,  NAV_A,   KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    NAV_SCLN, RSF_RET,
   KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  RSF_RET,
-  RAISE,    CTL_SPC, ALT_TAB, GUI_ESC, LSF_RET, LOW_SPC, RSE_SPC, RSE_SPC, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
+  RAISE,    KC_CAPS, ALT_ESC, GUI_RET, LSF_SPC, LOW_SPC, RSE_SPC, RSE_SPC, GUI_LFT, KC_DOWN, KC_UP,    LOW_RGHT
 ),
 
 /* Colemak: derived from Colemak Mod-DH, switching KM and rotating BGV
@@ -173,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_Q,    KC_W,    KC_F,    KC_P,    KC_Z,    KC_BSLS, KC_GRV,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,
   NAV_A,   KC_R,    KC_S,    KC_T,    KC_G,    KC_MINS, KC_QUOT, KC_M,    KC_N,    KC_E,    KC_I,    NAV_O,
   LSF_Z  , KC_X,    KC_C,    KC_D,    KC_V,    KC_LPRN, KC_RPRN, KC_K,    KC_H,    KC_COMM, KC_DOT,  RSF_SLS,
-  _______, _______, _______, _______, _______, LSF_TAB, RSF_BSP, _______, _______, _______, _______, _______
+  _______, _______, _______, _______, LSF_TAB, LSF_TAB, RSF_BSP, RSF_BSP, _______, _______, _______, _______
 ),
 
 /* Lower
@@ -211,11 +212,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
+  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
   KC_GRV,  KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_RBRC, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, _______,
   _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_QUOT, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
   _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL,  KC_LPRN, KC_BSLS, KC_RPRN, KC_QUOT, KC_COMM, KC_DOT , KC_SLSH,
-  BACKLIT, _______, _______, _______, LSF_BSP, _______, _______, _______, _______, KC_VOLD, KC_VOLU, KC_GRV
+  BACKLIT, _______, _______, _______, LSF_BSP, LSF_RET, _______, _______, _______, KC_VOLD, KC_VOLU, KC_GRV
 ),
 
 /* Directional navigation layer
@@ -255,7 +256,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_preonic_grid( \
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
-  _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL,  \
+  _______, RESET,   DEBUG,   RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, KC_DEL,  \
   _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK, COLEMAK1,COLEMAK2,_______, \
   _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
