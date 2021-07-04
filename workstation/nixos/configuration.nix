@@ -171,7 +171,7 @@
 
   services.syncthing = {
     enable = true;
-    dataDir = "/home/bauerdic/.config/syncthing";
+    dataDir = "/home/bauerdic/";
     user = "bauerdic";
   };
 

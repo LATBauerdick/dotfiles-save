@@ -36,6 +36,7 @@
       stack
       binutils gcc gnumake openssl pkgconfig
     #  rustc cargo   
+      zoxide
     ];
     programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
 

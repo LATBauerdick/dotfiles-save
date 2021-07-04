@@ -29,7 +29,7 @@
 
     peers = [
       {
-        publicKey = "cP3x2nSm3P5jvrTqjEroG5iKIRCi6k5jwvgLvAsi6Cg=";
+        publicKey = "BOiWgg6uuKUm3+tnPdcvIp7LffxQjcoIaMZHbcuCsx8=";
         allowedIPs = [ "10.0.0.0/24" "10.0.0.2/32" ];
         persistentKeepalive = 25;
       }
