@@ -38,6 +38,11 @@
         allowedIPs = [ "10.0.0.3/32" ];
         persistentKeepalive = 25;
       }
+      {
+        publicKey = "bG6Ro8DiV144lGRGY0YLbasEyXDjkdl3GfZc7XVfm0c=";
+        allowedIPs = [ "10.0.0.4/32" ];
+        persistentKeepalive = 25;
+      }
     ];
   };
 }

@@ -3,6 +3,12 @@
 
 {
 
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+  	
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   # Install some packages
@@ -27,7 +33,8 @@
       bat
       less
       man
-      neovim
+     # neovim
+      neovim-nightly
       ag
       ripgrep
       fzf
@@ -37,6 +44,7 @@
       binutils gcc gnumake openssl pkgconfig
     #  rustc cargo   
       zoxide
+      jq
     ];
     programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
 
