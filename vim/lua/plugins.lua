@@ -18,6 +18,7 @@ return require('packer').startup(
     use { "oberblastmeister/neuron.nvim", branch = 'unstable' }
 
     use 'nvim-treesitter/nvim-treesitter' --  We recommend updating the parsers on update
+    use 'neovim/nvim-lspconfig'
   end
 )
 

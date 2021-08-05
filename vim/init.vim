@@ -284,6 +284,9 @@ set showmatch
 " but preserve cursor coloring
 nmap <silent> <leader><cr> :noh\|hi Cursor guibg=red<cr>
 
+" see h: icm
+set icm=split
+
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
@@ -297,8 +300,12 @@ set expandtab
 set list listchars=tab:»·,trail:·,nbsp:·,extends:>,precedes:<
 ",tab:»·,eol:¬,space:␣
 
+" highlight non-ascii
+syntax match nonascii "[^\x00-\x7F]"
+highlight nonascii guibg=Red ctermbg=2
+
 " Make it obvious where 80 characters is
-set textwidth=80
+set textwidth=0
 " set formatoptions=cq
 set formatoptions=qrn1
 set wrapmargin=0
