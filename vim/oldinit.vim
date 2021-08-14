@@ -1,151 +1,17 @@
 
-" remap leader key early
-let mapleader = ","
-" Allow the normal use of "," by pressing it twice
-noremap ,, ,
-noremap \ ,
-let maplocalleader = "\\"
 
-lua require 'init'
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tas<cr>
-
-" Type :so % to refresh .vimrc after making changes
-
-set nocompatible
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-" set system clipboard to be default
-set clipboard=unnamedplus
 
 autocmd FileType tex,latex,markdown setlocal spell spelllang=en_us
 
-" enable spell checking
-map <leader>s :setlocal spell! spelllang=en_us<cr>
-
-" Set spellfile to location that is guaranteed to exist
-set spellfile=$HOME/.vim-spell-en.utf-8.add
-
 set wildmode=longest,list,full
 
-" disable all LSP features in ALE, so ALE doesn't try to provide LSP features already provided by coc.nvim, such as auto-completion
-let g:ale_disable_lsp = 1
-
-set hidden
-
-" vim-plug {{{
-
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-call plug#begin('~/.vim/bundle')
-
-Plug 'jgdavey/tslime.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'scrooloose/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
-" Plug 'ervandew/supertab'
-Plug 'benekastah/neomake'
-Plug 'moll/vim-bbye'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'vim-scripts/gitignore'
-
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-
-"
-" fzf fuzzy file search
-"Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
-"    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'BurntSushi/ripgrep
-" support for neuron
-" Plug 'fiatjaf/neuron.vim'
-" Plug 'chiefnoah/neuron-v2.vim'
-"  Plug 'alok/notational-fzf-vim'
-"  let g:nv_search_paths = ['~/Notes', '~/writing']
-"
-" grepper
-Plug 'mhinz/vim-grepper'
-"
-" Git
-" Plug 'int3/vim-extradite'
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'junegunn/gv.vim'
-
-" Bars, panels, and files
-Plug 'scrooloose/nerdtree'
-Plug 'bling/vim-airline'
-" Plug 'itchyny/lightline.vim'
-"" Plug 'ctrlpvim/ctrlp.vim'
-Plug 'majutsushi/tagbar'
-
-" Text manipulation
-Plug 'vim-scripts/Align'
-Plug 'simnalamburt/vim-mundo'
-" Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'easymotion/vim-easymotion'
-
-" vim sugar for shell commands
-Plug 'tpope/vim-eunuch'
-
-" Allow pane movement to jump out of vim into tmux
-Plug 'christoomey/vim-tmux-navigator'
-
-Plug 'sbdchd/neoformat'
-
-" Plug 'vim-syntastic/syntastic'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'dense-analysis/ale'
-Plug 'neovim/nvim-lspconfig'
-
-" Haskell
-
-" Plug 'neovimhaskell/haskell-vim'
-
-Plug 'enomsg/vim-haskellConcealPlus'
-" for haskellConcealPlus disable double-stroke capitals (does not work on iPad)
-let hscoptions="𝐌𝐄𝐓𝐒iBQZDC*"
-
-Plug 'Twinside/vim-hoogle'
-
-" PureScript
-Plug 'raichoo/purescript-vim'
-"""Plug 'frigoeu/psc-ide-vim'
-
-" rust
-Plug 'rust-lang/rust.vim'
-
-Plug 'ledger/vim-ledger'
-
-" Custom bundles
-Plug 'terryma/vim-smooth-scroll'
-Plug 'sdothum/vim-colors-duochrome'
-Plug 'rakr/vim-one'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'guns/vim-sexp'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mvandiemen/ghostbuster'
-
-Plug 'tpope/vim-dispatch'
-Plug 'radenling/vim-dispatch-neovim'
-
-call plug#end()
-
-" }}}
 
 
 " Use par for prettier line formatting
@@ -177,21 +43,6 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_enable_elixir_checker = 1
 let g:syntastic_elixir_checkers = "elixir"
 
-
-" VSplit window
-nnoremap <leader>2 :vsplit<CR>
-nnoremap <leader>1 :only<CR>
-" go to the other window
-nnoremap <leader>w <C-w><C-w>
-nnoremap <leader>o <C-w><C-w>
-
-noremap <leader>l :ls<CR>:b 
-
-" noremap ; :
-
-" strip all trailing whitespace in the current file
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-
 " Ack command
 nnoremap <leader>a :Ack
 let g:ackprg = 'ag --vimgrep'
@@ -199,9 +50,6 @@ nnoremap <leader>g :Grepper<cr>
 let g:grepper = { 'next_tool': '<leader>g' }
 nmap gs  <plug>(GrepperOperator)
 xmap gs  <plug>(GrepperOperator)
-
-" quickly edit .vimrc file
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 
 let g:ghcid_command= "/usr/local/bin/ghcid"
 
@@ -253,48 +101,15 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " easy expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-set showcmd       " display incomplete command
-set autowrite     " Automatically :write before running commands
-set autoread      " Reload files changed outside vim
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 au FocusGained,BufEnter * :silent! !
 
-" close buffer without closing window
-map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
-
 "Set default font in mac vim and gvim
 " set guifont=Hack:h14
-set linespace=4
-set cursorline    " highlight the current line
-" set cursorcolumn  " highlight the current column
-" highlight CursorColumn ctermbg=Yellow cterm=bold guibg=#2b2b2b
-set visualbell    " stop that ANNOYING beeping
-
-" Allow usage of mouse in iTerm
-set ttyfast
-set mouse=a
-
-set gdefault      " Never have to type /g at the end of search / replace again
-set ignorecase    " case insensitive searching (unless specified)
-set smartcase
-set hlsearch
-set incsearch
-set showmatch
-" Disable highlight when <leader><cr> is pressed
-" but preserve cursor coloring
-nmap <silent> <leader><cr> :noh\|hi Cursor guibg=red<cr>
 
 " see h: icm
 set icm=split
 
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
-
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·,extends:>,precedes:<
@@ -304,23 +119,8 @@ set list listchars=tab:»·,trail:·,nbsp:·,extends:>,precedes:<
 syntax match nonascii "[^\x00-\x7F]"
 highlight nonascii guibg=Red ctermbg=2
 
-" Make it obvious where 80 characters is
-set textwidth=0
-" set formatoptions=cq
-set formatoptions=qrn1
-set wrapmargin=0
-set colorcolumn=+1
-set linebreak
-
 " define Wrap command to set text soft wrapping
 command! -nargs=* Wrap set wrap linebreak nolist
-
-" Numbers
-set number
-set numberwidth=5
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow splitright
 
 " Auto resize Vim splits to active split
 " set winwidth=104
@@ -328,14 +128,7 @@ set splitbelow splitright
 " set winminheight=5
 " set winheight=999
 
-" ================ Scrolling ========================
-
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
-
 "Toggle relative numbering, and set to absolute on loss of focus or insert mode
-set rnu
 function! ToggleNumbersOn()
     set nu!
     set rnu
@@ -365,7 +158,6 @@ set rtp+=/usr/local/opt/fzf
 
 " HIE / LanguageClient-neovim setup
 " Required for operations modifying multiple buffers like rename.
-set hidden
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
@@ -388,8 +180,6 @@ map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 " delete buffer without closing pane
 noremap <leader>bd :Bd<cr>
 
-
-syntax on
 
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
@@ -414,9 +204,6 @@ nnoremap <leader>= :wincmd =<cr>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
-
-" use kk as Esc
-inoremap kk <esc>
 
 " use cursor keys to move display lines
 nmap <up> gk

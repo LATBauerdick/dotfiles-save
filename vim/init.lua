@@ -1,4 +1,20 @@
+-- this does not work
+-- Type :so % to refresh .vimrc after making changes
 
+-- Map leader key early
+vim.g.mapleader = ','
+-- noremap ,, ,
+-- noremap \ ,
+vim.g.maplocalleader = '\\'
+
+local fn = vim.fn
+local execute = vim.api.nvim_command
+
+-- sensible defaults
+require('settings')
+
+-- Key mappings
+require('keymappings')
 
 -- make sure packer.nvim is installed
 local execute = vim.api.nvim_command
@@ -109,3 +125,6 @@ do
     vim.lsp.util.set_qflist(qflist)
   end
 end
+
+vim.cmd 'source ~/.config/nvim/oldinit.vim'
+
