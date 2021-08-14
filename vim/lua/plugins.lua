@@ -1,26 +1,32 @@
 vim.cmd [[packadd packer.nvim]]
 
+-- paq plugin manager https://github.com/savq/paq-nvim/
+local fn = vim.fn
+local install_path = fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  fn.system({'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', install_path})
+end
 
-
-local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.config/nvim/plugged')
--- vim-plug {{{
-Plug 'jgdavey/tslime.vim'
-Plug ('Shougo/vimproc.vim', {['do'] = 'make'})
-Plug 'scrooloose/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
+require "paq" {
+    "savq/paq-nvim";                  -- Let Paq manage itself
+-- paq-nvim {{{
+    -- {"lervag/vimtex", opt=true};      -- Use braces when passing options
+    'jgdavey/tslime.vim';
+    {'Shougo/vimproc.vim', ['do'] = 'make'};
+    'wellle/targets.vim';
+    'scrooloose/nerdcommenter';
+    'jiangmiao/auto-pairs';
 -- Plug 'ervandew/supertab'
-Plug 'benekastah/neomake'
-Plug 'moll/vim-bbye'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'vim-scripts/gitignore'
+    'benekastah/neomake';
+    'moll/vim-bbye';
+    'nathanaelkane/vim-indent-guides';
+    'vim-scripts/gitignore';
 
-Plug ('mg979/vim-visual-multi', {branch = 'master'})
---
+    { 'mg979/vim-visual-multi', branch = 'master' };
 --
 -- fzf fuzzy file search
---Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+--  Plug '/usr/local/opt/fzf'
+    'junegunn/fzf.vim';
 --    Plug ('junegunn/fzf', { ['do'] = '{ -> fzf#install() }' })
 --Plug 'BurntSushi/ripgrep
 -- support for neuron
@@ -30,91 +36,103 @@ Plug 'junegunn/fzf.vim'
 --  let g:nv_search_paths = ['~/Notes', '~/writing']
 --
 -- grepper
-Plug 'mhinz/vim-grepper'
+    'mhinz/vim-grepper';
 --
 -- Git
 -- Plug 'int3/vim-extradite'
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'junegunn/gv.vim'
+    'mhinz/vim-signify';
+    'tpope/vim-fugitive';
+    'tpope/vim-rhubarb';
+    'junegunn/gv.vim';
 
 -- Bars, panels, and files
-Plug 'scrooloose/nerdtree'
-Plug 'bling/vim-airline'
+    'scrooloose/nerdtree';
+    'bling/vim-airline';
 -- Plug 'itchyny/lightline.vim'
 -- Plug 'ctrlpvim/ctrlp.vim'
-Plug 'majutsushi/tagbar'
+    'majutsushi/tagbar';
 
 -- Text manipulation
-Plug 'vim-scripts/Align'
-Plug 'simnalamburt/vim-mundo'
--- Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'easymotion/vim-easymotion'
+    'vim-scripts/Align';
+    'simnalamburt/vim-mundo';
+    'tpope/vim-commentary';
+    'tpope/vim-surround';
+    'godlygeek/tabular';
+    'michaeljsmith/vim-indent-object';
+    'easymotion/vim-easymotion';
 
 -- vim sugar for shell commands
-Plug 'tpope/vim-eunuch'
+    'tpope/vim-eunuch';
 
 -- Allow pane movement to jump out of vim into tmux
-Plug 'christoomey/vim-tmux-navigator'
+    'christoomey/vim-tmux-navigator';
 
-Plug 'sbdchd/neoformat'
+    'sbdchd/neoformat';
 
 -- Plug 'vim-syntastic/syntastic'
 -- Plug 'neoclide/coc.nvim', {'branch': 'release'}
 -- Plug 'dense-analysis/ale'
-Plug 'neovim/nvim-lspconfig'
+    'neovim/nvim-lspconfig';
 
 -- Haskell
 
 -- Plug 'neovimhaskell/haskell-vim'
 
-Plug 'enomsg/vim-haskellConcealPlus'
+    'enomsg/vim-haskellConcealPlus';
 -- for haskellConcealPlus disable double-stroke capitals (does not work on iPad)
--- let hscoptions="𝐌𝐄𝐓𝐒iBQZDC*"
 
-Plug 'Twinside/vim-hoogle'
+    'Twinside/vim-hoogle';
 
 -- PureScript
-Plug 'raichoo/purescript-vim'
+    'raichoo/purescript-vim';
 --Plug 'frigoeu/psc-ide-vim'
 
 -- rust
-Plug 'rust-lang/rust.vim'
-
-Plug 'ledger/vim-ledger'
+    'rust-lang/rust.vim';
+-- ledger
+    'ledger/vim-ledger';
 
 -- Custom bundles
-Plug 'terryma/vim-smooth-scroll'
-Plug 'sdothum/vim-colors-duochrome'
-Plug 'rakr/vim-one'
-Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'guns/vim-sexp'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'mvandiemen/ghostbuster'
+    'terryma/vim-smooth-scroll';
+    'sdothum/vim-colors-duochrome';
+    'rakr/vim-one';
+    'tpope/vim-vinegar';
+    'tpope/vim-fireplace';
+    'tpope/vim-unimpaired';
+    'tpope/vim-sexp-mappings-for-regular-people';
+    'guns/vim-sexp';
+    'tpope/vim-repeat';
+    'tpope/vim-surround';
+    'vim-airline/vim-airline-themes';
+    'mvandiemen/ghostbuster';
 
-Plug 'tpope/vim-dispatch'
-Plug 'radenling/vim-dispatch-neovim'
+    'tpope/vim-dispatch';
+    'radenling/vim-dispatch-neovim';
 
+    'altercation/vim-colors-solarized';
+    'shaunsingh/nord.nvim';
+    'nanotee/zoxide.vim';
 -- }}}
-vim.call('plug#end')
+}
+-- vim.cmd [[ let hscoptions="𝐌𝐄𝐓𝐒iBQZDC*" ]]]
+
+-- alternative vim-plug version
+-- vim.cmd [[ if empty(glob('~/.config/nvim/autoload/plug.vim'))
+--   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+--     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+--   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+-- endif
+-- ]]
+-- local Plug = vim.fn['plug#']
+-- vim.call('plug#begin', '~/.config/nvim/plugged')
+--  Plug 'tpope/vim-dispatch'
+--  Plug ('mg979/vim-visual-multi', {branch = 'master'})
+-- vim.call('plug#end')
 
 return require('packer').startup(
   function()
     use 'hrsh7th/nvim-compe'
     use 'wbthomason/packer.nvim'
-    use 'altercation/vim-colors-solarized'
-    use 'shaunsingh/nord.nvim'
-    use 'tpope/vim-commentary'
-    use 'nanotee/zoxide.vim'
 -- telescope
     use {
         'nvim-telescope/telescope.nvim',

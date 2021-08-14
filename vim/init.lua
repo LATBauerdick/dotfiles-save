@@ -1,5 +1,4 @@
--- this does not work
--- Type :so % to refresh .vimrc after making changes
+-- Type :luafile % to refresh init.lua after making changes
 
 -- Map leader key early
 vim.g.mapleader = ','

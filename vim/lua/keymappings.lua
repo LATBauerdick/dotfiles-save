@@ -52,8 +52,24 @@ map { 'n', '<Leader>ev', '<C-w><C-v><C-l>:e $MYVIMRC<cr>' }
 -- nmap <silent> <leader><cr> :noh\|hi Cursor guibg=red<cr>
 map { 'n', '<leader><cr>', ':noh|hi Cursor guibg=red<cr>', silent = true }
 
+-- a smart <Tab> Key
+-- When the autocomplete menu is visible navigate throught the list of results,
+-- otherwise act like a regular <Tab>
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
+_G.smart_tab = function()
+  if vim.fn.pumvisible() == 1 then
+    return t'<C-n>'
+  else
+    return t'<Tab>'
+  end
+end
 
+vim.api.nvim_set_keymap ( 'i', '<Tab>', 'v:lua.smart_tab()'
+                        , {noremap = true, expr = true}
+                        )
 
 utils.map('n', '<C-l>', '<cmd>noh<CR>') -- Clear highlights
 -- inoremap kk <esc>
