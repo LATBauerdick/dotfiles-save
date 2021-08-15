@@ -114,7 +114,10 @@ require "paq" {
     'nanotee/zoxide.vim';
 -- }}}
 }
--- vim.cmd [[ let hscoptions="𝐌𝐄𝐓𝐒iBQZDC*" ]]]
+
+vim.cmd [[
+let hscoptions="𝐌𝐄𝐓𝐒iBQZDC*"
+]]
 
 -- alternative vim-plug version
 -- vim.cmd [[ if empty(glob('~/.config/nvim/autoload/plug.vim'))

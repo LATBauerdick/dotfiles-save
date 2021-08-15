@@ -41,6 +41,13 @@ map { '', '<Leader>l', ':ls<CR>:b ' }
 -- close buffer without closing window
 map { '', '<Leader>q', ':bp<bar>sp<bar>bn<bar>bd<CR>', noremap = false }
 
+-- delete buffer without closing pane
+map { 'n', '<Leader>bd', ':Bd<cr>' }
+
+-- bind K to grep word under cursor
+-- map { 'n', 'K', ':grep! "\b<C-R><C-W>\b"<CR>:cw<CR>' }
+
+
 -- strip all trailing whitespace in the current file
 map { 'n', '<Leader>W', [[:%s/\s\+$//<cr>:let @/=''<CR>]] }
 

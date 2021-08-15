@@ -125,5 +125,9 @@ do
   end
 end
 
+
+--language server protocol
+require('lsp')
+
 vim.cmd 'source ~/.config/nvim/oldinit.vim'
 
