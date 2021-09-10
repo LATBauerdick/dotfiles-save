@@ -28,6 +28,7 @@ map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 vim.cmd [[
 source ~/.config/nvim/lsp-config.vim
 ]]
+-- require('lsp-config')
 -- set completeopt=menuone,noselect
 -- require('compe-config')
 

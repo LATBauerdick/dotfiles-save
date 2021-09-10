@@ -76,7 +76,8 @@ require "paq" {
 
 -- Haskell
 
--- Plug 'neovimhaskell/haskell-vim'
+    {'ndmitchell/ghcid', ['rtp'] = 'plugins/nvim' };
+--  'neovimhaskell/haskell-vim';
 
     'enomsg/vim-haskellConcealPlus';
 -- for haskellConcealPlus disable double-stroke capitals (does not work on iPad)
@@ -143,7 +144,8 @@ return require('packer').startup(
     }
     use 'jvgrootveld/telescope-zoxide'
     use 'sudormrfbin/cheatsheet.nvim'
-    use { "oberblastmeister/neuron.nvim", branch = 'unstable' }
+    use 'oberblastmeister/neuron.nvim'
+    use 'nvim-lua/popup.nvim'
 
     use 'nvim-treesitter/nvim-treesitter' --  We recommend updating the parsers on update
     use 'neovim/nvim-lspconfig'

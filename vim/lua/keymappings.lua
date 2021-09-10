@@ -59,6 +59,48 @@ map { 'n', '<Leader>ev', '<C-w><C-v><C-l>:e $MYVIMRC<cr>' }
 -- nmap <silent> <leader><cr> :noh\|hi Cursor guibg=red<cr>
 map { 'n', '<leader><cr>', ':noh|hi Cursor guibg=red<cr>', silent = true }
 
+-- keep search results at the center of the screen
+map { 'n', 'n', 'nzz' }
+map { 'n', 'N', 'Nzz' }
+map { 'n', '*', '*zz' }
+map { 'n', '#', '#zz' }
+map { 'n', 'g*', 'g*zz' }
+map { 'n', 'g#', 'g#zz' }
+
+-- Quickly close windows
+map { 'n', '<leader>x', ':x<cr>' }
+map { 'n', '<leader>X', ':q!<cr>' }
+
+-- zoom a vim pane, <C-w>= to re-balance
+-- nnoremap <leader>_ :wincmd _<cr>:wincmd \|<cr>
+-- nnoremap <leader>= :wincmd =<cr>
+map { 'n', '<leader>z',   ':wincmd _<cr>:wincmd |<cr>' }
+map { 'n', '<leader>=',   ':wincmd =<cr>' }
+
+-- use cursor keys to move display lines
+-- nmap <up> gk
+-- nmap <down> gj
+map { 'n', '<up>',   'gk' }
+map { 'n', '<down>', 'gj' }
+-- inoremap <Up> <C-o>gk
+-- inoremap <Down> <C-o>gj
+map { 'i', '<up>',   '<C-o>gk' }
+map { 'i', '<down>', '<C-o>gj' }
+-- vnoremap <silent> <up> gk
+-- vnoremap <silent> <down> gj
+map { 'v', '<up>',   'gk', silent = true }
+map { 'v', '<down>', 'gj', silent = true }
+
+-- remap for smooth scroll
+map { 'n', '<c-u>', ':call smooth_scroll#up(&scroll, 0, 2)<CR>', silent = true }
+map { 'n', '<c-d>', ':call smooth_scroll#down(&scroll, 0, 2)<CR>', silent = true }
+map { 'n', '<c-b>', ':call smooth_scroll#up(&scroll*2, 0, 4)<CR>', silent = true }
+map { 'n', '<c-f>', ':call smooth_scroll#down(&scroll*2, 0, 4)<CR>', silent = true }
+
+-- Switch between the last two files
+-- nnoremap <leader><leader> <c-^>
+map { 'n', '<leader><leader>',   'c-^' }
+
 -- a smart <Tab> Key
 -- When the autocomplete menu is visible navigate throught the list of results,
 -- otherwise act like a regular <Tab>
@@ -81,3 +123,4 @@ vim.api.nvim_set_keymap ( 'i', '<Tab>', 'v:lua.smart_tab()'
 utils.map('n', '<C-l>', '<cmd>noh<CR>') -- Clear highlights
 -- inoremap kk <esc>
 utils.map('i', 'kk', '<Esc>')           -- kk to escape
+

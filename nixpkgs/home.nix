@@ -44,23 +44,25 @@
       restic
       ripgrep
       silver-searcher
-      stack
       tldr
       tmux
+      yabai
+      skhd
+      dtach
       tree
       wget
       zoxide
       htop
       fortune
       mosh
-      dtach
       neovim
     # neovim-nightly
       ag
       fzf
       zlib
     #  rustc cargo
-      cabal-install
+    #  stack
+    #  cabal-install
       zoxide
       jq
     ];

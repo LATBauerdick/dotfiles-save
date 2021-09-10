@@ -1,4 +1,5 @@
 
+highlight Comment cterm=italic
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
@@ -32,6 +33,7 @@ let g:grepper = { 'next_tool': '<leader>g' }
 nmap gs  <plug>(GrepperOperator)
 xmap gs  <plug>(GrepperOperator)
 
+" --------------------ghcid command
 let g:ghcid_command= "/usr/local/bin/ghcid"
 
 " redefine italics terminal codes so this works well in tmux
@@ -89,10 +91,6 @@ highlight nonascii guibg=Red ctermbg=2
 " define Wrap command to set text soft wrapping
 command! -nargs=* Wrap set wrap linebreak nolist
 
-" Use tab to jump between blocks, because it's easier
-nnoremap <tab> %
-vnoremap <tab> %
-
 " Always use vertical diffs
 " set diffopt+=vertical
 
@@ -106,45 +104,6 @@ set rtp+=/usr/local/opt/fzf
 
 " Ag will search from project root
 let g:ag_working_path_mode="r"
-
-" Quickly close windows
-nnoremap <leader>x :x<cr>
-nnoremap <leader>X :q!<cr>
-
-" zoom a vim pane, <C-w>= to re-balance
-nnoremap <leader>_ :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>= :wincmd =<cr>
-
-
-" resize panes
-" nnoremap <silent> <Right> :vertical resize +5<cr>
-" nnoremap <silent> <Left> :vertical resize -5<cr>
-" nnoremap <silent> <Up> :resize +5<cr>
-" nnoremap <silent> <Down> :resize -5<cr>
-
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-
-" use cursor keys to move display lines
-nmap <up> gk
-nmap <down> gj
-inoremap <Up> <C-o>gk
-inoremap <Down> <C-o>gj
-nnoremap <Up> gk
-nnoremap <Down> gj
-vnoremap <silent> <up> gk
-vnoremap <silent> <down> gj
-
-" remap for smooth scroll
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-
-" define move keys for Colemak
-" noremap h k
-" noremap j h
-" noremap k j
 
 " AUTOCOMMANDS - Do stuff
 
@@ -175,16 +134,21 @@ augroup END
 set foldmethod=marker
 
 " persistent undofiles
+let s:undodir = "/tmp/.undodir_" . $USER
+if !isdirectory(s:undodir)
+    call mkdir(s:undodir, "", 0700)
+endif
+let &undodir=s:undodir
 set undofile
-augroup vimrc
-  autocmd!
-  autocmd BufWritePre /tmp/* setlocal noundofile
-augroup END
+
+" augroup vimrc
+"   autocmd!
+"   autocmd BufWritePre /tmp/* setlocal noundofile
+" augroup END
 
 " func! g:CustomNeuronIDGenerator(title)
 "      return a:title
 " " substitute(a:title, " ", "-", "g")
 " endf
 
-highlight Comment cterm=italic
 
