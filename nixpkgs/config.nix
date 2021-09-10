@@ -24,33 +24,39 @@
   #                    ]);
   # };
 
-  packageOverrides = pkgs: with pkgs; rec {
-    # myProfile = writeText "my-profile" ''
-# export PATH=$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/sbin:/bin:/usr/sbin:/usr/bin
-# export MANPATH=$HOME/.nix-profile/share/man:/nix/var/nix/profiles/default/share/man:/usr/share/man
-    # '';
+  packageOverrides = super: let self = super.pkgs; in
+  {
+    myHaskellEnv = self.haskell.packages.ghc8104.ghcWithPackages
+                     (haskellPackages: with haskellPackages; [
+                       zlib
+                       # libraries
+                       aeson
+                       # tools
+                       cabal-install haskintex
+                     ]);
 
-    myPackages = pkgs.buildEnv {
-      name = "my-devenv";
-      paths = [
-###        pythonhon36Packages.powerline
-        wget
-        zsh
-        bind      # for nslookup
-        tree
-        less
-        man
-        tmux
-        neovim
-###        coreutils
-        git
-        gnuplot
-        stack
-      ];
-      pathsToLink = [ "/share/man" "/share/doc" "/bin" "/etc" ];
-      extraOutputsToInstall = [ "man" "doc" ];
-    };
   };
+
+#  packageOverrides = pkgs: with pkgs; rec {
+#    myPackages = pkgs.buildEnv {
+#      name = "my-devenv";
+#      paths = [
+#        wget
+#        zsh
+#        bind      # for nslookup
+#        tree
+#        less
+#        man
+#        tmux
+#        neovim
+##        git
+#        gnuplot
+#        stack
+#      ];
+#      pathsToLink = [ "/share/man" "/share/doc" "/bin" "/etc" ];
+#      extraOutputsToInstall = [ "man" "doc" ];
+#    };
+#  };
 
 
 }
