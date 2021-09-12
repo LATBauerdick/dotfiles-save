@@ -59,6 +59,10 @@ map { 'n', '<Leader>ev', '<C-w><C-v><C-l>:e $MYVIMRC<cr>' }
 -- nmap <silent> <leader><cr> :noh\|hi Cursor guibg=red<cr>
 map { 'n', '<leader><cr>', ':noh|hi Cursor guibg=red<cr>', silent = true }
 
+-- + and - keys to increment and decrement
+map { 'n', '+', '<c-a>' }
+map { 'n', '-', '<c-x>' }
+
 -- keep search results at the center of the screen
 map { 'n', 'n', 'nzz' }
 map { 'n', 'N', 'Nzz' }
@@ -67,9 +71,29 @@ map { 'n', '#', '#zz' }
 map { 'n', 'g*', 'g*zz' }
 map { 'n', 'g#', 'g#zz' }
 
+-- keep moves centered, too
+map { 'n', '{', '{zz' }
+map { 'n', '}', '}zz' }
+map { 'n', ']c', ']czz' }
+map { 'n', '[c', '[czz' }
+map { 'n', ']j', '<c-o>zz' }
+map { 'n', '[j', '<c-i>zz' }
+map { 'n', ']s', ']szz' }
+map { 'n', '[s', '[szz' }
+
+-- all change operations are directed to the black hole register.
+map { 'n', 'c', '"_c' }
+map { 'n', 'C', '"_C' }
+
+-- copy/clone paragraph
+map { 'n', 'cp', 'yap<S-}>p' }
+
 -- Quickly close windows
 map { 'n', '<leader>x', ':x<cr>' }
 map { 'n', '<leader>X', ':q!<cr>' }
+
+-- paste from the system clipboard when in insert mode.
+-- map { 'i', '<C-v>', '<C-r>*' }
 
 -- zoom a vim pane, <C-w>= to re-balance
 -- nnoremap <leader>_ :wincmd _<cr>:wincmd \|<cr>
@@ -90,6 +114,16 @@ map { 'i', '<down>', '<C-o>gj' }
 -- vnoremap <silent> <down> gj
 map { 'v', '<up>',   'gk', silent = true }
 map { 'v', '<down>', 'gj', silent = true }
+
+-- easier go to start and end of line
+map { 'n', 'B', '^' }
+map { 'n', 'E', '$' }
+
+-- select all text in buffer
+map { 'n', 'vA', 'ggVG' }
+
+-- yank to end of line
+map { 'n', 'Y', 'y$' }
 
 -- remap for smooth scroll
 map { 'n', '<c-u>', ':call smooth_scroll#up(&scroll, 0, 2)<CR>', silent = true }

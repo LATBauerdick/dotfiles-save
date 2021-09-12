@@ -24,18 +24,18 @@
   #                    ]);
   # };
 
-  packageOverrides = super: let self = super.pkgs; in
-  {
-    myHaskellEnv = self.haskell.packages.ghc8104.ghcWithPackages
-                     (haskellPackages: with haskellPackages; [
-                       zlib
-                       # libraries
-                       aeson
-                       # tools
-                       cabal-install haskintex
-                     ]);
-
-  };
+#  packageOverrides = super: let self = super.pkgs; in
+#  {
+#    myHaskellEnv = self.haskell.packages.ghc8106.ghcWithPackages
+#                     (haskellPackages: with haskellPackages; [
+#                       zlib
+#                       # libraries
+#                       aeson
+#                       # tools
+#                       cabal-install haskintex
+#                     ]);
+#
+#  };
 
 #  packageOverrides = pkgs: with pkgs; rec {
 #    myPackages = pkgs.buildEnv {
