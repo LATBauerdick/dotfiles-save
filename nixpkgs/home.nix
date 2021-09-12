@@ -22,22 +22,28 @@
   home.packages =
     with pkgs;
     [
+      ag
       bat
-      cabal2nix
       cachix
       ctags
       envsubst
       fd
+      fortune
       fzf
       gawk
+      git
+      htop
       hub
       imagemagick
+      jq
       kitty
       librsvg
       lzop
       mdcat
+      mosh
+      neovim
+    # neovim-nightly
       nodejs
-      ormolu
       pandoc
       pv
       qrencode
@@ -52,19 +58,15 @@
       tree
       wget
       zoxide
-      htop
-      fortune
-      mosh
-      neovim
-    # neovim-nightly
-      ag
       fzf
+      zoxide
+    # language support
+      cabal2nix
+      ormolu
       zlib
     #  rustc cargo
     #  stack
     #  cabal-install
-      zoxide
-      jq
     ];
 
 }
