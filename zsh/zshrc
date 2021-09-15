@@ -6,7 +6,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 
-[ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . $HOME/.nix-profile/etc/profile.d/nix.sh
+# Nix
+
+[ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]
+  && . $HOME/.nix-profile/etc/profile.d/nix.sh
+
+[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]
+  && . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+
+# End Nix
 
 # vi mode
 bindkey -v
