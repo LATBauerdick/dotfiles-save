@@ -10,8 +10,7 @@ fi
 
 [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ] && . $HOME/.nix-profile/etc/profile.d/nix.sh
 
-[ -e $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ] && . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-
+[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ] && . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 # End Nix
 
 
@@ -39,54 +38,14 @@ alias vi="vim"
 ### LATB mods
 alias zl="zfs list -t all -r -o name,used,refer"
 
-alias exifHel=exiftool -FocalLength=58 -MinFocalLength=58 -MaxFocalLength=58 -FocalLengthIn35mmFormat=87 -LensInfo="58 58 2.0 2.0" -LensMake="Helios" -LensModel="Helios 44M-4 58mm f/2" -LensSerialNumber=87006073
-alias exif135=exiftool -FocalLength=135 -MinFocalLength=135 -MaxFocalLength=135 -FocalLengthIn35mmFormat=203 -LensInfo="135 135 2.8 2.8" -LensMake="Minolta" -LensModel="MD Tele Rokkor-X 135mm f/2.8" -LensSerialNumber=1232686
-
-LESSPIPE=`which src-hilite-lesspipe.sh`
-export LESSOPEN="| ${LESSPIPE} %s"
-export LESS=' -R -X -F '
-
-export BAT_THEME="Solarized (light)"
-
 # kitty terminal emulator extensions
 # most won't work with tmux
 alias icat="kitty +kitten icat"
 alias d="kitty +kitten diff"
 
-# setup root6
-#pushd $(brew --prefix root6) >/dev/null; . libexec/thisroot.sh; popd >/dev/null
-
-# }}}
-# i
-
-# Exports {{{
-export GITHUB_USER="latbauerdick"
-export PATH=~/bin:~/.local/bin:~/.npm-global/bin:/usr/local/sbin:/usr/local/bin:$PATH:~/Library/Python/3.9/bin
-
-# export GREP_OPTIONS='--color=auto'
-export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
-# export CLICOLOR=1
-#export LSCOLORS=Gxfxcxdxbxegedabagacad
-#export LS_COLORS=Gxfxcxdxbxegedabagacad
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-# Tell grep to highlight matches
-export GREP_OPTIONS='--color=auto'
-#
-### LATB exports
-export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
-
-# }}}
-#
-# Convert simplified wildcard pattern to regex and grep a file listing using
-# Silver Searcher (`brew install the_silver_searcher`)
-lsgrep ()
-{
-    NEEDLE="$(echo $@|sed -E 's/\.([a-z0-9]+)$/\\.\1/'|sed -E 's/\?/./'| sed -E 's/[ *]/.*?/g')";
-    ag --depth 3 -S -g "$NEEDLE" 2> /dev/null
-  }
-
 alias l='ls -alh'
+
+alias nv='nvim'
 
 alias stss="(sleep 4; open vnc://127.0.0.1:5901) & ssh -C -4 -L 5901:127.0.0.1:5900"
 alias imac='sshpass -e ssh imac'  # put passwd into env SSHPASS
@@ -113,9 +72,42 @@ alias na="neuron -d ~/zk search -a"
 alias xo='xargs -I % open %'
 alias xe='xargs -I % $EDITOR %'
 
+# }}}
+
+# Exports {{{
+
+LESSPIPE=`which src-hilite-lesspipe.sh`
+export LESSOPEN="| ${LESSPIPE} %s"
+export LESS=' -R -X -F '
+
+export BAT_THEME="Solarized (light)"
+
+export GITHUB_USER="latbauerdick"
+export PATH=~/bin:~/.local/bin:~/.npm-global/bin:/usr/local/sbin:/usr/local/bin:$PATH:~/Library/Python/3.9/bin
+
+export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
+# export CLICOLOR=1
+#export LSCOLORS=Gxfxcxdxbxegedabagacad
+#export LS_COLORS=Gxfxcxdxbxegedabagacad
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+# Tell grep to highlight matches
+export GREP_OPTIONS='--color=auto'
+
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+
+# }}}
+#
+# Convert simplified wildcard pattern to regex and grep a file listing using
+# Silver Searcher (`brew install the_silver_searcher`)
+lsgrep ()
+{
+    NEEDLE="$(echo $@|sed -E 's/\.([a-z0-9]+)$/\\.\1/'|sed -E 's/\?/./'| sed -E 's/[ *]/.*?/g')";
+    ag --depth 3 -S -g "$NEEDLE" 2> /dev/null
+  }
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-alias nv='nvim'
 export EDITOR="nvim"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -135,5 +127,6 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
+
 autoload -U zmv
 
