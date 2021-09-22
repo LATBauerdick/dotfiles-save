@@ -22,51 +22,46 @@
   home.packages =
     with pkgs;
     [
-      ag
-      bat
-      cachix
-      ctags
-      envsubst
-      fd
-      fortune
-      fzf
-      gawk
-      git
-      htop
-      hub
-      imagemagick
-      jq
-      kitty
-      librsvg
-      lzop
-      mdcat
-      mosh
-      neovim
-    # neovim-nightly
-      nodejs
-      pandoc
-      pv
-      qrencode
-      restic
-      ripgrep
-      silver-searcher
-      tldr
-      tmux
-      yabai
-      skhd
-      dtach
-      tree
-      wget
-      zoxide
-      fzf
-      zoxide
-    # language support
-      cabal2nix
-      ormolu
-      zlib
-    #  rustc cargo
-    #  stack
-    #  cabal-install
+#      bat
+#      cachix
+#      ctags
+#      envsubst
+#      fd
+#      fzf
+#      gawk
+#      git
+#      htop
+#      hub
+#      imagemagick
+#      jq
+#      kitty
+#      librsvg
+#      lzop
+#      mdcat
+#      mosh
+#      neovim
+#      nodejs
+#      pandoc
+#      pv
+#      qrencode
+#      restic
+#      ripgrep
+#      silver-searcher
+#      tldr
+#      tmux
+#      yabai
+#      skhd
+#      dtach
+#      tree
+#      wget
+#      zoxide
+#    # language support
+#      cabal2nix
+#      ormolu
+#    #  zlib
+#    #  rustc cargo
+#    #  stack
+#    #  cabal-install
     ];
 
 }

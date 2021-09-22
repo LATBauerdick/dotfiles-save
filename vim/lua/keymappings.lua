@@ -131,6 +131,10 @@ map { 'n', '<c-d>', ':call smooth_scroll#down(&scroll, 0, 2)<CR>', silent = true
 map { 'n', '<c-b>', ':call smooth_scroll#up(&scroll*2, 0, 4)<CR>', silent = true }
 map { 'n', '<c-f>', ':call smooth_scroll#down(&scroll*2, 0, 4)<CR>', silent = true }
 
+-- nnoremap <buffer> <CR> <cmd>lua require'neuron'.enter_link()<CR>
+map { 'n', 'gzo', ":lua require'neuron'.enter_link()<CR>", buffer = true }
+
+
 -- Switch between the last two files
 -- nnoremap <leader><leader> <c-^>
 map { 'n', '<leader><leader>',   'c-^' }

@@ -12,9 +12,6 @@ local execute = vim.api.nvim_command
 -- sensible defaults
 require('settings')
 
--- Key mappings
-require('keymappings')
-
 -- make sure packer.nvim is installed
 local execute = vim.api.nvim_command
 local fn = vim.fn
@@ -128,6 +125,9 @@ end
 
 --language server protocol
 require('lsp')
+
+-- Key mappings
+require('keymappings')
 
 vim.cmd 'source ~/.config/nvim/oldinit.vim'
 
