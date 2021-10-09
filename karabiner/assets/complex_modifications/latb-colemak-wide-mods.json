@@ -528,7 +528,7 @@
           },
           "to": [
             {
-              "key_code": "equal_sign"
+              "key_code": "7"
             }
           ]
         },
@@ -572,7 +572,7 @@
           },
           "to": [
             {
-              "key_code": "8"
+              "key_code": "9"
             }
           ]
         },
@@ -594,7 +594,7 @@
           },
           "to": [
             {
-              "key_code": "9"
+              "key_code": "0"
             }
           ]
         },
@@ -616,7 +616,7 @@
           },
           "to": [
             {
-              "key_code": "0"
+              "key_code": "hyphen"
             }
           ]
         },
@@ -638,7 +638,7 @@
           },
           "to": [
             {
-              "key_code": "hyphen"
+              "key_code": "equal_sign"
             }
           ]
         },
