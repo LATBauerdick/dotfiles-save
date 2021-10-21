@@ -122,3 +122,5 @@ export PATH="/usr/local/opt/arm-gcc-bin@8/bin:$PATH"
 
 autoload -U zmv
 
+
+eval $(thefuck --alias)

@@ -128,7 +128,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 --  Plug 'tpope/vim-dispatch'
 --  Plug ('mg979/vim-visual-multi', {branch = 'master'})
 Plug 'jgdavey/tslime.vim'
-Plug ('Shougo/vimproc.vim', { ['do'] = 'make' })
+Plug ('Shougo/vimproc.vim', { ['do'] = vim.fn['make']})
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'benekastah/neomake'
