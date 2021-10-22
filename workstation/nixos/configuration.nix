@@ -10,8 +10,14 @@
       ./hardware-configuration.nix
       ./networking.nix
       ./wireguard.nix
+      ./cachix.nix
       ./devenv.nix
     ];
+
+#   fileSystems."/mnt/latb-data" =
+#    { device = "/dev/disk/by-id/scsi-0HC_Volume_11897569";
+#      fsType = "ext4";
+#    };
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -174,6 +180,8 @@
     dataDir = "/home/bauerdic/";
     user = "bauerdic";
   };
+
+  nix.trustedUsers = [ "root" "bauerdic" ];
 
   # open firewall ports for mosh, wireguard
   networking.firewall.allowedUDPPortRanges = [
