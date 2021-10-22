@@ -24,6 +24,7 @@
       zsh
       git
       tmux
+      dtach
       bind      # for nslookup  
       mosh
       syncthing
@@ -33,16 +34,21 @@
       bat
       less
       man
-     # neovim
-      neovim-nightly
+      neovim
+    # neovim-nightly
       ag
       ripgrep
       fzf
       coreutils
       gnuplot
-      stack
+    # stack
       binutils gcc gnumake openssl pkgconfig
-    #  rustc cargo   
+      zlib
+    #  rustc cargo
+      ghc
+      cabal-install
+      cabal2nix
+      nix-prefetch-git
       zoxide
       jq
     ];
