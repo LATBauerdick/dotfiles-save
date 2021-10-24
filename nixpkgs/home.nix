@@ -24,6 +24,7 @@
       cachix
 #      ctags
 #      envsubst
+      dtach
 #      fd
       fzf
 #      gawk
@@ -34,6 +35,7 @@
       jq
 #      kitty
 #      librsvg
+      lima
 #      lzop
 #      mdcat
       mosh
@@ -49,7 +51,6 @@
       tmux
 #      yabai
 #      skhd
-      dtach
 #      thefuck
       tree
       wget
