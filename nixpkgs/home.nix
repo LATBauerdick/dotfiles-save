@@ -19,49 +19,48 @@
   # changes in each release.
   home.stateVersion = "21.11";
 
-  home.packages =
-    with pkgs;
-    [
-#      bat
-#      cachix
+  home.packages = with pkgs; [
+      bat
+      cachix
 #      ctags
 #      envsubst
 #      fd
-#      fzf
+      fzf
 #      gawk
 #      git
 #      htop
 #      hub
-#      imagemagick
-#      jq
+      imagemagick
+      jq
 #      kitty
 #      librsvg
 #      lzop
 #      mdcat
-#      mosh
-#      neovim
+      mosh
+      neovim
 #      nodejs
-#      pandoc
+      pandoc
 #      pv
 #      qrencode
 #      restic
-#      ripgrep
-#      silver-searcher
+      ripgrep
+      silver-searcher
 #      tldr
-#      tmux
+      tmux
 #      yabai
 #      skhd
-#      dtach
-#      tree
-#      wget
-#      zoxide
+      dtach
+#      thefuck
+      tree
+      wget
+      zoxide
 #    # language support
-#      cabal2nix
+      cabal2nix
+      cabal-install
 #      ormolu
 #    #  zlib
 #    #  rustc cargo
 #    #  stack
-#    #  cabal-install
     ];
 
 }
