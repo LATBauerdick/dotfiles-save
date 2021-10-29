@@ -1,7 +1,7 @@
 # Connectivity info for Linux VM
 NIXADDR ?= 192.168.106.128
 NIXPORT ?= 22
-NIXUSER ?= mitchellh
+NIXUSER ?= bauerdic
 
 # Settings
 NIXBLOCKDEVICE ?= sda
@@ -27,8 +27,6 @@ test:
 # NixOS. After installing NixOS, you must reboot and set the root password
 # for the next step.
 #
-# NOTE(mitchellh): I'm sure there is a way to do this and bootstrap all
-# in one step but when I tried to merge them I got errors. One day.
 vm/bootstrap0:
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
 		parted /dev/$(NIXBLOCKDEVICE) -- mklabel gpt; \

@@ -36,7 +36,6 @@
     nixosConfigurations.vm-intel = mkVM "vm-intel" {
       inherit nixpkgs home-manager;
       system = "x86_64-linux";
-      # user   = "mitchellh";
       user   = "bauerdic";
     };
   };

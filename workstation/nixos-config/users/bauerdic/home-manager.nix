@@ -78,57 +78,6 @@ let sources = import ../../nix/sources.nix; in {
     };
   };
 
-  programs.direnv= {
-    enable = true;
-    config = {
-      whitelist = {
-        prefix= [
-          "$HOME/code/go/src/github.com/hashicorp"
-          "$HOME/code/go/src/github.com/mitchellh"
-        ];
-
-        exact = ["$HOME/.envrc"];
-      };
-    };
-  };
-
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = lib.strings.concatStrings (lib.strings.intersperse "\n" [
-      "source ${sources.theme-bobthefish}/fish_prompt.fish"
-      "source ${sources.theme-bobthefish}/fish_right_prompt.fish"
-      "source ${sources.theme-bobthefish}/fish_title.fish"
-      (builtins.readFile ./config.fish)
-      "set -g SHELL ${pkgs.fish}/bin/fish"
-    ]);
-
-    shellAliases = {
-      ga = "git add";
-      gc = "git commit";
-      gco = "git checkout";
-      gcp = "git cherry-pick";
-      gdiff = "git diff";
-      gl = "git prettylog";
-      gp = "git push";
-      gs = "git status";
-      gt = "git tag";
-
-      # Two decades of using a Mac has made this such a strong memory
-      # that I'm just going to keep it consistent.
-      pbcopy = "xclip";
-      pbpaste = "xclip -o";
-    };
-
-    plugins = map (n: {
-      name = n;
-      src  = sources.${n};
-    }) [
-      "fish-fzf"
-      "fish-foreign-env"
-      "theme-bobthefish"
-    ];
-  };
-
   programs.git = {
     enable = true;
     userName = "LATBauerdick";
@@ -146,12 +95,6 @@ let sources = import ../../nix/sources.nix; in {
       init.defaultBranch = "main";
       pull.rebase = true;
     };
-  };
-
-  programs.go = {
-    enable = true;
-    goPath = "code/go";
-    goPrivate = [ "github.com/mitchellh" "github.com/hashicorp" "rfc822.mx" ];
   };
 
   programs.tmux = {
@@ -191,7 +134,7 @@ let sources = import ../../nix/sources.nix; in {
     };
   };
 
-    programs.kitty = {
+  programs.kitty = {
     enable = true;
     extraConfig = builtins.readFile ./kitty;
   };
@@ -243,15 +186,6 @@ let sources = import ../../nix/sources.nix; in {
     ];
 
     extraConfig = (import ./vim-config.nix) { inherit sources; };
-  };
-
-  services.gpg-agent = {
-    enable = true;
-    pinentryFlavor = "tty";
-
-    # cache the keys forever so we don't get asked for a password
-    defaultCacheTtl = 31536000;
-    maxCacheTtl = 31536000;
   };
 
   xresources.extraConfig = builtins.readFile ./Xresources;
