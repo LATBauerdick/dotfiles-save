@@ -12,15 +12,16 @@ let sources = import ../../nix/sources.nix; in {
   # not a huge list.
   home.packages = [
     pkgs.fzf
-    pkgs.git-crypt
     pkgs.htop
     pkgs.jq
-    pkgs.rofi
-    pkgs.gopls
-    pkgs.silver-searcher
     pkgs.tree
-    pkgs.watch
+    pkgs.silver-searcher
     pkgs.zoxide
+
+    pkgs.git-crypt
+    pkgs.gopls
+    pkgs.rofi
+    pkgs.watch
 
     pkgs.tlaplusToolbox
     pkgs.tetex
@@ -56,8 +57,6 @@ let sources = import ../../nix/sources.nix; in {
   #---------------------------------------------------------------------
   # Programs
   #---------------------------------------------------------------------
-
-  programs.gpg.enable = true;
 
   programs.bash = {
     enable = true;
@@ -115,23 +114,6 @@ let sources = import ../../nix/sources.nix; in {
       run-shell ${sources.tmux-pain-control}/pain_control.tmux
       run-shell ${sources.tmux-dracula}/dracula.tmux
     '';
-  };
-
-  programs.alacritty = {
-    enable = true;
-
-    settings = {
-      env.TERM = "xterm-256color";
-
-      key_bindings = [
-        { key = "K"; mods = "Command"; chars = "ClearHistory"; }
-        { key = "V"; mods = "Command"; action = "Paste"; }
-        { key = "C"; mods = "Command"; action = "Copy"; }
-        { key = "Key0"; mods = "Command"; action = "ResetFontSize"; }
-        { key = "Equals"; mods = "Command"; action = "IncreaseFontSize"; }
-        { key = "Subtract"; mods = "Command"; action = "DecreaseFontSize"; }
-      ];
-    };
   };
 
   programs.kitty = {
