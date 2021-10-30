@@ -1,11 +1,13 @@
 { config, lib, pkgs, ... }:
 
-let sources = import ../../nix/sources.nix; in {
+let sources = import ../../nix/sources.nix;
+in {
   xdg.enable = true;
 
   #---------------------------------------------------------------------
   # Packages
   #---------------------------------------------------------------------
+
 
   # Packages I always want installed. Most packages I install using
   # per-project flakes sourced with direnv and nix-shell, so this is
@@ -17,6 +19,19 @@ let sources = import ../../nix/sources.nix; in {
     pkgs.tree
     pkgs.silver-searcher
     pkgs.zoxide
+    pkgs.neovim
+#    ( let
+#        neuronPkg = import (
+#          builtins.fetchTarball {
+#            url = "https://github.com/srid/neuron/archive/10e3ea028c23e664e540d0460e9515bdf02ac51d.tar.gz";
+#            sha256 = "039a9vgjwal0lb5zz0ilk1vlmhs1yc6vp17j5nnkl639vj5f0yxl";
+#          }
+#        ) {};
+#      in neuronPkg.default
+#    )
+    pkgs.ghc
+    pkgs.neuron
+    pkgs.kitty
 
     pkgs.git-crypt
     pkgs.gopls
@@ -46,13 +61,13 @@ let sources = import ../../nix/sources.nix; in {
   xdg.configFile."rofi/config.rasi".text = builtins.readFile ./rofi;
 
   # tree-sitter parsers
-  xdg.configFile."nvim/parser/proto.so".source = "${pkgs.tree-sitter-proto}/parser";
-  xdg.configFile."nvim/queries/proto/folds.scm".source =
-    "${sources.tree-sitter-proto}/queries/folds.scm";
-  xdg.configFile."nvim/queries/proto/highlights.scm".source =
-    "${sources.tree-sitter-proto}/queries/highlights.scm";
-  xdg.configFile."nvim/queries/proto/textobjects.scm".source =
-    ./textobjects.scm;
+#  xdg.configFile."nvim/parser/proto.so".source = "${pkgs.tree-sitter-proto}/parser";
+#  xdg.configFile."nvim/queries/proto/folds.scm".source =
+#    "${sources.tree-sitter-proto}/queries/folds.scm";
+#  xdg.configFile."nvim/queries/proto/highlights.scm".source =
+#    "${sources.tree-sitter-proto}/queries/highlights.scm";
+#  xdg.configFile."nvim/queries/proto/textobjects.scm".source =
+#    ./textobjects.scm;
 
   #---------------------------------------------------------------------
   # Programs
@@ -138,37 +153,37 @@ let sources = import ../../nix/sources.nix; in {
     };
   };
 
-  programs.neovim = {
-    enable = true;
-    package = pkgs.neovim-nightly;
-
-    plugins = with pkgs; [
-      customVim.vim-fish
-      customVim.vim-fugitive
-      customVim.vim-misc
-      customVim.vim-tla
-      customVim.pigeon
-      customVim.AfterColors
-
-      customVim.vim-nord
-      customVim.nvim-lspconfig
-      customVim.nvim-treesitter
-      customVim.nvim-treesitter-playground
-      customVim.nvim-treesitter-textobjects
-
-      vimPlugins.ctrlp
-      vimPlugins.vim-airline
-      vimPlugins.vim-airline-themes
-      vimPlugins.vim-eunuch
-      vimPlugins.vim-gitgutter
-
-      vimPlugins.vim-markdown
-      vimPlugins.vim-nix
-      vimPlugins.typescript-vim
-    ];
-
-    extraConfig = (import ./vim-config.nix) { inherit sources; };
-  };
+#  programs.neovim = {
+#    enable = true;
+#    package = pkgs.neovim-nightly;
+#
+#    plugins = with pkgs; [
+#      customVim.vim-fish
+#      customVim.vim-fugitive
+#      customVim.vim-misc
+#      customVim.vim-tla
+#      customVim.pigeon
+#      customVim.AfterColors
+#
+#      customVim.vim-nord
+#      customVim.nvim-lspconfig
+#      customVim.nvim-treesitter
+#      customVim.nvim-treesitter-playground
+#      customVim.nvim-treesitter-textobjects
+#
+#      vimPlugins.ctrlp
+#      vimPlugins.vim-airline
+#      vimPlugins.vim-airline-themes
+#      vimPlugins.vim-eunuch
+#      vimPlugins.vim-gitgutter
+#
+#      vimPlugins.vim-markdown
+#      vimPlugins.vim-nix
+#      vimPlugins.typescript-vim
+#    ];
+#
+#    extraConfig = (import ./vim-config.nix) { inherit sources; };
+#  };
 
   xresources.extraConfig = builtins.readFile ./Xresources;
 

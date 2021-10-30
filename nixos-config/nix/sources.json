@@ -23,6 +23,13 @@
         "url": "https://github.com/jethrokuan/fzf/archive/24f4739fc1dffafcc0da3ccfbbd14d9c7d31827a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "ghc": {
+        "sha256": "1ay5snnc9b4p5iib62dn52ws8n3ln5lwq4ccvb0a9rzljkqixz7v",
+        "type": "file",
+        "url": "https://downloads.haskell.org/~ghc/8.10.7/ghc-8.10.7-i386-deb9-linux.tar.xz",
+        "url_template": "https://downloads.haskell.org/~ghc/<version>/ghc-<version>-i386-deb9-linux.tar.xz",
+        "version": "8.10.7"
+    },
     "go": {
         "branch": "go1.15.6",
         "description": "The Go programming language",
@@ -33,6 +40,18 @@
         "sha256": "0pg811lfw1pdp0cba4jvsqbwjaqrqz6m7jspbc80r17snd7flk2z",
         "type": "tarball",
         "url": "https://github.com/golang/go/archive/9b955d2d3fcff6a5bc8bce7bafdc4c634a28e95b.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "neuron": {
+        "branch": "master",
+        "description": "Future-proof note-taking and publishing based on Zettelkasten",
+        "homepage": "https://neuron.zettel.page",
+        "owner": "srid",
+        "repo": "neuron",
+        "rev": "10e3ea028c23e664e540d0460e9515bdf02ac51d",
+        "sha256": "039a9vgjwal0lb5zz0ilk1vlmhs1yc6vp17j5nnkl639vj5f0yxl",
+        "type": "tarball",
+        "url": "https://github.com/srid/neuron/archive/10e3ea028c23e664e540d0460e9515bdf02ac51d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
