@@ -28,11 +28,8 @@
   # Define on which hard drive you want to install Grub.
   # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
-  # networking.hostName = "nixos"; # Define your hostname.
+  # networking.hostName = "nix-latb"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config

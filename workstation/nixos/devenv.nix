@@ -29,28 +29,29 @@
       mosh
       syncthing
       gnumake
-      subversion
-      tree
-      bat
+#      subversion
+#      tree
+#      bat
       less
       man
       neovim
     # neovim-nightly
-      ag
-      ripgrep
-      fzf
+#      ag
+#      ripgrep
+#      fzf
       coreutils
-      gnuplot
+#      gnuplot
     # stack
       binutils gcc gnumake openssl pkgconfig
-      zlib
+#      zlib
     #  rustc cargo
-      ghc
-      cabal-install
-      cabal2nix
+#      ghc
+#      cabal-install
+#      cabal2nix
       nix-prefetch-git
-      zoxide
-      jq
+#      zoxide
+#      jq
+#      thefuck
     ];
     programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
 
