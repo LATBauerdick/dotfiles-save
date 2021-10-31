@@ -19,6 +19,16 @@
   # changes in each release.
   home.stateVersion = "21.05";
 
+
+  programs.gpg = {
+    enable = true;
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    pinentryFlavor = "qt";
+  };
+
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
@@ -35,6 +45,7 @@
       git
       git-crypt
       gnupg
+      pinentry-qt
       htop
 #      hub
 #      imagemagick
