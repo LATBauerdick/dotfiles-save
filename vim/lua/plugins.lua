@@ -182,6 +182,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'mvandiemen/ghostbuster'
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
+Plug 'knubie/vim-kitty-navigator'
 vim.call('plug#end')
 -- }}}
 
