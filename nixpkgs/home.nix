@@ -25,11 +25,13 @@
 #      ctags
 #      envsubst
       dtach
-#      fd
+      fd
       fzf
-#      gawk
-#      git
-#      htop
+      gawk
+      git
+      git-crypt
+      gnupg
+      htop
 #      hub
       imagemagick
       jq
