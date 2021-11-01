@@ -14,6 +14,12 @@
       ./devenv.nix
     ];
 
+# use unstable nix so we can access flakes
+  nix.package = pkgs.nixUnstable;
+  nix.extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+
 #   fileSystems."/mnt/latb-data" =
 #    { device = "/dev/disk/by-id/scsi-0HC_Volume_11897569";
 #      fsType = "ext4";
@@ -28,7 +34,7 @@
   # Define on which hard drive you want to install Grub.
   # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
-  # networking.hostName = "nix-latb"; # Define your hostname.
+  networking.hostName = "nix-latb"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.

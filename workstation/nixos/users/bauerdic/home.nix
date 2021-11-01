@@ -63,6 +63,7 @@
       ripgrep
       silver-searcher
 #      tldr
+      texlive.combined.scheme-full
       tmux
       tree
       wget
