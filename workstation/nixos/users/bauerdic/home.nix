@@ -67,21 +67,14 @@
       tmux
       tree
       wget
-#      yabai
-#      skhd
       thefuck
       tree
       wget
       zoxide
 
-#    # language support
+# language support
       cabal-install
       cabal2nix
-#      ormolu
-#    #  zlib
-#    #  rustc cargo
-#    #  stack
-#    #     #  rustc cargo
   ];
 #    programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
 }

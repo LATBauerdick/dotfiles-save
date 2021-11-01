@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       ./networking.nix
       ./wireguard.nix
-      ./cachix.nix
+      # ./cachix.nix
       ./devenv.nix
     ];
 
