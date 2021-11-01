@@ -37,3 +37,10 @@ source ~/.config/nvim/lsp-config.vim
 require'lspconfig'.pyright.setup{}
 
 require('haskell-lsp')
+
+vim.cmd [[
+let g:LanguageClient_serverCommands = {
+    \ 'nix': ['rnix-lsp']
+\ }
+]]
+
