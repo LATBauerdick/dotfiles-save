@@ -17,7 +17,7 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.05";
+  #####LATB???? home.stateVersion = "21.05";
 
 
   programs.gpg = {
@@ -32,6 +32,7 @@
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+      sha256 = "0hyq4rjjx2ac0khrvpga4b3z35phrnhaabmrpyrgb1bzzkfqjq5l";
     }))
   ];
 
@@ -65,8 +66,6 @@
 #      tldr
       texlive.combined.scheme-full
       tmux
-      tree
-      wget
       thefuck
       tree
       wget
