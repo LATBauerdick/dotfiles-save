@@ -31,6 +31,7 @@ in {
 #    )
     pkgs.ghc
     pkgs.neuron
+    pkgs.firefox
     pkgs.kitty
     pkgs.okular
     pkgs.pandoc
