@@ -76,7 +76,7 @@ export LESS=' -R -X -F '
 export BAT_THEME="Solarized (light)"
 
 export GITHUB_USER="latbauerdick"
-export PATH=~/bin:~/.local/bin:~/.npm-global/bin:/usr/local/sbin:/usr/local/bin:$PATH:~/Library/Python/3.9/bin
+export PATH=~/bin:~/.local/bin:~/.npm-global/bin:$PATH:/usr/local/sbin:/usr/local/bin
 
 export MANPAGER="less -X -i" # Don’t clear the screen after quitting a manual page
 # export CLICOLOR=1

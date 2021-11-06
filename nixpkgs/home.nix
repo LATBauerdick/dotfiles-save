@@ -17,13 +17,17 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.11";
+  home.stateVersion = "21.05";
 
-  home.packages = with pkgs; [
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
+home.packages = with pkgs; [
       bat
       cachix
-#      ctags
-#      envsubst
       dtach
       fd
       fzf
@@ -32,38 +36,40 @@
       git-crypt
       gnupg
       htop
-#      hub
       imagemagick
       jq
-#      kitty
-#      librsvg
-      lima
-#      lzop
-#      mdcat
+#      lima
       mosh
+#  programs.neovim = {
+#    enable = true;
+#    package = pkgs.neovim-nightly;
       neovim
-#      nodejs
       pandoc
-#      pv
-#      qrencode
-#      restic
       ripgrep
       silver-searcher
-#      tldr
       tmux
-#      yabai
-#      skhd
-#      thefuck
       tree
       wget
       zoxide
-#    # language support
+# language support
       cabal2nix
       cabal-install
-#      ormolu
-#    #  zlib
-#    #  rustc cargo
-#    #  stack
+
+#      ctags
+#      envsubst
+#      hub
+#      kitty
+#      librsvg
+#      lzop
+#      mdcat
+#      nodejs
+#      pv
+#      qrencode
+#      restic
+#      tldr
+#      yabai
+#      skhd
+#      thefuck
     ];
 
 }
