@@ -10,6 +10,7 @@ karabiner/automatic_backups/
 karabiner/karabiner.json
 workstation/.terraform
 workstation/nixos/result
+workstation/lima-nix/result
 .terraform.tfstate.lock.info
 terraform.tfstate
 terraform.tfstate.backup
