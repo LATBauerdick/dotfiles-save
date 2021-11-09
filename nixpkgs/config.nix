@@ -13,51 +13,5 @@
 
   programs.zsh.enable = true;
 
-  # packageOverrides = super: let self = super.pkgs; in
-  # {
-  #   myHaskellEnv = self.haskell.packages.ghc822.ghcWithPackages
-  #                    (haskellPackages: with haskellPackages; [
-  #                      # libraries
-  #                      arrows async cgi criterion
-  #                      # tools
-  #                      cabal-install haskintex
-  #                    ]);
-  # };
-
-#  packageOverrides = super: let self = super.pkgs; in
-#  {
-#    myHaskellEnv = self.haskell.packages.ghc8106.ghcWithPackages
-#                     (haskellPackages: with haskellPackages; [
-#                       zlib
-#                       # libraries
-#                       aeson
-#                       # tools
-#                       cabal-install haskintex
-#                     ]);
-#
-#  };
-
-#  packageOverrides = pkgs: with pkgs; rec {
-#    myPackages = pkgs.buildEnv {
-#      name = "my-devenv";
-#      paths = [
-#        wget
-#        zsh
-#        bind      # for nslookup
-#        tree
-#        less
-#        man
-#        tmux
-#        neovim
-##        git
-#        gnuplot
-#        stack
-#      ];
-#      pathsToLink = [ "/share/man" "/share/doc" "/bin" "/etc" ];
-#      extraOutputsToInstall = [ "man" "doc" ];
-#    };
-#  };
-
-
 }
 

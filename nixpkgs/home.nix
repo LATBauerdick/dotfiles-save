@@ -37,7 +37,7 @@
       jq
 #      kitty
 #      librsvg
-      lima
+#      lima
 #      lzop
 #      mdcat
       mosh
@@ -45,6 +45,7 @@
 #      nodejs
       pandoc
 #      pv
+#      qemu
 #      qrencode
 #      restic
       ripgrep
