@@ -82,6 +82,9 @@
         path = ../secret/fonts;
         recursive = true;
       })
+      (pkgs.nerdfonts.override {
+        fonts = [ "Iosevka" "FiraCode" "DroidSansMono" ];
+      })
     ];
   };
 

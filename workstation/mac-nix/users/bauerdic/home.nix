@@ -17,64 +17,63 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.05";
+  #####LATB???? home.stateVersion = "21.05";
+
+
+#  programs.gpg = {
+#    enable = true;
+#  };
+
+#  services.gpg-agent = {
+#    enable = true;
+#    pinentryFlavor = "qt";
+#  };
 
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+      sha256 = "0ghg9ljn741d4sqjan2gd4nw7zq16469dfvnfnzy7dh9dk6f24a5";
     }))
   ];
 
-home.packages = with pkgs; [
+  home.packages = with pkgs; [
       bat
-      cachix
-      dtach
+      ctags
       fd
       fzf
+      dtach
       gawk
       git
       git-crypt
       gnupg
+      pinentry-qt
       htop
-      imagemagick
+#      hub
+#      imagemagick
       jq
-#      lima
-      mosh
-#  programs.neovim = {
-#    enable = true;
-#    package = pkgs.neovim-nightly;
+      kitty
+#      librsvg
+#      lzop
+#      mdcat
       neovim
+#      nodejs
       pandoc
+#      pv
+#      qrencode
+#      restic
       ripgrep
       silver-searcher
+#      tldr
+      texlive.combined.scheme-full
       tmux
+#      thefuck
       tree
       wget
       zoxide
+
 # language support
-      cabal2nix
       cabal-install
-
-#      ctags
-#      envsubst
-#      hub
-#      kitty
-#      librsvg
-<<<<<<< HEAD
-#      lima
-=======
->>>>>>> aed7809744d025b20393b995aaac6480571ec9e4
-#      lzop
-#      mdcat
-#      nodejs
-#      pv
-#      qemu
-#      qrencode
-#      restic
-#      tldr
-#      yabai
-#      skhd
-#      thefuck
-    ];
-
+      cabal2nix
+  ];
+#    programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
 }

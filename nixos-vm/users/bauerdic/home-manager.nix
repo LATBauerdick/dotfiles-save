@@ -31,15 +31,19 @@ in {
 #    )
     pkgs.ghc
     pkgs.neuron
+    pkgs.firefox
     pkgs.kitty
+    pkgs.okular
+    pkgs.pandoc
+    pkgs.texlive.combined.scheme-full
+
+    pkgs.rnix-lsp
 
     pkgs.git-crypt
     pkgs.gopls
     pkgs.rofi
     pkgs.watch
 
-    pkgs.tlaplusToolbox
-    pkgs.tetex
   ];
 
   #---------------------------------------------------------------------

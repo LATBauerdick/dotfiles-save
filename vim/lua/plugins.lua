@@ -202,7 +202,7 @@ return require('packer').startup(
     }
     use 'jvgrootveld/telescope-zoxide'
     use 'sudormrfbin/cheatsheet.nvim'
-    use 'oberblastmeister/neuron.nvim'
+    -- use 'oberblastmeister/neuron.nvim'
     use 'nvim-lua/popup.nvim'
 
     use 'nvim-treesitter/nvim-treesitter' --  We recommend updating the parsers on update
