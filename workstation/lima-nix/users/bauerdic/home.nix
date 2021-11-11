@@ -32,7 +32,7 @@
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-      sha256 = "0k0mc62zxcw3cng3gqbnzj2aaq3bsbh0i1zdficxgic8x758y2rs";
+      sha256 = "04d51s52nddf1669wdvacvm952f7f3m8dpddx4ndnvp9bvdn0nzs";
     }))
   ];
 
@@ -43,6 +43,7 @@
       fzf
       dtach
       gawk
+      gcc
       git
       git-crypt
       gnupg
