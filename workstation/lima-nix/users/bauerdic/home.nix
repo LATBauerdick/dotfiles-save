@@ -46,6 +46,7 @@
       git
       git-crypt
       gnupg
+      gnumake
       pinentry-qt
       htop
 #      hub
