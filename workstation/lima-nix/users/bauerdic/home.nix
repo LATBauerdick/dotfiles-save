@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -19,7 +20,6 @@
   # changes in each release.
   #####LATB???? home.stateVersion = "21.05";
 
-
 #  programs.gpg = {
 #    enable = true;
 #  };
@@ -29,12 +29,20 @@
 #    pinentryFlavor = "qt";
 #  };
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-      sha256 = "04d51s52nddf1669wdvacvm952f7f3m8dpddx4ndnvp9bvdn0nzs";
-    }))
-  ];
+#  nixpkgs.overlays = [
+#    (import (builtins.fetchTarball {
+#      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+#      sha256 = "0k0mc62zxcw3cng3gqbnzj2aaq3bsbh0i1zdficxgic8x758y2rs";
+#    }))
+#  ];
+
+
+#  programs.neovim = {
+#    enable = true;
+#    package = pkgs.neovim-unwrapped;
+#    viAlias = false;
+#    vimAlias = true;
+#  };
 
   home.packages = with pkgs; [
       bat
@@ -57,7 +65,8 @@
 #      librsvg
 #      lzop
 #      mdcat
-      neovim
+      neovim-unwrapped
+
 #      nodejs
       pandoc
 #      pv
