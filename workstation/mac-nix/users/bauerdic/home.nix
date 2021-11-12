@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -19,7 +20,6 @@
   # changes in each release.
   #####LATB???? home.stateVersion = "21.05";
 
-
 #  programs.gpg = {
 #    enable = true;
 #  };
@@ -29,12 +29,20 @@
 #    pinentryFlavor = "qt";
 #  };
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-      sha256 = "0ghg9ljn741d4sqjan2gd4nw7zq16469dfvnfnzy7dh9dk6f24a5";
-    }))
-  ];
+#  nixpkgs.overlays = [
+#    (import (builtins.fetchTarball {
+#      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+#      sha256 = "0k0mc62zxcw3cng3gqbnzj2aaq3bsbh0i1zdficxgic8x758y2rs";
+#    }))
+#  ];
+
+
+#  programs.neovim = {
+#    enable = true;
+#    package = pkgs.neovim-unwrapped;
+#    viAlias = false;
+#    vimAlias = true;
+#  };
 
   home.packages = with pkgs; [
       bat
@@ -43,9 +51,11 @@
       fzf
       dtach
       gawk
+#      gcc
       git
       git-crypt
       gnupg
+#      gnumake
       pinentry-qt
       htop
 #      hub
@@ -53,12 +63,15 @@
       jq
       kitty
 #      librsvg
+      lima
 #      lzop
 #      mdcat
-      neovim
+      neovim-unwrapped
+
 #      nodejs
       pandoc
 #      pv
+      qemu
 #      qrencode
 #      restic
       ripgrep
