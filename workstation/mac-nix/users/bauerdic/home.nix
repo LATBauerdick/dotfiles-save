@@ -45,6 +45,7 @@
 #  };
 
   home.packages = with pkgs; [
+      abduco
       bat
       ctags
       fd
