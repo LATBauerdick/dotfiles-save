@@ -1188,7 +1188,7 @@
           },
           "to": [
             {
-              "key_code": "x"
+              "key_code": "z"
             }
           ]
         },
@@ -1210,7 +1210,7 @@
           },
           "to": [
             {
-              "key_code": "c"
+              "key_code": "x"
             }
           ]
         },
@@ -1232,7 +1232,7 @@
           },
           "to": [
             {
-              "key_code": "d"
+              "key_code": "c"
             }
           ]
         },
@@ -1254,7 +1254,7 @@
           },
           "to": [
             {
-              "key_code": "v"
+              "key_code": "d"
             }
           ]
         },
@@ -1276,7 +1276,7 @@
           },
           "to": [
             {
-              "key_code": "z"
+              "key_code": "v"
             }
           ]
         },
@@ -1579,7 +1579,7 @@
           },
           "to": [
             {
-              "key_code": "equal_sign",
+              "key_code": "7",
               "modifiers": [
                 "left_shift"
               ]
@@ -1607,7 +1607,7 @@
           },
           "to": [
             {
-              "key_code": "7",
+              "key_code": "8",
               "modifiers": [
                 "left_shift"
               ]
@@ -1635,7 +1635,7 @@
           },
           "to": [
             {
-              "key_code": "8",
+              "key_code": "9",
               "modifiers": [
                 "left_shift"
               ]
@@ -1663,7 +1663,7 @@
           },
           "to": [
             {
-              "key_code": "9",
+              "key_code": "0",
               "modifiers": [
                 "left_shift"
               ]
@@ -1691,7 +1691,7 @@
           },
           "to": [
             {
-              "key_code": "0",
+              "key_code": "hyphen",
               "modifiers": [
                 "left_shift"
               ]
@@ -1719,7 +1719,7 @@
           },
           "to": [
             {
-              "key_code": "hyphen",
+              "key_code": "equal_sign",
               "modifiers": [
                 "left_shift"
               ]
