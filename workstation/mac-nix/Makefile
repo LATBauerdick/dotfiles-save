@@ -10,13 +10,13 @@ NIXBLOCKDEVICE ?= sda
 MAKEFILE_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
 # The name of the nixosConfiguration in the flake
-NIXNAME ?= mac-nix
+NIXNAME ?= homeManagerConfigurations.bauerdic.activationPackage
 
 update:
 	nix flake update
 
 build:
-	nix build .#homeManagerConfigurations.bauerdic.activationPackage
+	nix build ".#${NIXNAME}"
 
 activate:
 	./result/activate

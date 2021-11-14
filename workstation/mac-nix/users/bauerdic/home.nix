@@ -81,7 +81,7 @@
       texlive.combined.scheme-full
       tmux
 #      thefuck
-      tree
+#      tree
       wget
       zoxide
 
