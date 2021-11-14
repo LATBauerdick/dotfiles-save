@@ -12,6 +12,7 @@ workstation/.terraform
 workstation/nixos-nix/result
 workstation/lima-nix/result
 workstation/mac-nix/result
+workstation/mac-nix/flake.lock
 .terraform.tfstate.lock.info
 terraform.tfstate
 terraform.tfstate.backup
