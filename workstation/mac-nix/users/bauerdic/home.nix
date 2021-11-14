@@ -52,11 +52,11 @@
       fzf
       dtach
       gawk
-#      gcc
+      gcc
       git
       git-crypt
       gnupg
-#      gnumake
+      gnumake
       pinentry-qt
       htop
 #      hub
