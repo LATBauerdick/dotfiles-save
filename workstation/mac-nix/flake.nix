@@ -17,21 +17,35 @@
 
   outputs = { self, nixpkgs, home-manager, nixpkgs-unstable, home-manager-unstable, ... }@inputs:
   let
-#    system = "x86_64-linux";
-    system = "x86_64-darwin";
     nixpkgs = nixpkgs-unstable;
     home-manager = home-manager-unstable;
-    pkgs = import nixpkgs {
-      inherit system;
-      config = { allowUnfree = true; };
-    };
 
     lib = nixpkgs.lib;
 
   in {
-    homeManagerConfigurations = {
+    homeManagerConfigurationsMac = {
       bauerdic = home-manager.lib.homeManagerConfiguration {
-        inherit system pkgs;
+        system = "x86_64-darwin";
+        pkgs = import nixpkgs {
+          system = "x86_64-darwin";
+          config = { allowUnfree = true; };
+        };
+        username = "bauerdic";
+        homeDirectory = "/home/bauerdic";
+        configuration = {
+          imports = [
+            ./users/bauerdic/home.nix
+          ];
+        };
+      };
+    };
+    homeManagerConfigurationsLima = {
+      bauerdic = home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-linux";
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config = { allowUnfree = true; };
+        };
         username = "bauerdic";
         homeDirectory = "/home/bauerdic";
         configuration = {

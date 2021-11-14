@@ -2,6 +2,7 @@
 NIXADDR ?= 192.168.106.128
 NIXPORT ?= 22
 NIXUSER ?= bauerdic
+NIXSYSTEM ?= mac
 
 # Settings
 NIXBLOCKDEVICE ?= sda
@@ -10,13 +11,17 @@ NIXBLOCKDEVICE ?= sda
 MAKEFILE_DIR := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 
 # The name of the nixosConfiguration in the flake
-NIXNAME ?= homeManagerConfigurations.bauerdic.activationPackage
+NIXMAC ?= homeManagerConfigurationsMac.bauerdic.activationPackage
+NIXLIMA ?= homeManagerConfigurationsLima.bauerdic.activationPackage
 
 update:
 	nix flake update
 
-build:
-	nix build ".#${NIXNAME}"
+macbuild:
+	nix build ".#${NIXMAC}"
+
+limabuild:
+	nix build ".#${NIXLIMA}"
 
 activate:
 	./result/activate

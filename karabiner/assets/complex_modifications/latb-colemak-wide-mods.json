@@ -48,6 +48,12 @@
       "description": "Vi Mode [A as Trigger Key]",
       "manipulators": [
         { "type": "basic",
+          "from": { "simultaneous": [ { "key_code": "equal_sign" }, { "key_code": "delete_or_backspace" } ],
+                    "modifiers": { "optional": ["any"] }
+          },
+          "to": [ { "key_code": "delete_forward" } ]
+        },
+        { "type": "basic",
           "from": { "key_code": "m", "modifiers": { "optional": [ "any" ] } },
           "to": [ { "key_code": "delete_or_backspace", "modifiers": [ ] } ],
           "conditions": [ { "type": "variable_if", "name": "vi_mode", "value": 1 } ]
@@ -2624,7 +2630,7 @@
           },
           "to": [
             {
-              "key_code": "Z",
+              "key_code": "z",
               "modifiers": [
                 "left_shift"
               ]
@@ -2652,7 +2658,7 @@
           },
           "to": [
             {
-              "key_code": "X",
+              "key_code": "x",
               "modifiers": [
                 "left_shift"
               ]
@@ -2680,7 +2686,7 @@
           },
           "to": [
             {
-              "key_code": "C",
+              "key_code": "c",
               "modifiers": [
                 "left_shift"
               ]
@@ -2708,7 +2714,7 @@
           },
           "to": [
             {
-              "key_code": "D",
+              "key_code": "d",
               "modifiers": [
                 "left_shift"
               ]
@@ -2736,7 +2742,7 @@
           },
           "to": [
             {
-              "key_code": "V",
+              "key_code": "v",
               "modifiers": [
                 "left_shift"
               ]
