@@ -55,6 +55,7 @@
       gcc
       git
       git-crypt
+      git-lfs
       gnupg
       gnumake
       pinentry-qt
