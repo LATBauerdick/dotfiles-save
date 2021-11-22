@@ -29,6 +29,7 @@ in {
 #        ) {};
 #      in neuronPkg.default
 #    )
+    pkgs.gcc
     pkgs.ghc
     pkgs.neuron
     pkgs.firefox
