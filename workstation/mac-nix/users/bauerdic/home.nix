@@ -79,7 +79,6 @@
       ripgrep
       silver-searcher
 #      tldr
-      texlive.combined.scheme-full
       tmux
 #      thefuck
 #      tree
@@ -89,6 +88,17 @@
 # language support
       cabal-install
       cabal2nix
+
+
+# tex
+      texlive.combined.scheme-full
   ];
 #    programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
+
+# Tex installation
+  fonts.fontconfig.enable = true;
+
 }
+
+
+
