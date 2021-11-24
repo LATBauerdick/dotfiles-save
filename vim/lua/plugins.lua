@@ -118,13 +118,16 @@ end
 
 -- vim-plug {{{
 -- alternative vim-plug version
-vim.cmd [[ if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim.cmd [[
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+call plug#begin(stdpath('data') . '/plugged')
 ]]
 local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.config/nvim/plugged')
+-- vim.call('plug#begin', stdpath('data') . '/plugged')
 --  Plug 'tpope/vim-dispatch'
 --  Plug ('mg979/vim-visual-multi', {branch = 'master'})
 Plug 'jgdavey/tslime.vim'

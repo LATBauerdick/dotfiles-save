@@ -72,9 +72,16 @@ in {
   };
 
   home.file.".inputrc".source = ./inputrc;
+  home.file.".tmux.conf".source = ../../../../tmux/tmux.conf;
+
+  home.file.".zshrc".source = ../../../../zsh/zshrc;
+  home.file.".p10k.zsh".source = ../../../../zsh/p10k.zsh;
 
   xdg.configFile."i3/config".text = builtins.readFile ./i3;
   xdg.configFile."rofi/config.rasi".text = builtins.readFile ./rofi;
+
+  xdg.configFile."nvim".source = ../../../../vim;
+#  xdg.configFile."nvim".target = "../.dotfiles/vim";
 
   # tree-sitter parsers
 #  xdg.configFile."nvim/parser/proto.so".source = "${pkgs.tree-sitter-proto}/parser";
@@ -127,25 +134,25 @@ in {
     };
   };
 
-  programs.tmux = {
-    enable = true;
-    terminal = "xterm-256color";
-    shortcut = "l";
-    secureSocket = false;
-
-    extraConfig = ''
-      set -ga terminal-overrides ",*256col*:Tc"
-
-      set -g @dracula-show-battery false
-      set -g @dracula-show-network false
-      set -g @dracula-show-weather false
-
-      bind -n C-k send-keys "clear"\; send-keys "Enter"
-
-      run-shell ${sources.tmux-pain-control}/pain_control.tmux
-      run-shell ${sources.tmux-dracula}/dracula.tmux
-    '';
-  };
+#  programs.tmux = {
+#    enable = true;
+#    terminal = "xterm-256color";
+#    shortcut = "l";
+#    secureSocket = false;
+#
+#    extraConfig = ''
+#      set -ga terminal-overrides ",*256col*:Tc"
+#
+#      set -g @dracula-show-battery false
+#      set -g @dracula-show-network false
+#      set -g @dracula-show-weather false
+#
+#      bind -n C-k send-keys "clear"\; send-keys "Enter"
+#
+#      run-shell ${sources.tmux-pain-control}/pain_control.tmux
+#      run-shell ${sources.tmux-dracula}/dracula.tmux
+#    '';
+#  };
 
 #  programs.kitty = {
 #    enable = true;
