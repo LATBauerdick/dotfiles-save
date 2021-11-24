@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let sources = import ../../nix/sources.nix;
-  #  texlive = import ./texlive.nix { inherit pkgs; };
+    # texlive = import ./texlive.nix { inherit pkgs; };
 
 in {
   xdg.enable = true;
@@ -49,8 +49,8 @@ in {
       watch
 
 # tex
-#      texlive.combined.scheme-full
-      texlive.mytexlive
+      texlive.combined.scheme-full
+#      texlive.mytexlive
 
   ];
 #    programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
