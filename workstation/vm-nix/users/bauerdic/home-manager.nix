@@ -2,7 +2,6 @@
 
 let sources = import ../../nix/sources.nix;
   #  texlive = import ./texlive.nix { inherit pkgs; };
-  #  texfonts = import ./texfonts.nix { inherit pkgs; };
 
 in {
   xdg.enable = true;
@@ -51,8 +50,7 @@ in {
 
 # tex
 #      texlive.combined.scheme-full
-#      texlive.mytexlive
-#      texfonts
+      texlive.mytexlive
 
   ];
 #    programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
@@ -149,10 +147,10 @@ in {
     '';
   };
 
-  programs.kitty = {
-    enable = true;
-    extraConfig = builtins.readFile ./kitty;
-  };
+#  programs.kitty = {
+#    enable = true;
+#    extraConfig = builtins.readFile ./kitty;
+#  };
 
   programs.i3status = {
     enable = true;
@@ -176,7 +174,6 @@ in {
 #    package = pkgs.neovim-nightly;
 #
 #    plugins = with pkgs; [
-#      customVim.vim-fish
 #      customVim.vim-fugitive
 #      customVim.vim-misc
 #      customVim.vim-tla
