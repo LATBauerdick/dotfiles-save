@@ -1,51 +1,64 @@
 { config, lib, pkgs, ... }:
 
 let sources = import ../../nix/sources.nix;
+  #  texlive = import ./texlive.nix { inherit pkgs; };
+  #  texfonts = import ./texfonts.nix { inherit pkgs; };
+
 in {
   xdg.enable = true;
 
-  #---------------------------------------------------------------------
-  # Packages
-  #---------------------------------------------------------------------
+  home.packages = with pkgs; [
 
+      abduco
+      bat
+      ctags
+      fd
+      fzf
+      dtach
+      gawk
+      gcc
+      git
+      git-crypt
+      git-lfs
+      gnupg
+      gnumake
+      pinentry-qt
+      htop
+      jq
+      kitty
+      lima
+      neovim-unwrapped
 
-  # Packages I always want installed. Most packages I install using
-  # per-project flakes sourced with direnv and nix-shell, so this is
-  # not a huge list.
-  home.packages = [
-    pkgs.fzf
-    pkgs.htop
-    pkgs.jq
-    pkgs.tree
-    pkgs.silver-searcher
-    pkgs.zoxide
-    pkgs.neovim
-#    ( let
-#        neuronPkg = import (
-#          builtins.fetchTarball {
-#            url = "https://github.com/srid/neuron/archive/10e3ea028c23e664e540d0460e9515bdf02ac51d.tar.gz";
-#            sha256 = "039a9vgjwal0lb5zz0ilk1vlmhs1yc6vp17j5nnkl639vj5f0yxl";
-#          }
-#        ) {};
-#      in neuronPkg.default
-#    )
-    pkgs.gcc
-    pkgs.ghc
-    pkgs.neuron
-    pkgs.firefox
-    pkgs.kitty
-    pkgs.okular
-    pkgs.pandoc
-    pkgs.texlive.combined.scheme-full
+      pandoc
+      qemu
+      ripgrep
+      silver-searcher
+      tmux
+#      thefuck
+      tree
+      wget
+      zoxide
 
-    pkgs.rnix-lsp
+# language support
+      cabal-install
+      cabal2nix
+# apps
+      firefox
+      okular
 
-    pkgs.git-crypt
-    pkgs.gopls
-    pkgs.rofi
-    pkgs.watch
+      rofi
+      watch
+
+# tex
+#      texlive.combined.scheme-full
+#      texlive.mytexlive
+#      texfonts
 
   ];
+#    programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
+
+#  fonts for Tex installation
+  fonts.fontconfig.enable = true;
 
   #---------------------------------------------------------------------
   # Env vars and dotfiles
