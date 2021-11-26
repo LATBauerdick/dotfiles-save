@@ -83,6 +83,8 @@ in {
   xdg.configFile."nvim".source = ../../../../vim;
 #  xdg.configFile."nvim".target = "../.dotfiles/vim";
 
+  xdg.configFile."kitty".source = ../../../../kitty;
+
   # tree-sitter parsers
 #  xdg.configFile."nvim/parser/proto.so".source = "${pkgs.tree-sitter-proto}/parser";
 #  xdg.configFile."nvim/queries/proto/folds.scm".source =
