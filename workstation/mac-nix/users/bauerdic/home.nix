@@ -44,6 +44,16 @@
 #    vimAlias = true;
 #  };
 
+  xdg.enable = true;
+
+  home.file.".tmux.conf".source = ../../../../tmux/tmux.conf;
+
+  home.file.".zshrc".source = ../../../../zsh/zshrc;
+  home.file.".p10k.zsh".source = ../../../../zsh/p10k.zsh;
+
+  xdg.configFile."nvim".source = ../../../../vim;
+  xdg.configFile."kitty".source = ../../../../kitty;
+
   home.packages = with pkgs; [
       abduco
       bat
