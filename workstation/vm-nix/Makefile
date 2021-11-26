@@ -26,7 +26,7 @@ test:
 # and just set the password of the root user to "root". This will install
 # NixOS. After installing NixOS, you must reboot and set the root password
 # for the next step.
-#
+# UEFI boot works fine for vm-ware
 vm/bootstrap0:
 	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
 		parted /dev/$(NIXBLOCKDEVICE) -- mklabel gpt; \
@@ -51,6 +51,30 @@ vm/bootstrap0:
 		' /mnt/etc/nixos/configuration.nix; \
 		nixos-install --no-root-passwd; \
 		reboot; \
+	"
+
+# some with Master Boot Record: qemu cannot boot UEFI without firmware
+vm/bootstrap/mbr:
+	ssh $(SSH_OPTIONS) -p$(NIXPORT) root@$(NIXADDR) " \
+		parted /dev/$(NIXBLOCKDEVICE) -- mklabel msdos; \
+		parted /dev/$(NIXBLOCKDEVICE) -- mkpart primary 1MiB 100%; \
+		mkfs.ext4 -L nixos /dev/$(NIXBLOCKDEVICE)1; \
+		mount /dev/$(NIXBLOCKDEVICE)1 /mnt; \
+		sudo dd if=/dev/zero of=/mnt/.swapfile bs=1024 count=2097152; \
+		sudo chmod 600 /mnt/.swapfile; \
+		sudo mkswap /mnt/.swapfile; \
+		sudo swapon /mnt/.swapfile; \
+		nixos-generate-config --root /mnt; \
+		sed --in-place '/system\.stateVersion = .*/a \
+			boot.loader.grub.device = \"/dev/sda\";\n \
+			nix.package = pkgs.nixUnstable;\n \
+			nix.extraOptions = \"experimental-features = nix-command flakes\";\n \
+  			services.openssh.enable = true;\n \
+			services.openssh.passwordAuthentication = true;\n \
+			services.openssh.permitRootLogin = \"yes\";\n \
+			users.users.root.initialPassword = \"root\";\n \
+		' /mnt/etc/nixos/configuration.nix; \
+		nixos-install --no-root-passwd; \
 	"
 
 # after bootstrap0, run this to finalize. After this, do everything else
