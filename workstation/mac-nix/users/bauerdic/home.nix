@@ -83,7 +83,7 @@
 #      nodejs
       pandoc
 #      pv
-      qemu
+#      qemu
 #      qrencode
 #      restic
       ripgrep
@@ -101,12 +101,12 @@
 
 
 # tex
-      texlive.combined.scheme-full
+#      texlive.combined.scheme-full
   ];
 #    programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
 
 # Tex installation
-  fonts.fontconfig.enable = true;
+#  fonts.fontconfig.enable = true;
 
 }
 

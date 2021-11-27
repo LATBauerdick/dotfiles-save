@@ -1,5 +1,5 @@
 # Connectivity info for Linux VM
-NIXADDR ?= localhost
+NIXADDR ?= 127.0.0.1
 NIXPORT ?= 2222
 NIXUSER ?= bauerdic
 
@@ -74,7 +74,7 @@ vm/bootstrap/mbr:
 			services.openssh.permitRootLogin = \"yes\";\n \
 			users.users.root.initialPassword = \"root\";\n \
 		' /mnt/etc/nixos/configuration.nix; \
-		nixos-install --no-root-passwd; \
+		# nixos-install --no-root-passwd; \
 	"
 
 # after bootstrap0, run this to finalize. After this, do everything else
