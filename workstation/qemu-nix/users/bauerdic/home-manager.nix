@@ -56,7 +56,7 @@ in {
 #    programs.zsh.promptInit = "source ${pkgs.zsh-powerlevel9k}/share/zsh-powerlevel9k/powerlevel9k.zsh-theme";
 
 #  fonts for Tex installation
-  fonts.fontconfig.enable = true;
+#  fonts.fontconfig.enable = true;
 
   #---------------------------------------------------------------------
   # Env vars and dotfiles
