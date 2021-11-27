@@ -18,6 +18,6 @@
       fsType = "ext4";
     };
 
-  swapDevices = [ /.swapfile ];
+  swapDevices = [ { device =  "/.swapfile" } ];
 
 }
